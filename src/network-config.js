@@ -114,6 +114,26 @@ export const networkConfigs = {
       portisDappId ? { id: 'portis', conf: portisDappId } : null,
     ].filter(p => p),
   },
+  cfx: {
+    addresses: {
+      ensRegistry:
+        localEnsRegistryAddress || '0x801761696EE2DE1e23C5D774e6dC7E38BB729cbD',
+    },
+    nodes: {
+      // defaultEth: 'ws://test.confluxrpc.org/ws',
+      defaultEth: 'ws://localhost:4000',
+    },
+    settings: {
+      chainId: 1,
+      name: 'Conflux Testnet',
+      shortName: 'cfx-testnet',
+      type: 'private',
+      live: true,
+    },
+    providers: [
+      { id: 'provided' },
+    ].filter(p => p),
+  },
   unknown: {
     addresses: {
       ensRegistry: localEnsRegistryAddress,

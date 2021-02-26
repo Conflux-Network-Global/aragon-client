@@ -97,6 +97,12 @@ function identifyProvider(provider) {
   if (provider && provider.isMetaMask) {
     return 'metamask'
   }
+
+  // HACK
+  if (provider && provider.isConfluxPortal) {
+    return 'metamask'
+  }
+
   return 'unknown'
 }
 
