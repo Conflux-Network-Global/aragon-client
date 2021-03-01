@@ -130,9 +130,7 @@ export const networkConfigs = {
       type: 'private',
       live: true,
     },
-    providers: [
-      { id: 'provided' },
-    ].filter(p => p),
+    providers: [{ id: 'provided' }],
   },
   unknown: {
     addresses: {
