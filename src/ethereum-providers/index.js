@@ -2,6 +2,7 @@ import { isElectron } from '../utils'
 
 import frame from './icons/Frame.png'
 import cipher from './icons/Cipher.png'
+import conflux from './icons/Conflux.png'
 import metamask from './icons/Metamask.png'
 import status from './icons/Status.png'
 import wallet from './icons/wallet.svg'
@@ -22,11 +23,11 @@ const PROVIDERS = new Map(
     },
     {
       id: 'metamask',
-      name: 'Metamask',
+      name: 'Conflux Portal',
       type: 'Desktop',
-      image: metamask,
+      image: conflux,
       strings: {
-        'your Ethereum wallet': 'Metamask',
+        'your Ethereum wallet': 'Conflux Portal',
       },
     },
     {

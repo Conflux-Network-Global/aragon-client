@@ -68,7 +68,7 @@ function AccountModuleConnectedScreen({
   const Icon = connectionColor !== theme.positive ? IconCross : IconCheck
 
   const formattedConnectionMessage = connectionMessage.includes('Connected')
-    ? `Connected to Ethereum ${walletNetworkName} Network`
+    ? `Connected to Conflux ${walletNetworkName} Network`
     : connectionMessage
 
   return (

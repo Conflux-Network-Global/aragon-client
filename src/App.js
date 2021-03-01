@@ -17,7 +17,7 @@ import { PermissionsProvider } from './contexts/PermissionsContext'
 import { IdentityProvider } from './components/IdentityManager/IdentityManager'
 import { LocalIdentityModalProvider } from './components/LocalIdentityModal/LocalIdentityModalManager'
 import LocalIdentityModal from './components/LocalIdentityModal/LocalIdentityModal'
-import HelpScoutBeacon from './components/HelpScoutBeacon/HelpScoutBeacon'
+// import HelpScoutBeacon from './components/HelpScoutBeacon/HelpScoutBeacon'
 import GlobalPreferences from './components/GlobalPreferences/GlobalPreferences'
 import CustomToast from './components/CustomToast/CustomToast'
 import OrgView from './components/OrgView/OrgView'
@@ -45,14 +45,15 @@ const INITIAL_DAO_STATE = {
   repos: [],
 }
 
-const SELECTOR_NETWORKS = [
-  ['main', 'Ethereum Mainnet', 'https://client.aragon.org/'],
-  [
-    'rinkeby',
-    'Ethereum Testnet (Rinkeby)',
-    'https://rinkeby.client.aragon.org/',
-  ],
-]
+// const SELECTOR_NETWORKS = [
+//   ['main', 'Ethereum Mainnet', 'https://client.aragon.org/'],
+//   [
+//     'rinkeby',
+//     'Ethereum Testnet (Rinkeby)',
+//     'https://rinkeby.client.aragon.org/',
+//   ],
+// ]
+const SELECTOR_NETWORKS = [['main', 'Conflux Testnet', '/']]
 if (network.type === 'ropsten') {
   SELECTOR_NETWORKS.push([
     'ropsten',
@@ -403,7 +404,7 @@ class App extends React.Component {
                           wrapper={wrapper}
                         />
 
-                        <HelpScoutBeacon apps={apps} />
+                        {/* <HelpScoutBeacon apps={apps} /> */}
                       </ActivityProvider>
                     </FavoriteDaosProvider>
                   </LocalIdentityModalProvider>
