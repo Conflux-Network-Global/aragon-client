@@ -59,10 +59,9 @@
     recursive-copy "^2.0.9"
     use-inside "^0.2.0"
 
-"@aragon/wrapper@^5.0.0-rc.28":
+"@aragon/wrapper@git://github.com/Thegaram/aragon.js#422f65ee3ac7d994b2dfdad98c5c93891fe1687e":
   version "5.0.0-rc.28"
-  resolved "https://registry.yarnpkg.com/@aragon/wrapper/-/wrapper-5.0.0-rc.28.tgz#4d00928e1633935106395e558d05d0521ea6760e"
-  integrity sha512-78fWoE/oAOGHNlvq+aZyXy0hZ6JBeqxdS07HXvyucb/fFhphG/puDmkDudP1esMIYmQbbviB+dT6mpa2ctTzQw==
+  resolved "git://github.com/Thegaram/aragon.js#422f65ee3ac7d994b2dfdad98c5c93891fe1687e"
   dependencies:
     "@aragon/os" "^4.2.1"
     "@aragon/rpc-messenger" "^2.0.0"

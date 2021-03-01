@@ -35,7 +35,7 @@
   "dependencies": {
     "@aragon/templates-tokens": "^1.2.1",
     "@aragon/ui": "^1.5.0",
-    "@aragon/wrapper": "^5.0.0-rc.28",
+    "@aragon/wrapper": "git://github.com/Thegaram/aragon.js#422f65ee3ac7d994b2dfdad98c5c93891fe1687e",
     "@sentry/browser": "^5.17.0",
     "@ungap/event-target": "^0.1.0",
     "clipboard-polyfill": "^2.8.6",
