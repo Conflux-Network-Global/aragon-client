@@ -12,6 +12,6 @@ export default [
   // dandelion,
   // fundraising,
   // openEnterprise,
-  // membership,
-  // reputation,
+  membership,
+  reputation,
 ]
