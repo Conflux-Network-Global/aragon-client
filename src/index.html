@@ -34,6 +34,23 @@
       if (window.conflux != undefined) {
         window.ethereum = window.conflux;
         window.web3 = window.conflux;
+
+        var sendAsyncOriginal = window.conflux.sendAsync;
+
+        window.conflux.sendAsync = function(data, callback) {
+          // console.log("Conflux Portal sendAsync:", data);
+          const self = this;
+
+          if (data.method === 'eth_sendTransaction') {
+            data.method = 'cfx_sendTransaction';
+
+            // workaround for a bug where storage limit is not estimated automatically
+            delete data.params[0].gas;
+            delete data.params[0].gasPrice;
+          }
+
+          sendAsyncOriginal.call(self, data, callback);
+        }
       }
 
       // Dragons 🐉 have been reintroduced into the client, but hear us out:
