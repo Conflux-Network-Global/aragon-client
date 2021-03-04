@@ -121,7 +121,7 @@ export const networkConfigs = {
     },
     nodes: {
       // defaultEth: 'ws://test.confluxrpc.org/ws',
-      defaultEth: 'ws://localhost:4000',
+      defaultEth: 'ws://13.212.21.46:4000',
     },
     settings: {
       chainId: 1,
