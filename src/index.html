@@ -41,6 +41,10 @@
           // console.log("Conflux Portal sendAsync:", data);
           const self = this;
 
+          if (data.method === 'eth_chainId' || data.method === 'net_version') {
+            return callback(new Error(`Unsupported method: '${data.method}'`));
+          }
+
           if (data.method === 'eth_sendTransaction') {
             data.method = 'cfx_sendTransaction';
 
