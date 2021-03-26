@@ -117,7 +117,7 @@ export const networkConfigs = {
   cfx: {
     addresses: {
       ensRegistry:
-        localEnsRegistryAddress || '0x801761696EE2DE1e23C5D774e6dC7E38BB729cbD',
+        localEnsRegistryAddress || '0x82c7E529c7a72bf87C2793CC3Dd5789d73cF887e',
     },
     nodes: {
       // defaultEth: 'ws://test.confluxrpc.org/ws',

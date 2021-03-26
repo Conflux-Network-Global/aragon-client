@@ -121,7 +121,7 @@ export default {
       },
     ],
   ],
-  prepareTransactions(createTx, data) {
+  prepareTransactions(createTx, data, epoch) {
     const allocationsPeriod = 0 // default
     const financePeriod = 0 // default
 
@@ -170,6 +170,7 @@ export default {
           stakes,
           votingSettings,
           financePeriod,
+          epoch,
         ]),
       },
       {
