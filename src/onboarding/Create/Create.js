@@ -188,10 +188,12 @@ function useTemplateRepoInformation(templateRepoAddress) {
         .then(templateInfo => {
           // HACK
           // modify ABI without re-deploying template
-          const id = templateInfo.abi.findIndex(x => x.name === "newTokenAndInstance")
+          const id = templateInfo.abi.findIndex(
+            x => x.name === 'newTokenAndInstance'
+          )
 
           if (id >= 0 && templateInfo.abi[id].inputs.length === 8) {
-            templateInfo.abi[id].inputs.push({ name: "epoch", type: "uint256" })
+            templateInfo.abi[id].inputs.push({ name: 'epoch', type: 'uint256' })
           }
           // </HACK>
 
@@ -241,7 +243,7 @@ function useDeploymentState(
   })
 
   // get current epoch number for template initialization
-  const { balance, getBlockNumber } = useWallet()
+  const { getBlockNumber } = useWallet()
   const epoch = getBlockNumber() - 100 // account for some fluctuation
 
   const deployTransactions = useMemo(
@@ -253,7 +255,7 @@ function useDeploymentState(
             epoch
           )
         : null,
-    [status, templateAbi, templateAddress, template, templateData]
+    [status, templateAbi, templateAddress, template, templateData] // eslint-disable-line
   )
 
   // Call tx functions in the template, one after another.
