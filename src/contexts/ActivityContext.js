@@ -99,7 +99,7 @@ class ActivityProviderBase extends React.Component {
             this.setActivityConfirmed(transactionHash)
           }
         } catch (e) {
-          console.error(`Failed to refresh transaction ${transactionHash}`)
+          console.error(`Failed to refresh transaction ${transactionHash}: ${e}`)
         }
       })
   }
