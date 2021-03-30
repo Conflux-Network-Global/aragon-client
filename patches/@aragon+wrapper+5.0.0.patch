@@ -22,3 +22,31 @@ index 3b9b5c5..6917e7c 100644
 +return eventDelay?eventSource.pipe((0,_operators.delay)(eventDelay)):eventSource}async call(method,...params){if(!this.contract.methods[method])throw new Error(`No method named ${method} on ${this.address}`);const lastParam=params[params.length-1];return"object"==typeof lastParam&&null!==lastParam?this.contract.methods[method](...params.slice(0,-1)).call(lastParam):this.contract.methods[method](...params).call()}async updateInitializationBlock(){const initBlock=await this.contract.methods.getInitializationEpoch().call();this.initializationBlock=initBlock}}exports.default=ContractProxy;
  //# sourceMappingURL=index.js.map
 \ No newline at end of file
+diff --git a/node_modules/@aragon/wrapper/dist/utils/index.js b/node_modules/@aragon/wrapper/dist/utils/index.js
+index cdeb121..d8b2ecb 100644
+--- a/node_modules/@aragon/wrapper/dist/utils/index.js
++++ b/node_modules/@aragon/wrapper/dist/utils/index.js
+@@ -7,5 +7,21 @@ function makeAddressMapProxy(target={}){const targetLowerCaseKeys={};return Obje
+  *
+  * @param {string} address
+  * @param {string} location
+- */function getCacheKey(address,location){return`${address}.${location}`}function makeProxy(address,interfaceName,web3,options){const abi=(0,_interfaces.getAbi)(`aragon/${interfaceName}`);return makeProxyFromABI(address,abi,web3,options)}const appProxyEventsAbi=(0,_interfaces.getAbi)("aragon/AppProxy").filter(({type})=>"event"===type);function makeProxyFromAppABI(address,appAbi,web3,options){const appAbiWithProxyEvents=[].concat(appAbi,appProxyEventsAbi);return makeProxyFromABI(address,appAbiWithProxyEvents,web3,options)}function makeProxyFromABI(address,abi,web3,options){return new _proxy.default(address,abi,web3,options)}
++ */function getCacheKey(address,location){return`${address}.${location}`}function makeProxy(address,interfaceName,web3,options){const abi=(0,_interfaces.getAbi)(`aragon/${interfaceName}`);return makeProxyFromABI(address,abi,web3,options)}const appProxyEventsAbi=(0,_interfaces.getAbi)("aragon/AppProxy").filter(({type})=>"event"===type);function makeProxyFromAppABI(address,appAbi,web3,options){
++     
++    // this is a terrible hack
++    // the proper way is to update the ABI in `artifact.json`,
++    // re-publish the app on IPFS
++    // and update the version in the corresponding repo
++    appAbi.push({
++        constant: true,
++        inputs: [],
++        name: 'getInitializationEpoch',
++        outputs: [{ name: '', type: 'uint256' }],
++        payable: false,
++        stateMutability: 'view',
++        type: 'function',
++    })
++     
++     const appAbiWithProxyEvents=[].concat(appAbi,appProxyEventsAbi);return makeProxyFromABI(address,appAbiWithProxyEvents,web3,options)}function makeProxyFromABI(address,abi,web3,options){return new _proxy.default(address,abi,web3,options)}
+ //# sourceMappingURL=index.js.map
+\ No newline at end of file
