@@ -120,8 +120,8 @@ export const networkConfigs = {
         localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
     },
     nodes: {
-      // defaultEth: 'ws://test.confluxrpc.org/ws',
-      defaultEth: 'ws://13.212.21.46:4000',
+      defaultEth: 'ws://test.confluxrpc.org/ws',
+      // defaultEth: 'ws://13.212.21.46:4000',
     },
     settings: {
       chainId: 1,

@@ -8,6 +8,7 @@ import {
   getIpfsGateway,
 } from './local-settings'
 import { getNetworkConfig } from './network-config'
+import { Wrapper } from './conflux-provider-wrapper'
 
 const appsOrder = ['TokenManager', 'Voting', 'Finance', 'Agent']
 
@@ -97,5 +98,7 @@ export const defaultEthNode =
   getDefaultEthNode() || networkConfig.nodes.defaultEth
 
 export const web3Providers = {
-  default: new Web3.providers.WebsocketProvider(defaultEthNode),
+  default: Wrapper.wrapProvider(
+    new Web3.providers.WebsocketProvider(defaultEthNode)
+  ),
 }
