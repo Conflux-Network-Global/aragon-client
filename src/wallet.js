@@ -78,6 +78,7 @@ function WalletContextProvider({ children }) {
     <WalletContext.Provider value={wallet}>{children}</WalletContext.Provider>
   )
 }
+
 WalletContextProvider.propTypes = { children: PropTypes.node }
 
 export function WalletProvider({ children }) {
@@ -94,6 +95,7 @@ export function WalletProvider({ children }) {
     </UseWalletProvider>
   )
 }
+
 WalletProvider.propTypes = { children: PropTypes.node }
 
 export function useWallet() {

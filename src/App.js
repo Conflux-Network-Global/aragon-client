@@ -53,7 +53,10 @@ const INITIAL_DAO_STATE = {
 //     'https://rinkeby.client.aragon.org/',
 //   ],
 // ]
-const SELECTOR_NETWORKS = [['main', 'Conflux Testnet', '/']]
+const SELECTOR_NETWORKS = [
+  ['cfx_testnet', 'Conflux Testnet', '/'],
+  ['cfx_local', 'Conflux Local', '/'],
+]
 if (network.type === 'ropsten') {
   SELECTOR_NETWORKS.push([
     'ropsten',

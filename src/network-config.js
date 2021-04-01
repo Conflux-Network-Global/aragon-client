@@ -132,6 +132,41 @@ export const networkConfigs = {
     },
     providers: [{ id: 'provided' }],
   },
+  cfx_testnet: {
+    addresses: {
+      ensRegistry:
+        localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
+    },
+    nodes: {
+      defaultEth: 'ws://test.confluxrpc.org/ws',
+      // defaultEth: 'ws://13.212.21.46:4000',
+    },
+    settings: {
+      chainId: 1,
+      name: 'Conflux Testnet',
+      shortName: 'cfx-testnet',
+      type: 'private',
+      live: true,
+    },
+    providers: [{ id: 'provided' }],
+  },
+  cfx_local: {
+    addresses: {
+      ensRegistry:
+        localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
+    },
+    nodes: {
+      defaultEth: 'ws://localhost:4000',
+    },
+    settings: {
+      chainId: 1,
+      name: 'Conflux Local',
+      shortName: 'cfx-local',
+      type: 'private',
+      live: true,
+    },
+    providers: [{ id: 'provided' }],
+  },
   unknown: {
     addresses: {
       ensRegistry: localEnsRegistryAddress,
@@ -150,6 +185,7 @@ export const networkConfigs = {
 }
 
 export function getNetworkConfig(type) {
+  console.log('network', type)
   return (
     networkConfigs[type] || {
       ...networkConfigs.unknown,

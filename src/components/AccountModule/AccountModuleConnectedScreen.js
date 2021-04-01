@@ -118,12 +118,14 @@ function AccountModuleConnectedScreen({
               }
             `}
           >
+            aa
             <IdentityBadge
               entity={account}
               compact
               badgeOnly
               css="cursor: pointer"
             />
+            nn
             <IconCopy
               css={`
                 color: ${theme.hint};
