@@ -284,7 +284,7 @@ export function shortenAddress(address, charsLength = 4) {
 }
 
 export function formatAddress(address) {
-  return format(address, 1)
+  return format.address(address, 1)
 }
 
 // Detect Ethereum addresses in a string and transform each part.
