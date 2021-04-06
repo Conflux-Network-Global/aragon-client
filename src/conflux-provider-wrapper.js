@@ -206,7 +206,10 @@ function wrapProvider(provider) {
     // execute call
     return sendOriginal.call(this, args, (err, res) => {
       if (err) return callback(err)
-      if (res.error) return callback(err, res)
+      if (res.error) {
+        console.error('request failed:', res, args)
+        return callback(err, res)
+      }
 
       console.log('receiving response:', res, 'request:', args)
 
