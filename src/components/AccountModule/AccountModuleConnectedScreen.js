@@ -22,6 +22,7 @@ import {
   useWalletConnectionDetails,
 } from './connection-hooks'
 import WalletSyncedInfo from './WalletSyncedInfo'
+import { formatAddress, shortenAddress } from '../../web3-utils'
 
 function AccountModuleConnectedScreen({
   account,
@@ -42,7 +43,10 @@ function AccountModuleConnectedScreen({
     hasNetworkMismatch,
   } = useNetworkConnectionData()
 
-  const copyAddress = useCopyToClipboard(account, 'Address copied')
+  const copyAddress = useCopyToClipboard(
+    formatAddress(account),
+    'Address copied'
+  )
 
   const { header, info, status } = useSyncState(
     clientListening,
@@ -113,19 +117,18 @@ function AccountModuleConnectedScreen({
               align-items: center;
               justify-self: flex-end;
               padding: ${0.5 * GU}px;
+
               &:active {
                 background: ${theme.surfacePressed};
               }
             `}
           >
-            aa
             <IdentityBadge
-              entity={account}
+              entity={shortenAddress(formatAddress(account), 10)}
               compact
               badgeOnly
               css="cursor: pointer"
             />
-            nn
             <IconCopy
               css={`
                 color: ${theme.hint};

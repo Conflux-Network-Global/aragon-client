@@ -5,7 +5,7 @@ import { useWallet as useWalletBase, UseWalletProvider } from 'use-wallet'
 import { getFortmaticApiKey, getPortisDappId } from './local-settings'
 import { getProviderFromUseWalletId } from './ethereum-providers'
 import { network } from './environment'
-import { getWeb3, filterBalanceValue } from './web3-utils'
+import { getWeb3, filterBalanceValue, formatAddress } from './web3-utils'
 
 const NETWORK_TYPE_DEFAULT = 'private'
 
@@ -45,6 +45,8 @@ function WalletContextProvider({ children }) {
       .catch(() => {
         setNetworkType(NETWORK_TYPE_DEFAULT)
       })
+
+    console.log('account', account, formatAddress(account))
 
     return () => {
       cancel = true
