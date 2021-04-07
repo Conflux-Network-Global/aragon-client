@@ -44,13 +44,17 @@ const INITIAL_DAO_STATE = {
   repos: [],
 }
 
+// const SELECTOR_NETWORKS = [
+//   ['main', 'Ethereum Mainnet', 'https://client.aragon.org/'],
+//   [
+//     'rinkeby',
+//     'Ethereum Testnet (Rinkeby)',
+//     'https://rinkeby.client.aragon.org/',
+//   ],
+// ]
 const SELECTOR_NETWORKS = [
-  ['main', 'Ethereum Mainnet', 'https://client.aragon.org/'],
-  [
-    'rinkeby',
-    'Ethereum Testnet (Rinkeby)',
-    'https://rinkeby.client.aragon.org/',
-  ],
+  ['cfx_testnet', 'Conflux Testnet', '/'],
+  ['cfx_local', 'Conflux Local', '/'],
 ]
 if (network.type === 'ropsten') {
   SELECTOR_NETWORKS.push([

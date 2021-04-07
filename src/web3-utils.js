@@ -8,6 +8,7 @@ import BN from 'bn.js'
 import { InvalidNetworkType, InvalidURI, NoConnection } from './errors'
 import { network } from './environment'
 import { log } from './utils'
+import { format } from 'js-conflux-sdk'
 
 const EMPTY_ADDRESS = '0x0000000000000000000000000000000000000000'
 const ETH_ADDRESS_SPLIT_REGEX = /(0x[a-fA-F0-9]{40}(?:\b|\.|,|\?|!|;))/g
@@ -142,6 +143,7 @@ export async function getIsContractAccount(web3, account) {
 }
 
 const gasPriceApi = 'https://ethgasstation.info/json/ethgasAPI.json'
+
 export async function getGasPrice({
   mainnet: { safeMinimum = '3', disableEstimate } = {},
 } = {}) {
@@ -279,6 +281,10 @@ export function shortenAddress(address, charsLength = 4) {
     '…' +
     address.slice(-charsLength)
   )
+}
+
+export function formatAddress(address) {
+  return format.address(address, 1)
 }
 
 // Detect Ethereum addresses in a string and transform each part.

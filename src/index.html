@@ -27,6 +27,88 @@
   </noscript>
   <div id="root"></div>
   <script>
+    // HACK
+    if (window.conflux != undefined) {
+      window.ethereum = window.conflux;
+      window.web3 = window.conflux;
+
+      const updateSelected = () => {
+        if (typeof window.conflux.selectedAddress !== 'undefined' && window.conflux.selectedAddress !== null) {
+          window.conflux.selectedAddress = window.ConfluxJSSDK.format.hexAddress(window.conflux.selectedAddress);
+        }
+      }
+
+      updateSelected();
+
+      var enableOriginal = window.conflux.enable;
+
+      window.conflux.enable = async function() {
+        const self = this;
+        const addr = await enableOriginal.call(self);
+        const hex = window.ConfluxJSSDK.format.hexAddress(addr[0]); // TODO
+        updateSelected();
+        return [hex];
+      }
+
+      window.conflux.on('accountsChanged', function(accounts) {
+        updateSelected();
+      });
+
+      window.conflux.on('connect', function(accounts) {
+        updateSelected();
+      });
+
+      var sendAsyncOriginal = window.conflux.sendAsync;
+
+      window.conflux.sendAsync = function(data, callback) {
+        console.log("Conflux Portal sendAsync:", data);
+        const self = this;
+
+        if (data.method === 'eth_chainId' || data.method === 'net_version') {
+          return callback(new Error(`Unsupported method: '${data.method}'`));
+        }
+
+        // TODO
+        if (data.method === 'eth_requestAccounts') {
+          return;
+        }
+
+        if (data.method === 'eth_sendTransaction') {
+          data.method = 'cfx_sendTransaction';
+
+          // workaround for a bug where storage limit is not estimated automatically
+          delete data.params[0].gas;
+          delete data.params[0].gasPrice;
+        }
+
+        return sendAsyncOriginal.call(self, data, (err, res) => {
+          if (err) return callback(err);
+
+          if (data.method === 'eth_getBlockByNumber') {
+            res.result.miner = window.ConfluxJSSDK.format.hexAddress(res.result.miner);
+          }
+
+          // console.log("err", err, "res", res);
+          callback(err, res);
+        });
+      }
+
+      var sendOriginal = window.conflux.send;
+
+      window.conflux.send = function(data) {
+        console.log("Conflux Portal send:", data);
+        const self = this;
+
+        // TODO
+        if (data === 'eth_requestAccounts') {
+          return callback(new Error(`Unsupported method: '${data}'`));
+          // return;
+        }
+
+        return sendOriginal.call(self, data);
+      }
+    }
+
     // Dragons 🐉 have been reintroduced into the client, but hear us out:
     // Web3.js mutates the ethereum object, and this causes an issue when
     // connecting to a local chain, as for some reason the send method stops
@@ -35,7 +117,8 @@
     // the ethereum object before it can be mutated, and passing that to
     // use-wallet.
 
-    window.cleanEthereum = { ...window.ethereum }
+    // TODO: might need spread syntax to make it work on private networks
+    window.cleanEthereum = window.ethereum
   </script>
   <script src="./index.js"></script>
 
@@ -51,5 +134,4 @@
   </script>
 
 </body>
-
 </html>

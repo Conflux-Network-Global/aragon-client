@@ -27,6 +27,7 @@ import {
   STATUS_TEMPLATE_SCREENS,
   STATUS_DEPLOYMENT,
 } from './create-statuses'
+import { useWallet } from '../../wallet'
 
 // Used during the template selection phase, since we don’t know yet what are
 // going to be the configuration steps.
@@ -185,6 +186,17 @@ function useTemplateRepoInformation(templateRepoAddress) {
     const fetchArtifact = () => {
       fetchApmArtifact(templateRepoAddress)
         .then(templateInfo => {
+          // HACK
+          // modify ABI without re-deploying template
+          const id = templateInfo.abi.findIndex(
+            x => x.name === 'newTokenAndInstance'
+          )
+
+          if (id >= 0 && templateInfo.abi[id].inputs.length === 8) {
+            templateInfo.abi[id].inputs.push({ name: 'epoch', type: 'uint256' })
+          }
+          // </HACK>
+
           if (!cancelled) {
             setTemplateAddress(templateInfo.contractAddress)
             setTemplateAbi(templateInfo.abi)
@@ -230,15 +242,20 @@ function useDeploymentState(
     error: -1,
   })
 
+  // get current epoch number for template initialization
+  const { getBlockNumber } = useWallet()
+  const epoch = getBlockNumber() - 100 // account for some fluctuation
+
   const deployTransactions = useMemo(
     () =>
       status === STATUS_DEPLOYMENT && templateAbi && templateAddress
         ? template.prepareTransactions(
             prepareTransactionCreatorFromAbi(templateAbi, templateAddress),
-            templateData
+            templateData,
+            epoch
           )
         : null,
-    [status, templateAbi, templateAddress, template, templateData]
+    [status, templateAbi, templateAddress, template, templateData] // eslint-disable-line
   )
 
   // Call tx functions in the template, one after another.

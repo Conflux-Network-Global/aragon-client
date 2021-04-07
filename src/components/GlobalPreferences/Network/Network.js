@@ -37,7 +37,7 @@ function Network({ wrapper }) {
     <React.Fragment>
       <Box heading="Node settings">
         <Label theme={theme}>
-          Ethereum node
+          Conflux node
           <TextInput
             value={ethNode}
             wide

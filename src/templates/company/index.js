@@ -98,7 +98,7 @@ export default {
       },
     ],
   ],
-  prepareTransactions(createTx, data) {
+  prepareTransactions(createTx, data, epoch) {
     const financePeriod = 0 // default
     const hasPayroll = false
 
@@ -138,6 +138,7 @@ export default {
             votingSettings,
             financePeriod,
             useAgentAsVault,
+            epoch,
           ]),
         },
       ]

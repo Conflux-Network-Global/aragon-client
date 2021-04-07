@@ -115,7 +115,7 @@ export function getEnsRegistryAddress() {
 }
 
 export function getEthNetworkType() {
-  return getLocalSetting(ETH_NETWORK_TYPE) || 'rinkeby'
+  return getLocalSetting(ETH_NETWORK_TYPE) || 'cfx_testnet'
 }
 
 export function getEthSubscriptionEventDelay() {
