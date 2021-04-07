@@ -4,7 +4,7 @@ import BN from 'bn.js'
 import { useWallet as useWalletBase, UseWalletProvider } from 'use-wallet'
 import { getFortmaticApiKey, getPortisDappId } from './local-settings'
 import { getProviderFromUseWalletId } from './ethereum-providers'
-import { network, web3Providers } from './environment'
+import { network } from './environment'
 import { getWeb3, filterBalanceValue, formatAddress } from './web3-utils'
 
 const NETWORK_TYPE_DEFAULT = 'private'
@@ -90,7 +90,7 @@ export function WalletProvider({ children }) {
       connectors={{
         fortmatic: { apiKey: getFortmaticApiKey() },
         portis: { dAppId: getPortisDappId() },
-        provided: { provider: web3Providers.default },
+        provided: { provider: window.cleanEthereum },
       }}
     >
       <WalletContextProvider>{children}</WalletContextProvider>
