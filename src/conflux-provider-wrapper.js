@@ -31,6 +31,7 @@ function processFilter(filter) {
 }
 
 function preprocess(req) {
+  console.log('preprocess', req.method)
   switch (req.method) {
     case 'eth_blockNumber':
       req.method = 'cfx_epochNumber'
@@ -140,6 +141,7 @@ function processReceiptResponse(receipt) {
 }
 
 function postprocess(req, resp) {
+  console.log('postprocess', req.method)
   switch (req.method) {
     case 'cfx_getBlockByEpochNumber':
       resp = processBlockResponse(resp)
@@ -192,7 +194,7 @@ function wrapProvider(provider) {
     return provider
   }
 
-  var sendOriginal = provider.send
+  const sendOriginal = provider.send
 
   provider.send = function(args, callback) {
     // short-circuit unsupported methods

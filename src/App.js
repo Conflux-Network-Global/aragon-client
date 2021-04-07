@@ -55,7 +55,7 @@ const INITIAL_DAO_STATE = {
 // ]
 const SELECTOR_NETWORKS = [
   ['cfx_testnet', 'Conflux Testnet', '/'],
-  ['cfx_local', 'Conflux Local', '/'],
+  ['cfx', 'Conflux Mainnet', '/'],
 ]
 if (network.type === 'ropsten') {
   SELECTOR_NETWORKS.push([
