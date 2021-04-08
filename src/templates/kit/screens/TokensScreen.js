@@ -178,12 +178,11 @@ function Tokens({
         const screenData = {
           tokenName,
           tokenSymbol,
-          members: members.reduce(
-            (acc, [account, stake]) =>
-              isValidAddressAndStake(account, stake) &&
-              acc.push([hexAddress(account), stake]),
-            []
-          ),
+          members: members
+            .filter(([account, stake]) =>
+              isValidAddressAndStake(account, stake)
+            )
+            .map(([account, stake]) => [hexAddress(account), stake]),
         }
         const mergedData = dataKey
           ? { ...data, [dataKey]: screenData }
