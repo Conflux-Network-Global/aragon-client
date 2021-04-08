@@ -301,6 +301,7 @@ export function transformAddresses(str, callback) {
     )
 }
 
+export const hexAddress = address => format.hexAddress(formatAddress(address))
 // Re-export some utilities from web3-utils
 export {
   fromWei,
