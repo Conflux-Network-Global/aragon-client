@@ -23,13 +23,12 @@ const SCREENS = [
 ]
 
 function AccountModule() {
+  const wallet = useWallet()
+  const { account, activating, providerInfo } = wallet
   const [opened, setOpened] = useState(false)
   const [activatingDelayed, setActivatingDelayed] = useState(false)
   const [activationError, setActivationError] = useState(null)
   const buttonRef = useRef()
-  const wallet = useWallet()
-
-  const { account, activating, providerInfo } = wallet
 
   const clearError = useCallback(() => setActivationError(null), [])
 
