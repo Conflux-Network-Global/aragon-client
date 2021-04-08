@@ -61,7 +61,7 @@
       var sendAsyncOriginal = window.conflux.sendAsync;
 
       window.conflux.sendAsync = function(data, callback) {
-        console.log("Conflux Portal sendAsync:", data);
+        // console.log("Conflux Portal sendAsync:", data);
         const self = this;
 
         if (data.method === 'eth_chainId' || data.method === 'net_version') {
@@ -96,7 +96,7 @@
       var sendOriginal = window.conflux.send;
 
       window.conflux.send = function(data) {
-        console.log("Conflux Portal send:", data);
+        // console.log("Conflux Portal send:", data);
         const self = this;
 
         // TODO
