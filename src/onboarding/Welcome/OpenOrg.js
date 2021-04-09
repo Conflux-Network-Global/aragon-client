@@ -1,25 +1,27 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  BackButton,
-  Bar,
-  Box,
-  Button,
-  GU,
-  Info,
-  useKeyDown,
-  useTheme,
-} from '@aragon/ui'
+import { BackButton, Box, Button, GU, useKeyDown, useTheme } from '@aragon/ui'
+import { useWallet } from '../../wallet'
 import KEYS from '../../keycodes'
 import DomainField from '../../components/DomainField/DomainField'
 import { useCheckDomain, DOMAIN_CHECK, DOMAIN_ERROR } from '../../check-domain'
+import * as SC from './OpenOrgStyle'
 
+function ErrorMessage(props) {
+  const { message } = props
+  return <SC.InfoMessage mode="error">{message}</SC.InfoMessage>
+}
+
+ErrorMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+}
 function OpenOrg({ onOpenOrg, onBack }) {
   const theme = useTheme()
   const [domainValue, setDomainValue] = useState('')
   const [displayError, setDisplayError] = useState(false)
   const domainCheckStatus = useCheckDomain(domainValue)
-
+  const wallet = useWallet()
+  const isUserLoggedIn = Boolean(wallet.account)
   const handleDomainChange = useCallback((subdomain, domain) => {
     setDomainValue(subdomain)
     setDisplayError(false)
@@ -45,37 +47,12 @@ function OpenOrg({ onOpenOrg, onBack }) {
 
   return (
     <Box padding={5 * GU}>
-      <Bar
-        css={`
-          margin: -${5 * GU}px -${5 * GU}px 0;
-          border: 0;
-          border-bottom: 1px solid ${theme.border};
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        `}
-      >
+      <SC.StyledBar theme={theme}>
         <BackButton onClick={onBack} />
-      </Bar>
-
-      <form
-        onSubmit={handleSubmit}
-        css={`
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-          height: ${36 * GU}px;
-        `}
-      >
-        <div
-          css={`
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            justify-content: center;
-          `}
-        >
-          <div css="position: relative">
+      </SC.StyledBar>
+      <SC.Form onSubmit={handleSubmit}>
+        <SC.InputsWrapper>
+          <SC.RelativePosition>
             <DomainField
               ref={handleDomainFieldRef}
               detectFullDomains
@@ -84,33 +61,27 @@ function OpenOrg({ onOpenOrg, onBack }) {
               status={domainCheckStatus}
               label="Name of existing organization"
             />
-            {displayError && (
-              <Info
-                mode="error"
-                css={`
-                  position: absolute;
-                  top: ${10.5 * GU}px;
-                  width: 100%;
-                `}
-              >
-                This organization doesn’t seem to exist.
-              </Info>
+            {!isUserLoggedIn && (
+              <ErrorMessage
+                message={'You need to connect your account first!'}
+              />
             )}
-          </div>
-        </div>
-        <div
-          css={`
-            display: flex;
-            justify-content: flex-end;
-          `}
-        >
+            {displayError && (
+              <ErrorMessage
+                message={'This organization doesnt seem to exist.'}
+              />
+            )}
+          </SC.RelativePosition>
+        </SC.InputsWrapper>
+        <SC.ButtonWrapper>
           <Button
             label="Open organization"
             mode="strong"
+            disabled={!isUserLoggedIn}
             onClick={handleSubmit}
           />
-        </div>
-      </form>
+        </SC.ButtonWrapper>
+      </SC.Form>
     </Box>
   )
 }

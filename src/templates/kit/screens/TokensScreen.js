@@ -21,6 +21,7 @@ import {
   Navigation,
   ScreenPropsType,
 } from '..'
+import { hexAddress } from '../../../web3-utils'
 
 function useFieldsLayout() {
   // In its own hook to be adapted for smaller views
@@ -34,18 +35,25 @@ function useFieldsLayout() {
 function validateDuplicateAddresses(members) {
   const validAddresses = members
     .map(([address]) => address.toLowerCase())
-    .filter(address => isAddress(address))
+    .filter(address => isAddress(hexAddress(address)))
 
   return validAddresses.length === new Set(validAddresses).size
 }
 
 function validationError(tokenName, tokenSymbol, members, editMembers) {
-  if (editMembers && !members.some(([address]) => isAddress(address))) {
+  if (
+    editMembers &&
+    !members.some(([address]) => {
+      return isAddress(hexAddress(address))
+    })
+  ) {
     return 'You need at least one valid address.'
   }
   if (
     editMembers &&
-    !members.some(([address, stake]) => isAddress(address) && stake > 0)
+    !members.some(
+      ([address, stake]) => isAddress(hexAddress(address)) && stake > 0
+    )
   ) {
     return 'You need at least one valid address with a positive balance.'
   }
@@ -164,13 +172,17 @@ function Tokens({
         editMembers
       )
       setFormError(error)
+      const isValidAddressAndStake = (account, stake) =>
+        isAddress(hexAddress(account)) && stake > 0
       if (!error) {
         const screenData = {
           tokenName,
           tokenSymbol,
-          members: members.filter(
-            ([account, stake]) => isAddress(account) && stake > 0
-          ),
+          members: members
+            .filter(([account, stake]) =>
+              isValidAddressAndStake(account, stake)
+            )
+            .map(([account, stake]) => [hexAddress(account), stake]),
         }
         const mergedData = dataKey
           ? { ...data, [dataKey]: screenData }

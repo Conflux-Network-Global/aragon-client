@@ -80,7 +80,7 @@ function preprocess(req) {
         req.params[1] = processFilter(req.params[1])
       }
 
-      console.log('cfx_subscribe [request]', req)
+      // console.log('cfx_subscribe [request]', req)
       break
 
     case 'eth_unsubscribe':
@@ -88,7 +88,7 @@ function preprocess(req) {
       break
 
     default:
-      console.log('provider send:', req)
+    // console.log('provider send:', req)
   }
 }
 
@@ -163,7 +163,7 @@ function postprocess(req, resp) {
       resp.result = resp.result.map(log =>
         processLog(log, log.epochNumber, log.blockHash, log.transactionHash)
       )
-      console.log('cfx_getLogs [response]', resp)
+      // console.log('cfx_getLogs [response]', resp)
       break
 
     case 'cfx_estimateGasAndCollateral':
@@ -171,7 +171,7 @@ function postprocess(req, resp) {
       break
 
     case 'cfx_subscription':
-      console.log('cfx_subscription [response]', resp)
+      // console.log('cfx_subscription [response]', resp)
 
       if (req.params[0] === 'logs') {
         resp.result = processLog(
@@ -213,7 +213,7 @@ function wrapProvider(provider) {
         return callback(err, res)
       }
 
-      console.log('receiving response:', res, 'request:', args)
+      // console.log('receiving response:', res, 'request:', args)
 
       // process response
       postprocess(args, res)

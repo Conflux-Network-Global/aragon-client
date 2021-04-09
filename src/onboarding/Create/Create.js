@@ -286,11 +286,14 @@ function useDeploymentState(
           }
           try {
             transaction = await applyEstimateGas(transaction)
-          } catch (_) {}
+          } catch (err) {
+            log('err in apply estimategas', err)
+            throw err
+          }
 
           if (!cancelled) {
             try {
-              await walletWeb3.eth.sendTransaction(transaction)
+              walletWeb3.eth.sendTransaction(transaction)
 
               if (!cancelled) {
                 setTransactionProgress(({ signed, errored }) => ({
