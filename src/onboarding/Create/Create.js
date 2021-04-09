@@ -28,6 +28,7 @@ import {
   STATUS_DEPLOYMENT,
 } from './create-statuses'
 import { useWallet } from '../../wallet'
+import { format } from 'js-conflux-sdk'
 
 // Used during the template selection phase, since we don’t know yet what are
 // going to be the configuration steps.
@@ -282,8 +283,13 @@ function useDeploymentState(
 
           transaction = {
             ...transaction,
-            from: account,
+            to: format.hexAddress(transaction.to),
           }
+
+          if (account) {
+            transaction.from = format.hexAddress(account)
+          }
+
           try {
             transaction = await applyEstimateGas(transaction)
           } catch (err) {
@@ -293,6 +299,10 @@ function useDeploymentState(
 
           if (!cancelled) {
             try {
+              console.log('transaction', transaction)
+
+              // todo: i think await is required
+              // await walletWeb3.eth.sendTransaction(transaction)
               walletWeb3.eth.sendTransaction(transaction)
 
               if (!cancelled) {
@@ -420,6 +430,8 @@ const Create = React.memo(function Create({
       const recommendedPrice = await getGasPrice()
       return {
         ...transaction,
+        to: format.hexAddress(transaction.to),
+        from: format.hexAddress(account),
         gas: recommendedLimit,
         gasPrice: recommendedPrice,
       }

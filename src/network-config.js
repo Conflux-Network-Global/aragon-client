@@ -123,7 +123,7 @@ export const networkConfigs = {
       defaultEth: 'ws://main.confluxrpc.org/ws',
     },
     settings: {
-      chainId: 1,
+      chainId: 2,
       name: 'Conflux Testnet',
       shortName: 'cfx-testnet',
       type: 'private',
@@ -137,7 +137,7 @@ export const networkConfigs = {
         localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
     },
     nodes: {
-      defaultEth: 'ws://test.confluxrpc.org/ws',
+      defaultEth: 'ws://test.confluxrpc.org/ws/v2',
     },
     settings: {
       chainId: 1,
