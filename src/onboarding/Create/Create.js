@@ -436,7 +436,7 @@ const Create = React.memo(function Create({
         gasPrice: recommendedPrice,
       }
     },
-    [web3]
+    [account, web3]
   )
 
   const [attempts, setAttempts] = useState(0)
