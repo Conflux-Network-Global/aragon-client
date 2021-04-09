@@ -37,7 +37,7 @@ function processFilter(filter) {
   return filter
 }
 
-function preprocess2(method, params) {
+function preprocessMessage(method, params) {
   const makeMsg = (method, params) => {
     return {
       id: Math.floor(Math.random() * 1000000),
@@ -64,7 +64,7 @@ function preprocess2(method, params) {
       req = makeMsg('cfx_getCode', params)
       break
     default:
-      throw new Error(`Method ${method} not handled!`)
+      throw new Error(`Method ${method} not handled preprocess message!`)
   }
 
   return req
@@ -148,10 +148,11 @@ function preprocess(req) {
 
     case 'cfx_getBlockByEpochNumber':
     case 'cfx_epochNumber':
+    case 'cfx_call':
       break
 
     default:
-      throw new Error(`Method ${req.method} not handled!`)
+      console.log(`Method ${req.method} not handled in preprocess!`)
   }
 
   console.log('preprocess end', req)
@@ -321,7 +322,7 @@ function wrapSend(provider) {
           }
 
           // short-circuit unsupported methods
-          let message = preprocess2(method, args)
+          let message = preprocessMessage(method, args)
 
           // execute call
           return sendOriginal.call(this, message, (err, response) => {
