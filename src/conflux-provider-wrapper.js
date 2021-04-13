@@ -10,6 +10,7 @@ function processBlockNum(block) {
 }
 
 function processLog(log, epochNumber, blockHash, txHash) {
+  log.address = format.hexAddress(log.address, network.chainId)
   log.blockNumber = epochNumber
   log.blockHash = blockHash
   log.transactionHash = txHash
