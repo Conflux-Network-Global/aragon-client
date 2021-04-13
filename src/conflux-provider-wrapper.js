@@ -348,7 +348,11 @@ function wrapSend(provider) {
         }
 
         if (message.method === 'eth_chainId') {
-          return callback(network.chainId)
+          return callback(undefined, {
+            jsonrpc: '2.0',
+            id: message.id,
+            result: network.chainId,
+          })
         }
 
         // process request
