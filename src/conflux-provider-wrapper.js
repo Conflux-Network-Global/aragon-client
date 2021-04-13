@@ -72,7 +72,7 @@ function preprocessMessage(method, params) {
 }
 
 function preprocess(req) {
-  console.log('preprocess begin', req)
+  // console.log('preprocess begin', req)
 
   switch (req.method) {
     case 'eth_sendTransaction':
@@ -130,7 +130,7 @@ function preprocess(req) {
     case 'eth_getLogs':
       req.method = 'cfx_getLogs'
       req.params[0] = processFilter(req.params[0])
-      console.log('cfx_getLogs [request]', req)
+      // console.log('cfx_getLogs [request]', req)
       break
 
     case 'eth_subscribe':
@@ -156,7 +156,7 @@ function preprocess(req) {
       console.log(`Method ${req.method} not handled in preprocess!`)
   }
 
-  console.log('preprocess end', req)
+  // console.log('preprocess end', req)
 
   return req
 }
@@ -211,7 +211,7 @@ function processReceiptResponse(receipt) {
 }
 
 function postprocess(req, resp) {
-  console.log('postprocess begin', req, resp)
+  // console.log('postprocess begin', req, resp)
 
   switch (req.method) {
     case 'cfx_getStatus':
@@ -260,45 +260,9 @@ function postprocess(req, resp) {
       break
   }
 
-  console.log('postprocess end', req, resp)
+  // console.log('postprocess end', req, resp)
 
   return resp
-}
-
-function wrapSendAsync(provider) {
-  if (typeof provider.sendAsync !== 'undefined') {
-    const sendAsyncOriginal = provider.sendAsync
-
-    provider.sendAsync = function(args, callback) {
-      console.log('Conflux Portal sendAsync start:', args)
-
-      if (args === 'eth_chainId') {
-        return new Promise(resolve => resolve(network.chainId))
-      }
-
-      if (args.method === 'net_version' || args === 'eth_requestAccounts') {
-        return callback(
-          new Error(`Unsupported method: '${args.method || args}'`)
-        )
-      }
-
-      args = preprocess(args)
-
-      return sendAsyncOriginal.call(this, args, (err, res) => {
-        if (err) return callback(err)
-        if (res.error) {
-          console.error('sendAsync request failed:', res, args)
-          return callback(err, res)
-        }
-
-        console.log('Conflux Portal sendAsync end:', args, res)
-
-        res = postprocess(args, res)
-
-        callback(err, res)
-      })
-    }
-  }
 }
 
 function wrapSend(provider) {
@@ -306,7 +270,7 @@ function wrapSend(provider) {
     const sendOriginal = provider.send
 
     provider.send = function() {
-      console.log('Conflux Portal send start:', arguments)
+      // console.log('Conflux Portal send start:', arguments)
 
       // message is a string, handle it as an array
       if (typeof arguments[0] === 'string') {
@@ -327,7 +291,7 @@ function wrapSend(provider) {
 
           // execute call
           return sendOriginal.call(this, message, (err, response) => {
-            console.log('Conflux Portal send end:', message, response)
+            // console.log('Conflux Portal send end:', message, response)
 
             if (err) return reject(err)
             if (response.error) {
@@ -360,18 +324,18 @@ function wrapSend(provider) {
 
         // execute call
         return sendOriginal.call(this, message, (err, response) => {
-          console.log('Conflux Portal send end:', message, response)
+          // console.log('Conflux Portal send end:', message, response)
 
           if (err) return callback(err)
           if (response.error) {
-            console.error('send request failed:', response, message, callback)
+            console.error('send request failed:', response, message)
             return callback(err, response)
           }
 
           // process response
           response = postprocess(message, response)
 
-          console.log('Conflux Portal send final:', message, response)
+          // console.log('Conflux Portal send final:', message, response)
 
           return callback(err, response)
         })
@@ -408,7 +372,6 @@ function wrapProvider(provider) {
     window.conflux.on('connect', function(accounts) {
       updateSelected()
     })
-    wrapSendAsync(window.conflux)
     wrapSend(window.conflux)
   }
 

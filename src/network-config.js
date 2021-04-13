@@ -124,6 +124,7 @@ export const networkConfigs = {
     },
     settings: {
       chainId: 2,
+      maxGap: 1000,
       name: 'Conflux Testnet',
       shortName: 'cfx-testnet',
       type: 'private',
@@ -141,6 +142,7 @@ export const networkConfigs = {
     },
     settings: {
       chainId: 1,
+      maxGap: 1000,
       name: 'Conflux Testnet',
       shortName: 'cfx-testnet',
       type: 'private',
