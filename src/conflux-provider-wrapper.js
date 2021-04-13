@@ -103,7 +103,7 @@ function preprocess(req) {
     case 'eth_getBlockByNumber':
       req.method = 'cfx_getBlockByEpochNumber'
 
-      if (req.params[0] === 'latest') {
+      if (req.params[0] === 'latest' || !req.params[0]) {
         req.params[0] = 'latest_state'
       }
 
