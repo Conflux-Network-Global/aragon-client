@@ -21,7 +21,7 @@ function processFilter(filter) {
   if (filter.fromBlock) {
     filter.fromEpoch = processBlockNum(filter.fromBlock)
     delete filter.fromBlock
-  } else {
+  } else if (!filter.fromEpoch) {
     console.warn('filter with no fromBlock', filter)
     filter.fromEpoch = 'latest_state'
   }
@@ -98,6 +98,7 @@ function preprocess(req) {
         req.params[0].to = format.address(req.params[0].to, network.chainId)
       }
 
+      console.trace(req)
       break
 
     case 'eth_getBlockByNumber':
@@ -131,6 +132,7 @@ function preprocess(req) {
       req.method = 'cfx_getLogs'
       req.params[0] = processFilter(req.params[0])
       // console.log('cfx_getLogs [request]', req)
+      // console.trace(req)
       break
 
     case 'eth_subscribe':
@@ -139,7 +141,6 @@ function preprocess(req) {
       if (req.params[0] === 'logs') {
         req.params[1] = processFilter(req.params[1])
       }
-
       // console.log('cfx_subscribe [request]', req)
       break
 
@@ -296,7 +297,7 @@ function wrapSend(provider) {
             if (err) return reject(err)
             if (response.error) {
               console.error('send request failed:', response, message)
-              return reject(err)
+              return reject(response.error)
             }
             response = postprocess(message, response)
             return resolve(response)
@@ -329,7 +330,7 @@ function wrapSend(provider) {
           if (err) return callback(err)
           if (response.error) {
             console.error('send request failed:', response, message)
-            return callback(err, response)
+            return callback(response.error)
           }
 
           // process response
