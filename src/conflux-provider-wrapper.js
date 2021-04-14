@@ -98,7 +98,6 @@ function preprocess(req) {
         req.params[0].to = format.address(req.params[0].to, network.chainId)
       }
 
-      console.trace(req)
       break
 
     case 'eth_getBlockByNumber':
