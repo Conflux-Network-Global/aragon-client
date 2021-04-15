@@ -101,4 +101,5 @@ export const web3Providers = {
   default: Wrapper.wrapProvider(
     new Web3.providers.WebsocketProvider(defaultEthNode)
   ),
+  cfx: Wrapper.wrapCfx(window.conflux),
 }

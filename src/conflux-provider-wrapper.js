@@ -98,6 +98,7 @@ function preprocess(req) {
         req.params[0].to = format.address(req.params[0].to, network.chainId)
       }
 
+      // console.trace(req)
       break
 
     case 'eth_getBlockByNumber':
@@ -265,6 +266,40 @@ function postprocess(req, resp) {
   return resp
 }
 
+function wrapSendAsync(provider) {
+  if (typeof provider.sendAsync !== 'undefined') {
+    const sendAsyncOriginal = provider.sendAsync
+
+    provider.sendAsync = function(data, callback) {
+      // console.log("Conflux Portal sendAsync:", data);
+      const self = this
+
+      if (data.method === 'eth_chainId' || data.method === 'net_version') {
+        return callback(new Error(`Unsupported method: '${data.method}'`))
+      }
+
+      if (data.method === 'eth_sendTransaction') {
+        data.method = 'cfx_sendTransaction'
+
+        // workaround for a bug where storage limit is not estimated automatically
+        delete data.params[0].gas
+        delete data.params[0].gasPrice
+      }
+
+      return sendAsyncOriginal.call(self, data, (err, res) => {
+        if (err) return callback(err)
+
+        if (data.method === 'eth_getBlockByNumber') {
+          res.result.miner = format.hexAddress(res.result.miner)
+        }
+
+        // console.log("err", err, "res", res);
+        callback(err, res)
+      })
+    }
+  }
+}
+
 function wrapSend(provider) {
   if (typeof provider.send !== 'undefined') {
     const sendOriginal = provider.send
@@ -328,7 +363,8 @@ function wrapSend(provider) {
 
           if (err) return callback(err)
           if (response.error) {
-            console.error('send request failed:', response, message)
+            // console.error('send request failed:', response, message)
+            // console.trace()
             return callback(response.error)
           }
 
@@ -344,38 +380,40 @@ function wrapSend(provider) {
   }
 }
 
-function wrapProvider(provider) {
-  if (window.conflux !== undefined) {
-    provider.enable = async () => {
-      const accs = await window.conflux.enable()
-      const acc = format.hexAddress(accs[0])
-      return [acc]
-    }
-
-    const updateSelected = () => {
-      if (
-        typeof window.conflux.selectedAddress !== 'undefined' &&
-        window.conflux.selectedAddress !== null
-      ) {
-        window.conflux.selectedAddress = format.hexAddress(
-          window.conflux.selectedAddress
-        )
-      }
-    }
-
-    updateSelected()
-
-    window.conflux.on('accountsChanged', function(accounts) {
-      updateSelected()
-    })
-
-    window.conflux.on('connect', function(accounts) {
-      updateSelected()
-    })
-    wrapSend(window.conflux)
+function wrapCfx(conflux) {
+  const originalEnable = conflux.enable
+  conflux.enable = async function() {
+    const accs = await originalEnable.call(this)
+    const acc = format.hexAddress(accs[0])
+    return [acc]
   }
 
-  // wrapSendAsync(provider)
+  const updateSelected = () => {
+    if (
+      typeof conflux.selectedAddress !== 'undefined' &&
+      conflux.selectedAddress !== null
+    ) {
+      conflux.selectedAddress = format.hexAddress(conflux.selectedAddress)
+    }
+  }
+
+  updateSelected()
+
+  conflux.on('accountsChanged', function(accounts) {
+    updateSelected()
+  })
+
+  conflux.on('connect', function(accounts) {
+    updateSelected()
+  })
+
+  wrapSend(conflux)
+  wrapSendAsync(conflux)
+
+  return conflux
+}
+
+function wrapProvider(provider) {
   wrapSend(provider)
 
   return provider
@@ -383,4 +421,5 @@ function wrapProvider(provider) {
 
 export const Wrapper = {
   wrapProvider,
+  wrapCfx,
 }

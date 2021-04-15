@@ -90,7 +90,7 @@ export function WalletProvider({ children }) {
       connectors={{
         fortmatic: { apiKey: getFortmaticApiKey() },
         portis: { dAppId: getPortisDappId() },
-        provided: { provider: web3Providers.default },
+        provided: { provider: web3Providers.cfx },
       }}
     >
       <WalletContextProvider>{children}</WalletContextProvider>
