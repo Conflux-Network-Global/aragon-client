@@ -381,36 +381,38 @@ function wrapSend(provider) {
 }
 
 function wrapCfx(conflux) {
-  const originalEnable = conflux.enable
-  conflux.enable = async function() {
-    const accs = await originalEnable.call(this)
-    const acc = format.hexAddress(accs[0])
-    return [acc]
-  }
-
-  const updateSelected = () => {
-    if (
-      typeof conflux.selectedAddress !== 'undefined' &&
-      conflux.selectedAddress !== null
-    ) {
-      conflux.selectedAddress = format.hexAddress(conflux.selectedAddress)
+  if (typeof conflux.enable !== 'undefined') {
+    const originalEnable = conflux.enable
+    conflux.enable = async function() {
+      const accs = await originalEnable.call(this)
+      const acc = format.hexAddress(accs[0])
+      return [acc]
     }
+
+    const updateSelected = () => {
+      if (
+        typeof conflux.selectedAddress !== 'undefined' &&
+        conflux.selectedAddress !== null
+      ) {
+        conflux.selectedAddress = format.hexAddress(conflux.selectedAddress)
+      }
+    }
+
+    updateSelected()
+
+    conflux.on('accountsChanged', function(accounts) {
+      updateSelected()
+    })
+
+    conflux.on('connect', function(accounts) {
+      updateSelected()
+    })
+
+    wrapSend(conflux)
+    wrapSendAsync(conflux)
+
+    return conflux
   }
-
-  updateSelected()
-
-  conflux.on('accountsChanged', function(accounts) {
-    updateSelected()
-  })
-
-  conflux.on('connect', function(accounts) {
-    updateSelected()
-  })
-
-  wrapSend(conflux)
-  wrapSendAsync(conflux)
-
-  return conflux
 }
 
 function wrapProvider(provider) {
