@@ -381,7 +381,7 @@ function wrapSend(provider) {
 }
 
 function wrapCfx(conflux) {
-  if (typeof conflux.enable !== 'undefined') {
+  if (conflux && typeof conflux.enable !== 'undefined') {
     const originalEnable = conflux.enable
     conflux.enable = async function() {
       const accs = await originalEnable.call(this)
