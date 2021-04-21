@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@aragon/ui'
+import { Link } from '@conflux-/aragon-ui'
 import { EthereumAddressType } from '../../prop-types'
 import EtherscanLink from '../Etherscan/EtherscanLink'
 

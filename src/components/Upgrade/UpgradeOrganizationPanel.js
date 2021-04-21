@@ -11,7 +11,7 @@ import {
   GU,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import {
   AragonType,
   DaoAddressType,

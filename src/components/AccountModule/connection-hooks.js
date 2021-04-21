@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useTheme } from '@aragon/ui'
+import { useTheme } from '@conflux-/aragon-ui'
 import BN from 'bn.js'
 import {
   STATUS_CLIENT_CONNECTION_DROPPED,

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { GU } from '@aragon/ui'
+import { GU } from '@conflux-/aragon-ui'
 import Carousel from '../../components/Carousel/Carousel'
 import Header from '../Header/Header'
 import TemplateCard from './TemplateCard'

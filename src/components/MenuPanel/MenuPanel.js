@@ -8,7 +8,7 @@ import {
   textStyle,
   unselectable,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { lerp } from '../../math-utils'
 import {
   AppInstanceGroupType,

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Card } from '@aragon/ui'
+import { Card } from '@conflux-/aragon-ui'
 
 const EmptyBlock = styled(Card)`
   display: flex;

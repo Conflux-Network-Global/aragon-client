@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTheme } from '@aragon/ui'
+import { useTheme } from '@conflux-/aragon-ui'
 import FavoritesMenuItem from './FavoritesMenuItem'
 
 function FavoritesMenu({ items, onActivate, onFavoriteUpdate }) {

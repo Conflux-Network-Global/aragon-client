@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBase, GU, RADIUS, useTheme } from '@aragon/ui'
+import { ButtonBase, GU, RADIUS, useTheme } from '@conflux-/aragon-ui'
 
 import logo from '../../assets/logo.png'
 

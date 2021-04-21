@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { AppType } from '../../../prop-types'
-import { Link, GU, LoadingRing, textStyle } from '@aragon/ui'
+import { Link, GU, LoadingRing, textStyle } from '@conflux-/aragon-ui'
 import ManageNotifications from './ManageNotifications'
 import NotificationsLogin from './NotificationsLogin'
 import {

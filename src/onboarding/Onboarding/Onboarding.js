@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
-import { BREAKPOINTS, useTheme } from '@aragon/ui'
+import { BREAKPOINTS, useTheme } from '@conflux-/aragon-ui'
 import {
   TEMPLATE_AVAILABLE,
   TEMPLATE_LOADING,

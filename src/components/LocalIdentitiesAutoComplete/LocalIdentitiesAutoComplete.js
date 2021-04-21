@@ -8,7 +8,7 @@ import {
   GU,
   RADIUS,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { AragonType } from '../../prop-types'
 
 const withKey = item => ({ key: item.address, ...item })

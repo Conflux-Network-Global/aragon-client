@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Link } from '@aragon/ui'
+import { GU, Link } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import { useRouting } from '../../routing'
 import {

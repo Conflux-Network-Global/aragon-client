@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { textStyle, useTheme, GU } from '@aragon/ui'
+import { textStyle, useTheme, GU } from '@conflux-/aragon-ui'
 
 function Header({
   title,

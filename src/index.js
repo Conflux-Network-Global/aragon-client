@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Main } from '@aragon/ui'
+import { Main } from '@conflux-/aragon-ui'
 import App from './App'
 import GlobalErrorHandler from './GlobalErrorHandler'
 import { WalletProvider } from './wallet'

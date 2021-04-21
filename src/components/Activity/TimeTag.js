@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GU, textStyle, useTheme } from '@aragon/ui'
+import { GU, textStyle, useTheme } from '@conflux-/aragon-ui'
 import { useNow } from '../../hooks'
 import { getRelativeTime } from '../../date-utils'
 

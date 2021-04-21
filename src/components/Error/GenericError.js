@@ -8,7 +8,7 @@ import {
   RADIUS,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 
 const SUPPORT_URL = 'https://github.com/aragon/aragon/issues/new'
 

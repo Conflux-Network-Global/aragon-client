@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Spring, animated } from 'react-spring'
-import { useTheme } from '@aragon/ui'
+import { useTheme } from '@conflux-/aragon-ui'
 
 const STROKE_WIDTH = 4
 

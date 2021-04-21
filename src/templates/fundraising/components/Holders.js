@@ -8,7 +8,7 @@ import {
   TextInput,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import {
   Duration,
   Header,

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { Link, DropDown, GU, Layout, Split, useTheme } from '@aragon/ui'
+import { Link, DropDown, GU, Layout, Split, useTheme } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import { useSuggestedOrgs } from '../../suggested-orgs'
 import Header from '../Header/Header'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { IconPlus, GU, RADIUS, useTheme } from '@aragon/ui'
+import { IconPlus, GU, RADIUS, useTheme } from '@conflux-/aragon-ui'
 import { network } from '../../../environment'
 import { getKnownOrganization } from '../../../known-organizations'
 import { FavoriteDaoType, DaoItemType } from '../../../prop-types'

@@ -12,7 +12,7 @@ import {
   useTheme,
   useToast,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 import { AragonType, AppType } from '../../prop-types'
 import { useEsc } from '../../hooks'

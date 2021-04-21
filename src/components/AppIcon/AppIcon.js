@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { useImageExists, RADIUS } from '@aragon/ui'
+import { useImageExists, RADIUS } from '@conflux-/aragon-ui'
 import { appIconUrl, legacyAppIconUrl } from '../../utils'
 
 import iconSvgAcl from './assets/app-acl.svg'

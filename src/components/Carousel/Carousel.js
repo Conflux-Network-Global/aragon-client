@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { GU, useViewport, unselectable, springs } from '@aragon/ui'
+import { GU, useViewport, unselectable, springs } from '@conflux-/aragon-ui'
 import { animated, useSpring } from 'react-spring/hooks'
 import { useDrag } from 'react-use-gesture'
 import PrevNext from './PrevNext'

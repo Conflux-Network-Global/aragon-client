@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { CardLayout, GU, Info, Link, Tag, useLayout } from '@aragon/ui'
+import { CardLayout, GU, Info, Link, Tag, useLayout } from '@conflux-/aragon-ui'
 import { appsInDevelopment } from './discover-apps-data'
 import AppCard from '../AppCard'
 import AppIcon from '../../../components/AppIcon/AppIcon'

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { blockExplorerUrl } from '@aragon/ui'
+import { blockExplorerUrl } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import { EthereumAddressType } from '../../prop-types'
 

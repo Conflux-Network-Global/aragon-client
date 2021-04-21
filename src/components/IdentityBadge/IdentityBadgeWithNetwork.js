@@ -1,5 +1,5 @@
 import React from 'react'
-import { IdentityBadge } from '@aragon/ui'
+import { IdentityBadge } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 
 const IdentityBadgeWithNetwork = React.memo(function IdentityBadgeWithNetwork(

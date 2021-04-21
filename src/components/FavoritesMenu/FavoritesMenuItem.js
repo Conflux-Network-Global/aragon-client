@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { GU, IconStar, IconStarFilled, textStyle, useTheme } from '@aragon/ui'
+import { GU, IconStar, IconStarFilled, textStyle, useTheme } from '@conflux-/aragon-ui'
 import FavoritesMenuItemButton from './FavoritesMenuItemButton'
 
 function FavoritesMenuItem({

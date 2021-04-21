@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DropDown, Field } from '@aragon/ui'
+import { DropDown, Field } from '@conflux-/aragon-ui'
 import { getAnyEntity } from '../../permissions'
 import { AppType, AragonType } from '../../prop-types'
 import { getEmptyAddress } from '../../web3-utils'

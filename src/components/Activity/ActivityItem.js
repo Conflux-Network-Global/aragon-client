@@ -9,7 +9,7 @@ import {
   blockExplorerUrl,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { ActivityContext } from '../../contexts/ActivityContext'
 import { network } from '../../environment'
 import { transformAddresses } from '../../web3-utils'

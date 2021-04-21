@@ -10,7 +10,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { RepoType } from '../../../prop-types'
 import { dateFormat } from '../../../date-utils'
 

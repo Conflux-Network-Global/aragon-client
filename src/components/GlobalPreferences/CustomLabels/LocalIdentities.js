@@ -19,7 +19,7 @@ import {
   useLayout,
   useToast,
   textStyle,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import Search from './Search'
 import Import from './Import'
 import LocalIdentityBadge from '../../IdentityBadge/LocalIdentityBadge'

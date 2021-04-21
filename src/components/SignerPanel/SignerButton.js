@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, GU } from '@aragon/ui'
+import { Button, GU } from '@conflux-/aragon-ui'
 
 const SignerButton = styled(Button).attrs({
   mode: 'strong',

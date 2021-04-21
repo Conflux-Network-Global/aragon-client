@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Info, Link, RadioList, GU, textStyle } from '@aragon/ui'
+import { Info, Link, RadioList, GU, textStyle } from '@conflux-/aragon-ui'
 import LocalIdentityBadge from '../IdentityBadge/LocalIdentityBadge'
 import { getProviderString } from '../../ethereum-providers'
 import { useRouting } from '../../routing'

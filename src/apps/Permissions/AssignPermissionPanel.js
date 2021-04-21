@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, DropDown, Info, Field, SidePanel, GU } from '@aragon/ui'
+import { Button, DropDown, Info, Field, SidePanel, GU } from '@conflux-/aragon-ui'
 import { ANY_ENTITY } from '../../permissions'
 import { PermissionsConsumer } from '../../contexts/PermissionsContext'
 import { AppType, AragonType } from '../../prop-types'

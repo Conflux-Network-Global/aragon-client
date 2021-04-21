@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { AppType, AragonType } from '../../prop-types'
-import { Button, GU, Header, IconPlus, useLayout } from '@aragon/ui'
+import { Button, GU, Header, IconPlus, useLayout } from '@conflux-/aragon-ui'
 import { removeStartingSlash } from '../../utils'
 import { addressesEqual, isAddress } from '../../web3-utils'
 import { usePermissions } from '../../contexts/PermissionsContext'

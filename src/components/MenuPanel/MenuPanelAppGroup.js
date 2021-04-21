@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Spring, animated } from 'react-spring'
-import { ButtonBase, GU, textStyle, useTheme, springs } from '@aragon/ui'
+import { ButtonBase, GU, textStyle, useTheme, springs } from '@conflux-/aragon-ui'
 import MenuPanelAppInstance, {
   MENU_PANEL_APP_INSTANCE_HEIGHT,
 } from './MenuPanelAppInstance'

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Button, EmptyStateCard } from '@aragon/ui'
+import { Button, EmptyStateCard } from '@conflux-/aragon-ui'
 import appNotFoundPng from './assets/app-not-found.png'
 
 const App404 = ({ onNavigateBack }) => (

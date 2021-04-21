@@ -7,7 +7,7 @@ import {
   GU,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { DaoItemType } from '../../../prop-types'
 import { useFavoriteDaos } from '../../../contexts/FavoriteDaosContext'
 import OrganizationItem from './OrganizationItem'

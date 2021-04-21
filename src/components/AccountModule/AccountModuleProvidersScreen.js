@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBase, GU, Link, RADIUS, useTheme, textStyle } from '@aragon/ui'
+import { ButtonBase, GU, Link, RADIUS, useTheme, textStyle } from '@conflux-/aragon-ui'
 import { getProviderFromUseWalletId } from '../../ethereum-providers'
 import { providers } from '../../environment'
 

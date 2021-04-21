@@ -8,7 +8,7 @@ import {
   textStyle,
   useKeyDown,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { Header, Navigation, ScreenPropsType } from '..'
 
 function ReviewScreen({

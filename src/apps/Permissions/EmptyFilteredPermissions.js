@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, GU, textStyle, useTheme } from '@aragon/ui'
+import { Link, GU, textStyle, useTheme } from '@conflux-/aragon-ui'
 import noResultsPng from '../../assets/no-results.png'
 
 function EmptyFilteredPermissions({ onClear }) {

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Spring, animated } from 'react-spring'
-import { LoadingRing, GU, textStyle, springs } from '@aragon/ui'
+import { LoadingRing, GU, textStyle, springs } from '@conflux-/aragon-ui'
 import { AppsStatusType } from '../../prop-types'
 import { APPS_STATUS_READY, APPS_STATUS_LOADING } from '../../symbols'
 import { noop } from '../../utils'

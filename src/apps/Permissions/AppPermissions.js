@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { BackButton, Bar, textStyle } from '@aragon/ui'
+import { BackButton, Bar, textStyle } from '@conflux-/aragon-ui'
 import { AppType } from '../../prop-types'
 import { usePermissionsByRole } from '../../contexts/PermissionsContext'
 import EmptyBlock from './EmptyBlock'

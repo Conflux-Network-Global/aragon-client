@@ -9,7 +9,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { AppType } from '../../../prop-types'
 import { useRouting } from '../../../routing'
 import PropTypes from 'prop-types'

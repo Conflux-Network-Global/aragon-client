@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { SidePanel, GU, springs } from '@aragon/ui'
+import { SidePanel, GU, springs } from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 import { network } from '../../environment'
 import { useWallet } from '../../wallet'

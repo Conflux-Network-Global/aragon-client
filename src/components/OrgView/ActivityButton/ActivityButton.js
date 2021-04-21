@@ -9,7 +9,7 @@ import {
   Tag,
   springs,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import ActivityList from '../../../components/Activity/ActivityList'
 import { ActivityContext } from '../../../contexts/ActivityContext'
 import { AppType } from '../../../prop-types'

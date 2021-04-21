@@ -9,7 +9,7 @@ import {
   textStyle,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { formatAddress, shortenAddress } from '../../web3-utils'
 import { useWallet } from '../../wallet'
 

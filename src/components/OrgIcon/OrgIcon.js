@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GU, EthIdenticon } from '@aragon/ui'
+import { GU, EthIdenticon } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import { getKnownOrganization } from '../../known-organizations'
 import { EthereumAddressType } from '../../prop-types'

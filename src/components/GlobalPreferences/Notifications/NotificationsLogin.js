@@ -11,7 +11,7 @@ import {
   IconCheck,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { login } from './notification-service-api'
 import { validateEmail } from '../../../utils'
 import { useRouting } from '../../../routing'

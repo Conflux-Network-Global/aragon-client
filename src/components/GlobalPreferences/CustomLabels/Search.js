@@ -9,7 +9,7 @@ import {
   useTheme,
   useLayout,
   textStyle,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 
 const SEARCH_CLOSED = Symbol('closed')
 const SEARCH_OPEN = Symbol('open')

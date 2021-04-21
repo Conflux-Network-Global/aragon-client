@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTheme, textStyle, Link, GU, Info } from '@aragon/ui'
+import { useTheme, textStyle, Link, GU, Info } from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import { isAddress } from '../../web3-utils'
 

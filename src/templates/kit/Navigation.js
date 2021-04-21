@@ -1,6 +1,6 @@
 import React, { useRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
-import { Button, IconArrowLeft, GU, useTheme } from '@aragon/ui'
+import { Button, IconArrowLeft, GU, useTheme } from '@conflux-/aragon-ui'
 
 const Navigation = React.forwardRef(function Navigation(
   { backEnabled, backLabel, nextEnabled, nextLabel, onBack, onNext },

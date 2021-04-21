@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useLayout, CardLayout, GU, Tag } from '@aragon/ui'
+import { useLayout, CardLayout, GU, Tag } from '@conflux-/aragon-ui'
 import { RepoType } from '../../../prop-types'
 import AppContent from './AppContent'
 import AppCard from '../AppCard'

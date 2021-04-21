@@ -7,7 +7,7 @@ import {
   springs,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 import {
   AppType,

@@ -9,7 +9,7 @@ import {
   LoadingRing,
   useTheme,
   textStyle,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { AppType } from '../../../prop-types'
 import LocalIdentityBadge from '../../IdentityBadge/LocalIdentityBadge'
 import { deleteSubscriptions } from './notification-service-api'

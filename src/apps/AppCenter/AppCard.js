@@ -9,7 +9,7 @@ import {
   unselectable,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 
 const AppCard = React.memo(function AppCard({
   onClick,

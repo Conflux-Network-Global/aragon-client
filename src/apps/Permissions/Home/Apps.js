@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CardLayout } from '@aragon/ui'
+import { CardLayout } from '@conflux-/aragon-ui'
 import { AppType } from '../../../prop-types'
 import AppCard from '../../../components/AppCard/AppCard'
 import EmptyBlock from '../EmptyBlock'

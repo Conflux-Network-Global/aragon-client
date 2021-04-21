@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Box, textStyle } from '@aragon/ui'
+import { Box, textStyle } from '@conflux-/aragon-ui'
 
 const EmptyBlock = styled(Box)`
   display: flex;

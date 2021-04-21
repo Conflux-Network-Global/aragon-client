@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from '@aragon/ui'
+import { Button } from '@conflux-/aragon-ui'
 import {
   fetchApmArtifact,
   getRecommendedGasLimit,

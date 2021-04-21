@@ -9,7 +9,7 @@ import {
   textStyle,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 import {
   TRANSACTION_STATUS_PENDING,

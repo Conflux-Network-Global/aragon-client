@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Box } from '@aragon/ui'
+import { Box } from '@conflux-/aragon-ui'
 import FavoritesMenu from '../../components/FavoritesMenu/FavoritesMenu'
 import OrgIcon from '../../components/OrgIcon/OrgIcon'
 import { useFavoriteDaos } from '../../contexts/FavoriteDaosContext'

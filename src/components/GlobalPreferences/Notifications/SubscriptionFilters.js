@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, DropDown, GU, Tag, useLayout } from '@aragon/ui'
+import { Button, DropDown, GU, Tag, useLayout } from '@conflux-/aragon-ui'
 import PropTypes from 'prop-types'
 import { AppType } from '../../../prop-types'
 import { useLocalIdentity } from '../../../hooks'

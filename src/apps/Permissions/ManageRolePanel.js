@@ -9,7 +9,7 @@ import {
   SidePanel,
   GU,
   breakpoint,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { PermissionsConsumer } from '../../contexts/PermissionsContext'
 import { ANY_ENTITY, isBurnEntity } from '../../permissions'
 import { AppType, AragonType } from '../../prop-types'

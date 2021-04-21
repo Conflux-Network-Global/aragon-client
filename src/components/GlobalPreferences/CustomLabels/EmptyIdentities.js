@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, GU, IdentityBadge, Info, useTheme } from '@aragon/ui'
+import { Box, GU, IdentityBadge, Info, useTheme } from '@conflux-/aragon-ui'
 import { getEmptyAddress } from '../../../web3-utils'
 import Import from './Import'
 

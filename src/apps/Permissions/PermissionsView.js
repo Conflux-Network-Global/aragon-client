@@ -13,7 +13,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { usePermissions } from '../../contexts/PermissionsContext'
 import LocalLabelAppBadge from '../../components/LocalLabelAppBadge/LocalLabelAppBadge'
 import { getUnassignedEntity } from '../../permissions'

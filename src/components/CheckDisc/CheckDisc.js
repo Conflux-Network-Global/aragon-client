@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useTheme, GU, IconCross, IconCheck } from '@aragon/ui'
+import { useTheme, GU, IconCross, IconCheck } from '@conflux-/aragon-ui'
 
 function CheckDisc({ mode, size }) {
   const theme = useTheme()

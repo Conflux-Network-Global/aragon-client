@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ToastHub } from '@aragon/ui'
+import { ToastHub } from '@conflux-/aragon-ui'
 
 const TIMEOUT_TOAST = 4000
 

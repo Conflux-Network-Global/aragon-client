@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { addressesEqual, Field, GU, Help, Info, isAddress } from '@aragon/ui'
+import { addressesEqual, Field, GU, Help, Info, isAddress } from '@conflux-/aragon-ui'
 import {
   Header,
   Navigation,

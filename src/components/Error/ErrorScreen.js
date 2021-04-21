@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, GU, useTheme, useViewport } from '@aragon/ui'
+import { Card, GU, useTheme, useViewport } from '@conflux-/aragon-ui'
 import HomeButton from '../HomeButton/HomeButton'
 
 import eagleSvg from '../../assets/eagle.svg'

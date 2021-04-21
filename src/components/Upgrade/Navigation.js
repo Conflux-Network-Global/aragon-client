@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBase, IconRight, IconLeft, springs } from '@aragon/ui'
+import { ButtonBase, IconRight, IconLeft, springs } from '@conflux-/aragon-ui'
 import { useSpring, animated } from 'react-spring/hooks'
 
 const buttonTransitionStyles = show => ({

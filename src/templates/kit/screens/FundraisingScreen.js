@@ -11,7 +11,7 @@ import {
   textStyle,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import {
   Header,
   KnownAppBadge,

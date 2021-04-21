@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, GU, IconConnect, useViewport } from '@aragon/ui'
+import { Button, GU, IconConnect, useViewport } from '@conflux-/aragon-ui'
 
 const ButtonConnect = React.forwardRef(function ButtonConnect(
   { onClick },
