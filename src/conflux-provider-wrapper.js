@@ -81,6 +81,8 @@ function preprocess(req) {
       // workaround for a bug where storage limit is not estimated automatically
       delete req.params[0].gas
       delete req.params[0].gasPrice
+
+      // console.trace(req)
       break
 
     case 'eth_blockNumber':
@@ -132,7 +134,7 @@ function preprocess(req) {
       req.method = 'cfx_getLogs'
       req.params[0] = processFilter(req.params[0])
       // console.log('cfx_getLogs [request]', req)
-      // console.trace(req)
+      // console.trace('cfx_getLogs', req)
       break
 
     case 'eth_subscribe':
@@ -271,8 +273,7 @@ function wrapSendAsync(provider) {
     const sendAsyncOriginal = provider.sendAsync
 
     provider.sendAsync = function(data, callback) {
-      // console.log("Conflux Portal sendAsync:", data);
-      const self = this
+      console.log('Conflux Portal sendAsync:', data)
 
       if (data.method === 'eth_chainId' || data.method === 'net_version') {
         return callback(new Error(`Unsupported method: '${data.method}'`))
@@ -284,17 +285,22 @@ function wrapSendAsync(provider) {
         // workaround for a bug where storage limit is not estimated automatically
         delete data.params[0].gas
         delete data.params[0].gasPrice
+
+        // console.trace(data)
       }
 
-      return sendAsyncOriginal.call(self, data, (err, res) => {
-        if (err) return callback(err)
-
-        if (data.method === 'eth_getBlockByNumber') {
-          res.result.miner = format.hexAddress(res.result.miner)
+      return sendAsyncOriginal.call(this, data, (err, response) => {
+        if (err || response.error) {
+          console.error('sendAsync request failed:', response, data, err)
+          return callback(response.error)
         }
 
-        // console.log("err", err, "res", res);
-        callback(err, res)
+        if (data.method === 'eth_getBlockByNumber') {
+          response.result.miner = format.hexAddress(response.result.miner)
+        }
+
+        // console.log('sendAsync success', 'data:', data, 'response:', response)
+        return callback(err, response)
       })
     }
   }
@@ -327,9 +333,7 @@ function wrapSend(provider) {
           // execute call
           return sendOriginal.call(this, message, (err, response) => {
             // console.log('Conflux Portal send end:', message, response)
-
-            if (err) return reject(err)
-            if (response.error) {
+            if (err || response.error) {
               console.error('send request failed:', response, message)
               return reject(response.error)
             }
@@ -361,9 +365,8 @@ function wrapSend(provider) {
         return sendOriginal.call(this, message, (err, response) => {
           // console.log('Conflux Portal send end:', message, response)
 
-          if (err) return callback(err)
-          if (response.error) {
-            // console.error('send request failed:', response, message)
+          if (err || response.error) {
+            console.error('send request failed:', response, message)
             // console.trace()
             return callback(response.error)
           }
@@ -372,7 +375,6 @@ function wrapSend(provider) {
           response = postprocess(message, response)
 
           // console.log('Conflux Portal send final:', message, response)
-
           return callback(err, response)
         })
       }
@@ -389,25 +391,6 @@ function wrapCfx(conflux) {
       return [acc]
     }
 
-    const updateSelected = () => {
-      if (
-        typeof conflux.selectedAddress !== 'undefined' &&
-        conflux.selectedAddress !== null
-      ) {
-        conflux.selectedAddress = format.hexAddress(conflux.selectedAddress)
-      }
-    }
-
-    updateSelected()
-
-    conflux.on('accountsChanged', function(accounts) {
-      updateSelected()
-    })
-
-    conflux.on('connect', function(accounts) {
-      updateSelected()
-    })
-
     wrapSend(conflux)
     wrapSendAsync(conflux)
 
@@ -417,6 +400,7 @@ function wrapCfx(conflux) {
 
 function wrapProvider(provider) {
   wrapSend(provider)
+  wrapSendAsync(provider)
 
   return provider
 }
