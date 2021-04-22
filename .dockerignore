@@ -3,3 +3,4 @@ e2e/
 .idea/
 .github/
 build/
+.env
