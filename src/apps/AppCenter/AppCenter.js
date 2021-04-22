@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Header, IconRefresh, Tabs } from '@aragon/ui'
+import { Button, Header, IconRefresh, Tabs } from '@conflux-/aragon-ui'
 import {
   AppInstanceGroupType,
   AragonType,

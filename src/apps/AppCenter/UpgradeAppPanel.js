@@ -11,7 +11,7 @@ import {
   SidePanelSplit,
   textStyle,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import RepoBadge from '../../components/RepoBadge/RepoBadge'
 import { RepoType } from '../../prop-types'
 import { sanitizeCodeRepositoryUrl } from '../../url-utils'

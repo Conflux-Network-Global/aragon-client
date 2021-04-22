@@ -1,6 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { textStyle, GU, Link, useTheme, ProgressBar, Info } from '@aragon/ui'
+import {
+  textStyle,
+  GU,
+  Link,
+  useTheme,
+  ProgressBar,
+  Info,
+} from '@conflux-/aragon-ui'
 import { useWallet } from '../../wallet'
 import DeploymentStepsItem from './DeploymentStepsItem'
 import { TransactionStatusType } from '../../prop-types'

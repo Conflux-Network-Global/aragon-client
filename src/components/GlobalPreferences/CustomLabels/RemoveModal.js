@@ -1,6 +1,13 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Button, GU, Modal, textStyle, useToast, useViewport } from '@aragon/ui'
+import {
+  Button,
+  GU,
+  Modal,
+  textStyle,
+  useToast,
+  useViewport,
+} from '@conflux-/aragon-ui'
 
 function RemoveModal({ visible, onClose, onConfirm }) {
   const toast = useToast()

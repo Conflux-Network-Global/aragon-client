@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDropzone } from 'react-dropzone'
-import { Button, useToast } from '@aragon/ui'
+import { Button, useToast } from '@conflux-/aragon-ui'
 import { isString } from '../../../utils'
 import { isAddress } from '../../../web3-utils'
 

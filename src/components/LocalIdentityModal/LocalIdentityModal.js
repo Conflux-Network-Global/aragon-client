@@ -9,7 +9,7 @@ import {
   textStyle,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import IdentityBadgeWithNetwork from '../IdentityBadge/IdentityBadgeWithNetwork'
 import keycodes from '../../keycodes'
 import { EthereumAddressType } from '../../prop-types'

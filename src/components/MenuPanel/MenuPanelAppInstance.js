@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { ButtonBase, GU } from '@aragon/ui'
+import { ButtonBase, GU } from '@conflux-/aragon-ui'
 import { useLocalIdentity } from '../../hooks'
 
 export const MENU_PANEL_APP_INSTANCE_HEIGHT = 4 * GU

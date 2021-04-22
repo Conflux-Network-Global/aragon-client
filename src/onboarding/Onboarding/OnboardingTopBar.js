@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Button, GU, IconSettings, useTheme } from '@aragon/ui'
+import { Button, GU, IconSettings, useTheme } from '@conflux-/aragon-ui'
 import AccountModule from '../../components/AccountModule/AccountModule'
 import HomeButton from '../../components/HomeButton/HomeButton'
 

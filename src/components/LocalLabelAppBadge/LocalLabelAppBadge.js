@@ -1,6 +1,6 @@
 import React, { useContext, useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { AppBadge, GU, Tag } from '@aragon/ui'
+import { AppBadge, GU, Tag } from '@conflux-/aragon-ui'
 import { useLocalIdentity } from '../../hooks'
 import { AppType } from '../../prop-types'
 import iconSvgAcl from '../AppIcon/assets/app-acl.svg'

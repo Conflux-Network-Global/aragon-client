@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { springs, useTheme } from '@aragon/ui'
+import { springs, useTheme } from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 import AnimatedLogo from './AnimatedLogo'
 

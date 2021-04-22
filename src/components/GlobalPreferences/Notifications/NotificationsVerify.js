@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link, GU, LoadingRing, textStyle } from '@aragon/ui'
+import { Link, GU, LoadingRing, textStyle } from '@conflux-/aragon-ui'
 import { verifyEmailToken } from './notification-service-api'
 import {
   VERIFY_SUBSECTION,

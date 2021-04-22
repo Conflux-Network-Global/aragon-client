@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Popover, springs, textStyle, useTheme } from '@aragon/ui'
+import { GU, Popover, springs, textStyle, useTheme } from '@conflux-/aragon-ui'
 import { Spring, Transition, animated } from 'react-spring'
 
 const AnimatedDiv = animated.div

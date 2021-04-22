@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Info, useTheme } from '@aragon/ui'
+import { GU, Info, useTheme } from '@conflux-/aragon-ui'
 import { Header, Navigation, ScreenPropsType } from '../../kit'
 
 function HoldersInfo({

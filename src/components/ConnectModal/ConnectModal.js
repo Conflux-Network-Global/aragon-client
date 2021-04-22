@@ -8,7 +8,7 @@ import {
   textStyle,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import providersImage from './assets/providers.png'
 
 function ConnectModal({ account, onClose, onConnect, visible }) {

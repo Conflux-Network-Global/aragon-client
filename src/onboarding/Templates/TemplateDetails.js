@@ -13,7 +13,7 @@ import {
   unselectable,
   useViewport,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { TEMPLATE_LOADING, TEMPLATE_UNAVAILABLE } from '../symbols'
 import { stripUrlProtocol, sanitizeCodeRepositoryUrl } from '../../url-utils'
 import AppIcon from '../../components/AppIcon/AppIcon'

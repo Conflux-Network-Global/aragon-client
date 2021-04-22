@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button, IconPlus, IconTrash, GU, useTheme } from '@aragon/ui'
+import { Button, IconPlus, IconTrash, GU, useTheme } from '@conflux-/aragon-ui'
 import TokenSelector from './TokenSelector'
 
 function MultiTokenSelector({

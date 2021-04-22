@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Info, GU, Link } from '@aragon/ui'
+import { Info, GU, Link } from '@conflux-/aragon-ui'
 import {
   useCheckDomain,
   DOMAIN_CHECK,

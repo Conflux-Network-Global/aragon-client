@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { Tabs } from '@aragon/ui'
+import { Tabs } from '@conflux-/aragon-ui'
 import { AppType } from '../../../prop-types'
 import { usePermissionsByRole } from '../../../contexts/PermissionsContext'
 import Apps from './Apps'

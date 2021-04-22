@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonBase, GU, useTheme, textStyle } from '@aragon/ui'
+import { ButtonBase, GU, useTheme, textStyle } from '@conflux-/aragon-ui'
 
 function FavoritesMenuItemButton(props) {
   const theme = useTheme()

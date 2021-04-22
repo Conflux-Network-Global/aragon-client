@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Tag, GU, useViewport } from '@aragon/ui'
+import { Tag, GU, useViewport } from '@conflux-/aragon-ui'
 import { AppType, EthereumAddressType } from '../prop-types'
 import { shortenAddress } from '../web3-utils'
 import AppIcon from './AppIcon/AppIcon'

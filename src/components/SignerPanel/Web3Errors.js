@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Info, Link, GU } from '@aragon/ui'
+import { Info, Link, GU } from '@conflux-/aragon-ui'
 
 import AddressLink from './AddressLink'
 import SignerButton from './SignerButton'

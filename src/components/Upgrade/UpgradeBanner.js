@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Transition, animated } from 'react-spring'
-import { Button, springs, useViewport } from '@aragon/ui'
+import { Button, springs, useViewport } from '@conflux-/aragon-ui'
 import Banner, { BANNER_HEIGHT } from '../Banner/Banner'
 import { banner } from './content'
 

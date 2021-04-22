@@ -6,7 +6,7 @@ import Web3 from 'web3'
 import { toWei } from 'web3-utils'
 import BN from 'bn.js'
 import { InvalidNetworkType, InvalidURI, NoConnection } from './errors'
-import { network } from './environment'
+import { network, web3Providers } from './environment'
 import { log } from './utils'
 import { format } from 'js-conflux-sdk'
 
@@ -62,7 +62,7 @@ export async function checkValidEthNode(uri, expectedNetworkType) {
   }
 
   try {
-    const web3 = new Web3(uri)
+    const web3 = getWeb3(web3Providers.default)
     const connectedNetworkType = await web3.eth.net.getNetworkType()
     if (web3.currentProvider.disconnect) {
       web3.currentProvider.disconnect()
@@ -284,7 +284,7 @@ export function shortenAddress(address, charsLength = 4) {
 }
 
 export function formatAddress(address) {
-  return format.address(address, 1)
+  return format.address(address, network.chainId)
 }
 
 // Detect Ethereum addresses in a string and transform each part.

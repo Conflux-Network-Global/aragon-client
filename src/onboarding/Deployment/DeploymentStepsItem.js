@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { textStyle, GU, IconCheck, useTheme } from '@aragon/ui'
+import { textStyle, GU, IconCheck, useTheme } from '@conflux-/aragon-ui'
 import { TransactionStatusType } from '../../prop-types'
 import {
   TRANSACTION_STATUS_PENDING,

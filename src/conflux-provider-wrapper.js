@@ -1,3 +1,6 @@
+import { format } from 'js-conflux-sdk'
+import { network } from './environment'
+
 function processBlockNum(block) {
   if (Number(block) || block === 'earliest') {
     return block
@@ -7,6 +10,7 @@ function processBlockNum(block) {
 }
 
 function processLog(log, epochNumber, blockHash, txHash) {
+  log.address = format.hexAddress(log.address, network.chainId)
   log.blockNumber = epochNumber
   log.blockHash = blockHash
   log.transactionHash = txHash
@@ -17,7 +21,7 @@ function processFilter(filter) {
   if (filter.fromBlock) {
     filter.fromEpoch = processBlockNum(filter.fromBlock)
     delete filter.fromBlock
-  } else {
+  } else if (!filter.fromEpoch) {
     console.warn('filter with no fromBlock', filter)
     filter.fromEpoch = 'latest_state'
   }
@@ -27,12 +31,60 @@ function processFilter(filter) {
     delete filter.toBlock
   }
 
+  if (filter.address) {
+    filter.address = format.address(filter.address, network.chainId)
+  }
+
   return filter
 }
 
+function preprocessMessage(method, params) {
+  const makeMsg = (method, params) => {
+    return {
+      id: Math.floor(Math.random() * 1000000),
+      jsonrpc: '2.0',
+      method,
+      params,
+    }
+  }
+  let req
+
+  switch (method) {
+    case 'eth_getBalance':
+      params[0] = format.address(params[0], network.chainId)
+      if (params[1] === 'latest') {
+        params[1] = 'latest_state'
+      }
+      req = makeMsg('cfx_getBalance', params)
+      break
+    case 'eth_blockNumber':
+      req = makeMsg('cfx_epochNumber', [])
+      break
+    case 'eth_getCode':
+      params[0] = format.address(params[0], network.chainId)
+      req = makeMsg('cfx_getCode', params)
+      break
+    default:
+      throw new Error(`Method ${method} not handled preprocess message!`)
+  }
+
+  return req
+}
+
 function preprocess(req) {
-  console.log('preprocess', req.method)
+  // console.log('preprocess begin', req)
+
   switch (req.method) {
+    case 'eth_sendTransaction':
+      req.method = 'cfx_sendTransaction'
+
+      // workaround for a bug where storage limit is not estimated automatically
+      delete req.params[0].gas
+      delete req.params[0].gasPrice
+
+      // console.trace(req)
+      break
+
     case 'eth_blockNumber':
       req.method = 'cfx_epochNumber'
       break
@@ -44,12 +96,17 @@ function preprocess(req) {
         req.params[1] = 'latest_state'
       }
 
+      if (req.params[0] && req.params[0].to) {
+        req.params[0].to = format.address(req.params[0].to, network.chainId)
+      }
+
+      // console.trace(req)
       break
 
     case 'eth_getBlockByNumber':
       req.method = 'cfx_getBlockByEpochNumber'
 
-      if (req.params[0] === 'latest') {
+      if (req.params[0] === 'latest' || !req.params[0]) {
         req.params[0] = 'latest_state'
       }
 
@@ -65,12 +122,19 @@ function preprocess(req) {
 
     case 'eth_estimateGas':
       req.method = 'cfx_estimateGasAndCollateral'
+      if (req.params[0] && req.params[0].to) {
+        req.params[0].to = format.address(req.params[0].to, network.chainId)
+      }
+      if (req.params[0] && req.params[0].from) {
+        req.params[0].from = format.address(req.params[0].from, network.chainId)
+      }
       break
 
     case 'eth_getLogs':
       req.method = 'cfx_getLogs'
       req.params[0] = processFilter(req.params[0])
-      console.log('cfx_getLogs [request]', req)
+      // console.log('cfx_getLogs [request]', req)
+      // console.trace('cfx_getLogs', req)
       break
 
     case 'eth_subscribe':
@@ -79,7 +143,6 @@ function preprocess(req) {
       if (req.params[0] === 'logs') {
         req.params[1] = processFilter(req.params[1])
       }
-
       // console.log('cfx_subscribe [request]', req)
       break
 
@@ -87,9 +150,18 @@ function preprocess(req) {
       req.method = 'cfx_unsubscribe'
       break
 
+    case 'cfx_getBlockByEpochNumber':
+    case 'cfx_epochNumber':
+    case 'cfx_call':
+      break
+
     default:
-    // console.log('provider send:', req)
+      console.log(`Method ${req.method} not handled in preprocess!`)
   }
+
+  // console.log('preprocess end', req)
+
+  return req
 }
 
 function processBlockResponse(response) {
@@ -106,6 +178,7 @@ function processBlockResponse(response) {
   response.result.transactions = response.result.transactions.map(transaction =>
     processTransaction(transaction, response.result.epochNumber)
   )
+  response.result.miner = format.hexAddress(response.result.miner)
 
   return response
 }
@@ -141,8 +214,13 @@ function processReceiptResponse(receipt) {
 }
 
 function postprocess(req, resp) {
-  console.log('postprocess', req.method)
+  // console.log('postprocess begin', req, resp)
+
   switch (req.method) {
+    case 'cfx_getStatus':
+      resp = resp.result.chainId
+      break
+
     case 'cfx_getBlockByEpochNumber':
       resp = processBlockResponse(resp)
       break
@@ -184,47 +262,168 @@ function postprocess(req, resp) {
 
       break
   }
+
+  // console.log('postprocess end', req, resp)
+
+  return resp
+}
+
+function wrapSendAsync(provider) {
+  if (typeof provider.sendAsync !== 'undefined') {
+    const sendAsyncOriginal = provider.sendAsync
+
+    provider.sendAsync = function(message, callback) {
+      console.log('Conflux Portal sendAsync:', message)
+
+      if (
+        message.method === 'eth_chainId' ||
+        message.method === 'net_version'
+      ) {
+        return callback(new Error(`Unsupported method: '${message.method}'`))
+      }
+
+      if (message.method === 'eth_sendTransaction') {
+        message.method = 'cfx_sendTransaction'
+
+        // workaround for a bug where storage limit is not estimated automatically
+        delete message.params[0].gas
+        delete message.params[0].gasPrice
+
+        // console.trace(data)
+      }
+
+      return sendAsyncOriginal.call(this, message, (err, response) => {
+        if (err || (response && response.error)) {
+          console.error(
+            'sendAsync request failed:',
+            err || response.error,
+            message,
+            response
+          )
+          return callback(err || response.error)
+        }
+
+        if (message.method === 'eth_getBlockByNumber') {
+          response.result.miner = format.hexAddress(response.result.miner)
+        }
+
+        // console.log('sendAsync success', 'data:', data, 'response:', response)
+        return callback(err, response)
+      })
+    }
+  }
+}
+
+function wrapSend(provider) {
+  if (typeof provider.send !== 'undefined') {
+    const sendOriginal = provider.send
+
+    provider.send = function() {
+      // console.log('Conflux Portal send start:', arguments)
+
+      // message is a string, handle it as an array
+      if (typeof arguments[0] === 'string') {
+        const method = arguments[0]
+        const args = arguments[1]
+
+        return new Promise((resolve, reject) => {
+          if (method === 'eth_requestAccounts') {
+            return reject(new Error(`Unsupported method: '${method}'`))
+          }
+
+          if (method === 'eth_chainId') {
+            return resolve(network.chainId)
+          }
+
+          // short-circuit unsupported methods
+          let message = preprocessMessage(method, args)
+
+          // execute call
+          return sendOriginal.call(this, message, (err, response) => {
+            // console.log('Conflux Portal send end:', message, response)
+            if (err || (response && response.error)) {
+              console.error(
+                'send request failed:',
+                err || response.error,
+                message,
+                response
+              )
+              return reject(err || response.error)
+            }
+            response = postprocess(message, response)
+            return resolve(response)
+          })
+        })
+      }
+      // lets hope message is an object, handle it as an object with callback
+      else {
+        let [message, callback] = arguments
+
+        if (message.method === 'net_version') {
+          return callback(new Error(`Unsupported method: '${message.method}'`))
+        }
+
+        if (message.method === 'eth_chainId') {
+          return callback(undefined, {
+            jsonrpc: '2.0',
+            id: message.id,
+            result: network.chainId,
+          })
+        }
+
+        // process request
+        message = preprocess(message)
+
+        // execute call
+        return sendOriginal.call(this, message, (err, response) => {
+          // console.log('Conflux Portal send end:', message, response)
+
+          if (err || (response && response.error)) {
+            console.error(
+              'send request failed:',
+              err || response.error,
+              message,
+              response
+            )
+            // console.trace()
+            return callback(err || response.error)
+          }
+
+          // process response
+          response = postprocess(message, response)
+
+          // console.log('Conflux Portal send final:', message, response)
+          return callback(err, response)
+        })
+      }
+    }
+  }
+}
+
+function wrapCfx(conflux) {
+  if (conflux && typeof conflux.enable !== 'undefined') {
+    const originalEnable = conflux.enable
+    conflux.enable = async function() {
+      const accs = await originalEnable.call(this)
+      const acc = format.hexAddress(accs[0])
+      return [acc]
+    }
+
+    wrapSend(conflux)
+    wrapSendAsync(conflux)
+
+    return conflux
+  }
 }
 
 function wrapProvider(provider) {
-  // FIXME: do we need to handle `requests` and `sendAsync` as well?
-  // they don't seem to be used here
-
-  if (typeof provider.send === 'undefined') {
-    return provider
-  }
-
-  const sendOriginal = provider.send
-
-  provider.send = function(args, callback) {
-    // short-circuit unsupported methods
-    if (args.method === 'eth_chainId' || args.method === 'net_version') {
-      return callback(new Error(`Unsupported method: '${args.method}'`))
-    }
-
-    // process request
-    preprocess(args)
-
-    // execute call
-    return sendOriginal.call(this, args, (err, res) => {
-      if (err) return callback(err)
-      if (res.error) {
-        console.error('request failed:', res, args)
-        return callback(err, res)
-      }
-
-      // console.log('receiving response:', res, 'request:', args)
-
-      // process response
-      postprocess(args, res)
-
-      callback(err, res)
-    })
-  }
+  wrapSend(provider)
+  wrapSendAsync(provider)
 
   return provider
 }
 
 export const Wrapper = {
   wrapProvider,
+  wrapCfx,
 }

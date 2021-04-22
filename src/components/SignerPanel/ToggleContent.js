@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { IconDown, GU, springs, textStyle, useTheme } from '@aragon/ui'
+import { IconDown, GU, springs, textStyle, useTheme } from '@conflux-/aragon-ui'
 import { Transition, animated } from 'react-spring'
 
 export default class ToggleContent extends React.Component {

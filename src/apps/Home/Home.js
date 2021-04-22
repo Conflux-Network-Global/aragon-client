@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { CardLayout, Card, GU, textStyle, useLayout } from '@aragon/ui'
+import { CardLayout, Card, GU, textStyle, useLayout } from '@conflux-/aragon-ui'
 import { AppType } from '../../prop-types'
 import appIds from '../../known-app-ids'
 

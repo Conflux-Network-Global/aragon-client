@@ -8,7 +8,7 @@ import {
   springs,
   useTheme,
   useViewport,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import activityNoResults from '../../assets/activity-no-results.png'
 import { ActivityContext } from '../../contexts/ActivityContext'
 import { AppType } from '../../prop-types'

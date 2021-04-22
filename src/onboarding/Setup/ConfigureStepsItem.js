@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { GU, IconCheck, useTheme } from '@aragon/ui'
+import { GU, IconCheck, useTheme } from '@conflux-/aragon-ui'
 
 function ConfigureStepsItem({ stepNumber, step, label, currentStep }) {
   const theme = useTheme()

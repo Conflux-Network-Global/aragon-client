@@ -11,7 +11,7 @@ import {
   useToast,
   useTheme,
   Split,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { getSubscriptions, deleteAccount } from './notification-service-api'
 import {
   NOTIFICATION_SERVICE_TOKEN_KEY,

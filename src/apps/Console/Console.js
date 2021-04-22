@@ -10,7 +10,7 @@ import {
   useTheme,
   useToast,
   GU,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { performTransactionPaths } from '../../aragonjs-wrapper'
 import ConsoleFeedback from './ConsoleFeedback'
 import { buildCommand, parseCommand } from './console-utils'

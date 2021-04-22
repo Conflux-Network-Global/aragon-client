@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { Info, GU, textStyle, useTheme } from '@aragon/ui'
+import { Info, GU, textStyle, useTheme } from '@conflux-/aragon-ui'
 import SignerButton from './SignerButton'
 import ToggleContent from './ToggleContent'
 import LocalIdentityBadge from '../IdentityBadge/LocalIdentityBadge'

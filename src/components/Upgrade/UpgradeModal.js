@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { ButtonIcon, Modal, Viewport, springs } from '@aragon/ui'
+import { ButtonIcon, Modal, Viewport, springs } from '@conflux-/aragon-ui'
 import { Transition } from 'react-spring'
 import { useArrows, useSteps } from '../../hooks'
 import { highlights } from './content'

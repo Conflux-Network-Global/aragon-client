@@ -13,7 +13,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import AppIcon from '../../../components/AppIcon/AppIcon'
 import ContentMarkdown from './ContentMarkdown'
 import LocalIdentityBadge from '../../../components/IdentityBadge/LocalIdentityBadge'

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, GU, Modal, textStyle, useViewport } from '@aragon/ui'
+import { Button, GU, Modal, textStyle, useViewport } from '@conflux-/aragon-ui'
 
 export function DeleteAccountConfirmationModal({
   onClose,

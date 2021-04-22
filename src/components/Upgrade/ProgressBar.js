@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { animated, useSpring } from 'react-spring/hooks'
-import { springs } from '@aragon/ui'
+import { springs } from '@conflux-/aragon-ui'
 
 const ProgressBar = ({ value }) => {
   const transitionStyles = useSpring({

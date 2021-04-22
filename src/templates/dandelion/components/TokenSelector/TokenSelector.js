@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react'
-import { DropDown, Field, TextInput, GU } from '@aragon/ui'
+import { DropDown, Field, TextInput, GU } from '@conflux-/aragon-ui'
 
 import TokenSelectorInstance from './TokenSelectorInstance'
 

@@ -10,7 +10,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import { defaultEthNode, ipfsDefaultConf, network } from '../../../environment'
 import { InvalidNetworkType, InvalidURI, NoConnection } from '../../../errors'
 import { setDefaultEthNode, setIpfsGateway } from '../../../local-settings'

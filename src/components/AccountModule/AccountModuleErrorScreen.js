@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Link, textStyle, useTheme } from '@aragon/ui'
+import { GU, Link, textStyle, useTheme } from '@conflux-/aragon-ui'
 import { UnsupportedChainError } from 'use-wallet'
 import { network } from '../../environment'
 

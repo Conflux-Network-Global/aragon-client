@@ -1,6 +1,6 @@
 import React, { useCallback, useReducer, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Help, Info } from '@aragon/ui'
+import { GU, Help, Info } from '@conflux-/aragon-ui'
 import {
   Header,
   PercentageField,

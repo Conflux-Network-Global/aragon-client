@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Aragon from '@aragon/wrapper'
+import Aragon from '@conflux-/aragon-wrapper'
 import {
   APPS_STATUS_ERROR,
   APPS_STATUS_READY,

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { GU, Bar, Info } from '@aragon/ui'
+import { GU, Bar, Info } from '@conflux-/aragon-ui'
 
 export const ButtonWrapper = styled.div`
   display: flex;

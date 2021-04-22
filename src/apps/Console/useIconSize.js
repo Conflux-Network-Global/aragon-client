@@ -1,4 +1,4 @@
-import { useInside, GU } from '@aragon/ui'
+import { useInside, GU } from '@conflux-/aragon-ui'
 const ICON_SIZES = new Map([
   ['large', 6 * GU],
   ['medium', 3 * GU],

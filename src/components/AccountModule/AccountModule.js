@@ -44,7 +44,7 @@ function AccountModule() {
       try {
         await wallet.activate(providerId)
       } catch (error) {
-        console.err('Activation error:', error)
+        console.error('Activation error:', error)
         setActivationError(error)
       }
     },

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Layout, Root, ScrollView } from '@aragon/ui'
+import { Layout, Root, ScrollView } from '@conflux-/aragon-ui'
 import useAppWidth from '../../apps/useAppWidth'
 
 const RootProvider = Root.Provider

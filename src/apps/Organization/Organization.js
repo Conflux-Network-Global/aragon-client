@@ -13,7 +13,7 @@ import {
   unselectable,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import LocalIdentityBadge from '../../components/IdentityBadge/LocalIdentityBadge'
 import appIds from '../../known-app-ids'
 import { network } from '../../environment'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { GU, textStyle } from '@aragon/ui'
+import { GU, textStyle } from '@conflux-/aragon-ui'
 import { DaoItemType } from '../../../prop-types'
 import { getKnownOrganization } from '../../../known-organizations'
 import { network } from '../../../environment'

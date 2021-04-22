@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { GU, useTheme } from '@aragon/ui'
+import { GU, useTheme } from '@conflux-/aragon-ui'
 import ConfigureStepsItem from './ConfigureStepsItem'
 import CircleGraph from '../CircleGraph'
 

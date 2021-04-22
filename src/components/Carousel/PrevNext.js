@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GU, ButtonIcon, IconRight, IconLeft } from '@aragon/ui'
+import { GU, ButtonIcon, IconRight, IconLeft } from '@conflux-/aragon-ui'
 
 function PrevNext({ onClick, type }) {
   const next = type === 'next'

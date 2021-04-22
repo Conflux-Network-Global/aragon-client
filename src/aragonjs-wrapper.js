@@ -4,7 +4,7 @@ import Aragon, {
   ensResolve,
   getRecommendedGasLimit,
   providers,
-} from '@aragon/wrapper'
+} from '@conflux-/aragon-wrapper'
 import {
   appOverrides,
   sortAppsPair,

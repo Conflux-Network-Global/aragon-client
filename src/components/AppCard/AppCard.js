@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Tag, textStyle, unselectable, GU } from '@aragon/ui'
+import { Card, Tag, textStyle, unselectable, GU } from '@conflux-/aragon-ui'
 import { AppType } from '../../prop-types'
 import { shortenAddress } from '../../web3-utils'
 import AppIcon from '../AppIcon/AppIcon'

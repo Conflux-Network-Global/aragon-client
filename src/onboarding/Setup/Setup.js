@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useViewport, GU } from '@aragon/ui'
+import { useViewport, GU } from '@conflux-/aragon-ui'
 import ConfigureTemplateScreens from './ConfigureTemplateScreens'
 import SetupStepsPanel from './SetupStepsPanel'
 import * as CreateStatuses from '../Create/create-statuses'

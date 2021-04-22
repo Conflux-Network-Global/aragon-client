@@ -1,5 +1,11 @@
 import React from 'react'
-import { LinkBase, GU, RADIUS, blockExplorerUrl, useTheme } from '@aragon/ui'
+import {
+  LinkBase,
+  GU,
+  RADIUS,
+  blockExplorerUrl,
+  useTheme,
+} from '@conflux-/aragon-ui'
 import { network } from '../../environment'
 import AppIcon from '../../components/AppIcon/AppIcon'
 import { repoBaseUrl } from '../../url-utils'

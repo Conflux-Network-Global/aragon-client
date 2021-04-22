@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { GU, IconCheck, IconCross, useTheme } from '@aragon/ui'
+import { GU, IconCheck, IconCross, useTheme } from '@conflux-/aragon-ui'
 
 const FeedbackIndicator = ({ status, ...props }) => {
   const theme = useTheme()

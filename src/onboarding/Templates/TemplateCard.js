@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Tag, textStyle, GU, Button, useTheme } from '@aragon/ui'
+import { Card, Tag, textStyle, GU, Button, useTheme } from '@conflux-/aragon-ui'
 import { OrgTemplateType } from '../../prop-types'
 
 function TemplateCard({ onOpen, template }) {

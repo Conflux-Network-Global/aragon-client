@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Tag, GU } from '@aragon/ui'
+import { Tag, GU } from '@conflux-/aragon-ui'
 
 const LocalIdentityPopoverTitle = ({ label }) => {
   return (

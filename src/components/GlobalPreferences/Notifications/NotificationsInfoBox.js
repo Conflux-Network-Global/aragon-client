@@ -1,6 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, GU, RADIUS, useTheme, textStyle, useViewport } from '@aragon/ui'
+import {
+  Box,
+  GU,
+  RADIUS,
+  useTheme,
+  textStyle,
+  useViewport,
+} from '@conflux-/aragon-ui'
 import notification from './notification.png'
 import notificationError from './notification-error.png'
 import notificationNetworkError from './notification-network-error.png'

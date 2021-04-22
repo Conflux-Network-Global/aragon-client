@@ -13,7 +13,7 @@ import {
   TextInput,
   isAddress,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import {
   Header,
   IdentityBadge,

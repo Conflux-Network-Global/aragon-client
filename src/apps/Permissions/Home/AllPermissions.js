@@ -7,7 +7,7 @@ import {
   textStyle,
   useLayout,
   useTheme,
-} from '@aragon/ui'
+} from '@conflux-/aragon-ui'
 import debounce from 'lodash.debounce'
 import EmptyBlock from '../EmptyBlock'
 import EmptyFilteredPermission from '../EmptyFilteredPermissions'

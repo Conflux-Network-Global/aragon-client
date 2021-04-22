@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card, GU, textStyle, useTheme } from '@aragon/ui'
+import { Card, GU, textStyle, useTheme } from '@conflux-/aragon-ui'
 
 function WelcomeAction({
   hasError,

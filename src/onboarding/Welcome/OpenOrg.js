@@ -1,6 +1,13 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
-import { BackButton, Box, Button, GU, useKeyDown, useTheme } from '@aragon/ui'
+import {
+  BackButton,
+  Box,
+  Button,
+  GU,
+  useKeyDown,
+  useTheme,
+} from '@conflux-/aragon-ui'
 import { useWallet } from '../../wallet'
 import KEYS from '../../keycodes'
 import DomainField from '../../components/DomainField/DomainField'

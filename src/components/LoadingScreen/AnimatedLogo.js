@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { keyframes } from 'styled-components'
-import { useTheme } from '@aragon/ui'
+import { useTheme } from '@conflux-/aragon-ui'
 
 const PATH = `
   M75 19a161.38 161.38 0 0 0-7.37 2.68 214.8 214.8 0 0 0-14.98 6.5
