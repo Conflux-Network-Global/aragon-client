@@ -1,6 +1,12 @@
 import React, { useCallback, useImperativeHandle, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Field, GU, TextInput, LoadingRing, useTheme } from '@conflux-/aragon-ui'
+import {
+  Field,
+  GU,
+  TextInput,
+  LoadingRing,
+  useTheme,
+} from '@conflux-/aragon-ui'
 import CheckDisc from '../CheckDisc/CheckDisc'
 import {
   DOMAIN_CHECK,

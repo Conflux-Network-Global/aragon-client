@@ -1,6 +1,12 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { GU, Modal, textStyle, useTheme, useViewport } from '@conflux-/aragon-ui'
+import {
+  GU,
+  Modal,
+  textStyle,
+  useTheme,
+  useViewport,
+} from '@conflux-/aragon-ui'
 import CheckDisc from '../CheckDisc/CheckDisc'
 
 function ErrorModal({ action, content, header, onClose, visible }) {

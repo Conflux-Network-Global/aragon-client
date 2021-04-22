@@ -1,6 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Field, GU, TextInput, useTheme, useViewport } from '@conflux-/aragon-ui'
+import {
+  Field,
+  GU,
+  TextInput,
+  useTheme,
+  useViewport,
+} from '@conflux-/aragon-ui'
 
 const MINUTE_IN_SECONDS = 60
 const HOUR_IN_SECONDS = MINUTE_IN_SECONDS * 60

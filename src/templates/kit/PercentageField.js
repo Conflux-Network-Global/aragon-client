@@ -6,7 +6,14 @@ import React, {
   useState,
 } from 'react'
 import PropTypes from 'prop-types'
-import { Field, GU, Slider, TextInput, textStyle, useTheme } from '@conflux-/aragon-ui'
+import {
+  Field,
+  GU,
+  Slider,
+  TextInput,
+  textStyle,
+  useTheme,
+} from '@conflux-/aragon-ui'
 
 const PercentageField = React.forwardRef(function PercentageField(
   { label, value, onChange },
