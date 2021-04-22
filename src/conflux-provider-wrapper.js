@@ -272,30 +272,38 @@ function wrapSendAsync(provider) {
   if (typeof provider.sendAsync !== 'undefined') {
     const sendAsyncOriginal = provider.sendAsync
 
-    provider.sendAsync = function(data, callback) {
-      console.log('Conflux Portal sendAsync:', data)
+    provider.sendAsync = function(message, callback) {
+      console.log('Conflux Portal sendAsync:', message)
 
-      if (data.method === 'eth_chainId' || data.method === 'net_version') {
-        return callback(new Error(`Unsupported method: '${data.method}'`))
+      if (
+        message.method === 'eth_chainId' ||
+        message.method === 'net_version'
+      ) {
+        return callback(new Error(`Unsupported method: '${message.method}'`))
       }
 
-      if (data.method === 'eth_sendTransaction') {
-        data.method = 'cfx_sendTransaction'
+      if (message.method === 'eth_sendTransaction') {
+        message.method = 'cfx_sendTransaction'
 
         // workaround for a bug where storage limit is not estimated automatically
-        delete data.params[0].gas
-        delete data.params[0].gasPrice
+        delete message.params[0].gas
+        delete message.params[0].gasPrice
 
         // console.trace(data)
       }
 
-      return sendAsyncOriginal.call(this, data, (err, response) => {
-        if (err || response.error) {
-          console.error('sendAsync request failed:', response, data, err)
-          return callback(response.error)
+      return sendAsyncOriginal.call(this, message, (err, response) => {
+        if (err || (response && response.error)) {
+          console.error(
+            'sendAsync request failed:',
+            err || response.error,
+            message,
+            response
+          )
+          return callback(err || response.error)
         }
 
-        if (data.method === 'eth_getBlockByNumber') {
+        if (message.method === 'eth_getBlockByNumber') {
           response.result.miner = format.hexAddress(response.result.miner)
         }
 
@@ -333,9 +341,14 @@ function wrapSend(provider) {
           // execute call
           return sendOriginal.call(this, message, (err, response) => {
             // console.log('Conflux Portal send end:', message, response)
-            if (err || response.error) {
-              console.error('send request failed:', response, message)
-              return reject(response.error)
+            if (err || (response && response.error)) {
+              console.error(
+                'send request failed:',
+                err || response.error,
+                message,
+                response
+              )
+              return reject(err || response.error)
             }
             response = postprocess(message, response)
             return resolve(response)
@@ -365,10 +378,15 @@ function wrapSend(provider) {
         return sendOriginal.call(this, message, (err, response) => {
           // console.log('Conflux Portal send end:', message, response)
 
-          if (err || response.error) {
-            console.error('send request failed:', response, message)
+          if (err || (response && response.error)) {
+            console.error(
+              'send request failed:',
+              err || response.error,
+              message,
+              response
+            )
             // console.trace()
-            return callback(response.error)
+            return callback(err || response.error)
           }
 
           // process response
