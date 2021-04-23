@@ -1,3 +1,23 @@
+import { format } from 'js-conflux-sdk'
+
+const NETWORK = 1
+
+function formatBase32(addr) {
+  if (typeof addr === 'undefined') {
+    return undefined
+  }
+
+  return format.address(addr, NETWORK)
+}
+
+function formatHex(addr) {
+  if (typeof addr === 'undefined') {
+    return undefined
+  }
+
+  return format.hexAddress(addr)
+}
+
 function processBlockNum(block) {
   if (Number(block) || block === 'earliest') {
     return block
@@ -39,6 +59,8 @@ function preprocess(req) {
     case 'eth_call':
       req.method = 'cfx_call'
 
+      req.params[0].to = formatBase32(req.params[0].to)
+
       if (req.params[1] === 'latest') {
         req.params[1] = 'latest_state'
       }
@@ -64,11 +86,18 @@ function preprocess(req) {
 
     case 'eth_estimateGas':
       req.method = 'cfx_estimateGasAndCollateral'
+
+      req.params[0].from = formatBase32(req.params[0].from)
+      req.params[0].to = formatBase32(req.params[0].to)
+
       break
 
     case 'eth_getLogs':
       req.method = 'cfx_getLogs'
       req.params[0] = processFilter(req.params[0])
+
+      req.params[0].address = formatBase32(req.params[0].address)
+
       console.log('cfx_getLogs [request]', req)
       break
 
@@ -77,6 +106,7 @@ function preprocess(req) {
 
       if (req.params[0] === 'logs') {
         req.params[1] = processFilter(req.params[1])
+        req.params[1].address = formatBase32(req.params[1].address)
       }
 
       console.log('cfx_subscribe [request]', req)
@@ -140,9 +170,16 @@ function processReceiptResponse(receipt) {
 }
 
 function postprocess(req, resp) {
+  // if (JSON.stringify(resp).match(/CFXTEST:TYPE\.CONTRACT:ACF873Z621UDXH7MZP9TY4HWKT30CX5NWEGU35EE5X/)) {
+  //   console.log("!!!!!!", req, resp);
+  // }
+
   switch (req.method) {
     case 'cfx_getBlockByEpochNumber':
       resp = processBlockResponse(resp)
+
+      resp.result.miner = formatHex(resp.result.miner)
+
       break
 
     case 'cfx_getTransactionByHash':
@@ -150,17 +187,41 @@ function postprocess(req, resp) {
 
       resp.result = processTransaction(resp.result, resp.result.epochNumber)
 
+      resp.result.from = formatHex(resp.result.from)
+      resp.result.to = formatHex(resp.result.to)
+
       break
 
     case 'cfx_getTransactionReceipt':
       if (!resp.result) return
       resp = processReceiptResponse(resp)
+
+      resp.result.from = formatHex(resp.result.from)
+      resp.result.to = formatHex(resp.result.to)
+
+      resp.result.logs = resp.result.logs.map(log => {
+        log.address = formatHex(log.address)
+        return log
+      })
+
+      resp.result.storageReleased = resp.result.storageReleased.map(sr => {
+        sr.address = formatHex(sr.address)
+        return sr
+      })
+
       break
 
     case 'cfx_getLogs':
-      resp.result = resp.result.map(log =>
-        processLog(log, log.epochNumber, log.blockHash, log.transactionHash)
-      )
+      resp.result = resp.result.map(log => {
+        log = processLog(
+          log,
+          log.epochNumber,
+          log.blockHash,
+          log.transactionHash
+        )
+        log.address = formatHex(log.address)
+        return log
+      })
       console.log('cfx_getLogs [response]', resp)
       break
 
@@ -178,6 +239,8 @@ function postprocess(req, resp) {
           resp.result.blockHash,
           resp.result.transactionHash
         )
+
+        resp.result.address = formatHex(resp.result.address)
       }
 
       break
@@ -214,6 +277,29 @@ function wrapProvider(provider) {
       postprocess(args, res)
 
       callback(err, res)
+    })
+  }
+
+  if (typeof provider.on === 'undefined') {
+    return provider
+  }
+
+  var onOriginal = provider.on
+
+  provider.on = function(event, handler) {
+    return onOriginal.call(this, event, args => {
+      if (event === 'data' && args.method === 'cfx_subscription') {
+        args.params.result = processLog(
+          args.params.result,
+          args.params.result.epochNumber,
+          args.params.result.blockHash,
+          args.params.result.transactionHash
+        )
+
+        args.params.result.address = formatHex(args.params.result.address)
+      }
+
+      return handler(args)
     })
   }
 
