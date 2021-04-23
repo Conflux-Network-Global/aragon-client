@@ -1,5 +1,43 @@
 import { format } from 'js-conflux-sdk'
 import { network } from './environment'
+import Web3 from 'web3'
+
+let logsProvider
+
+function getLogsProvider() {
+  if (!logsProvider) {
+    const options = {
+      keepAlive: true,
+      timeout: 20000, // ms
+    }
+
+    logsProvider = new Web3.providers.HttpProvider(
+      network.indexServiceUrl,
+      options
+    )
+
+    const onOriginal = logsProvider.on
+
+    logsProvider.on = function(event, handler) {
+      return onOriginal.call(this, event, args => {
+        if (event === 'data' && args.method === 'cfx_subscription') {
+          args.params.result = processLog(
+            args.params.result,
+            args.params.result.epochNumber,
+            args.params.result.blockHash,
+            args.params.result.transactionHash
+          )
+
+          args.params.result.address = formatHex(args.params.result.address)
+        }
+
+        return handler(args)
+      })
+    }
+  }
+
+  return logsProvider
+}
 
 function processBlockNum(block) {
   if (Number(block) || block === 'earliest') {
@@ -32,7 +70,7 @@ function processFilter(filter) {
   }
 
   if (filter.address) {
-    filter.address = format.address(filter.address, network.chainId)
+    filter.address = format.address(filter.address, network.chainId, true)
   }
 
   return filter
@@ -292,7 +330,7 @@ function wrapSendAsync(provider) {
         // console.trace(data)
       }
 
-      return sendAsyncOriginal.call(this, message, (err, response) => {
+      const handle = (err, response) => {
         if (err || (response && response.error)) {
           console.error(
             'sendAsync request failed:',
@@ -309,7 +347,11 @@ function wrapSendAsync(provider) {
 
         // console.log('sendAsync success', 'data:', data, 'response:', response)
         return callback(err, response)
-      })
+      }
+
+      return message.method === 'cfx_getLogs'
+        ? getLogsProvider().sendAsync(message, handle)
+        : sendAsyncOriginal.call(this, message, handle)
     }
   }
 }
@@ -338,8 +380,7 @@ function wrapSend(provider) {
           // short-circuit unsupported methods
           let message = preprocessMessage(method, args)
 
-          // execute call
-          return sendOriginal.call(this, message, (err, response) => {
+          const handle = (err, response) => {
             // console.log('Conflux Portal send end:', message, response)
             if (err || (response && response.error)) {
               console.error(
@@ -350,9 +391,13 @@ function wrapSend(provider) {
               )
               return reject(err || response.error)
             }
-            response = postprocess(message, response)
-            return resolve(response)
-          })
+            return resolve(postprocess(message, response))
+          }
+
+          // execute call
+          return message.method === 'cfx_getLogs'
+            ? getLogsProvider().send(message, handle)
+            : sendOriginal.call(this, message, handle)
         })
       }
       // lets hope message is an object, handle it as an object with callback
@@ -374,8 +419,7 @@ function wrapSend(provider) {
         // process request
         message = preprocess(message)
 
-        // execute call
-        return sendOriginal.call(this, message, (err, response) => {
+        const handle = (err, response) => {
           // console.log('Conflux Portal send end:', message, response)
 
           if (err || (response && response.error)) {
@@ -394,10 +438,23 @@ function wrapSend(provider) {
 
           // console.log('Conflux Portal send final:', message, response)
           return callback(err, response)
-        })
+        }
+
+        // execute call
+        return message.method === 'cfx_getLogs'
+          ? getLogsProvider().send(message, handle)
+          : sendOriginal.call(this, message, handle)
       }
     }
   }
+}
+
+function formatHex(addr) {
+  if (typeof addr === 'undefined') {
+    return undefined
+  }
+
+  return format.hexAddress(addr)
 }
 
 function wrapCfx(conflux) {
@@ -412,6 +469,25 @@ function wrapCfx(conflux) {
     wrapSend(conflux)
     wrapSendAsync(conflux)
 
+    const onOriginal = conflux.on
+
+    conflux.on = function(event, handler) {
+      return onOriginal.call(this, event, args => {
+        if (event === 'data' && args.method === 'cfx_subscription') {
+          args.params.result = processLog(
+            args.params.result,
+            args.params.result.epochNumber,
+            args.params.result.blockHash,
+            args.params.result.transactionHash
+          )
+
+          args.params.result.address = formatHex(args.params.result.address)
+        }
+
+        return handler(args)
+      })
+    }
+
     return conflux
   }
 }
@@ -419,6 +495,25 @@ function wrapCfx(conflux) {
 function wrapProvider(provider) {
   wrapSend(provider)
   wrapSendAsync(provider)
+
+  const onOriginal = provider.on
+
+  provider.on = function(event, handler) {
+    return onOriginal.call(this, event, args => {
+      if (event === 'data' && args.method === 'cfx_subscription') {
+        args.params.result = processLog(
+          args.params.result,
+          args.params.result.epochNumber,
+          args.params.result.blockHash,
+          args.params.result.transactionHash
+        )
+
+        args.params.result.address = formatHex(args.params.result.address)
+      }
+
+      return handler(args)
+    })
+  }
 
   return provider
 }
