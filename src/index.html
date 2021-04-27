@@ -27,11 +27,6 @@
     </noscript>
     <div id="root"></div>
     <script>
-      if (window.conflux !== undefined) {
-        window.ethereum = window.conflux;
-        window.web3 = window.conflux;
-      }
-
       // Dragons 🐉 have been reintroduced into the client, but hear us out:
       // Web3.js mutates the ethereum object, and this causes an issue when
       // connecting to a local chain, as for some reason the send method stops
@@ -41,6 +36,11 @@
       // use-wallet.
 
       window.cleanEthereum = { ...window.ethereum };
+
+      if (window.conflux !== undefined) {
+        window.ethereum = window.conflux;
+        window.web3 = window.conflux;
+      }
     </script>
     <script src="./index.js"></script>
 
@@ -56,4 +56,5 @@
     </script>
 
   </body>
+
 </html>

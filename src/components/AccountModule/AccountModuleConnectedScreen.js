@@ -72,7 +72,7 @@ function AccountModuleConnectedScreen({
   const Icon = connectionColor !== theme.positive ? IconCross : IconCheck
 
   const formattedConnectionMessage = connectionMessage.includes('Connected')
-    ? `Connected to Conflux ${walletNetworkName} Network`
+    ? `Connected to ${walletNetworkName} Network`
     : connectionMessage
 
   return (

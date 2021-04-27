@@ -8,7 +8,7 @@ function getLogsProvider() {
   if (!logsProvider) {
     const options = {
       keepAlive: true,
-      timeout: 20000, // ms
+      timeout: 100000, // ms
     }
 
     logsProvider = new Web3.providers.HttpProvider(
@@ -313,10 +313,7 @@ function wrapSendAsync(provider) {
     provider.sendAsync = function(message, callback) {
       console.log('Conflux Portal sendAsync:', message)
 
-      if (
-        message.method === 'eth_chainId' ||
-        message.method === 'net_version'
-      ) {
+      if (message.method === 'net_version') {
         return callback(new Error(`Unsupported method: '${message.method}'`))
       }
 
@@ -328,6 +325,14 @@ function wrapSendAsync(provider) {
         delete message.params[0].gasPrice
 
         // console.trace(data)
+      }
+
+      if (message.method === 'eth_chainId') {
+        return callback(undefined, {
+          jsonrpc: '2.0',
+          id: message.id,
+          result: network.chainId,
+        })
       }
 
       const handle = (err, response) => {

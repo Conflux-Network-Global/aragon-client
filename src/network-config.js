@@ -1,77 +1,8 @@
-import {
-  getLocalChainId,
-  getEnsRegistryAddress,
-  getFortmaticApiKey,
-  getPortisDappId,
-} from './local-settings'
+import { getLocalChainId, getEnsRegistryAddress } from './local-settings'
 
 const localEnsRegistryAddress = getEnsRegistryAddress()
-const fortmaticApiKey = getFortmaticApiKey()
-const portisDappId = getPortisDappId()
 
 export const networkConfigs = {
-  main: {
-    addresses: {
-      ensRegistry:
-        localEnsRegistryAddress || '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-    },
-    nodes: {
-      defaultEth: 'wss://mainnet.eth.aragon.network/ws',
-    },
-    settings: {
-      chainId: 1,
-      name: 'Mainnet',
-      shortName: 'Mainnet',
-      type: 'main', // as returned by web3.eth.net.getNetworkType()
-      live: true,
-    },
-    providers: [
-      { id: 'provided' },
-      { id: 'frame' },
-      fortmaticApiKey ? { id: 'fortmatic', conf: fortmaticApiKey } : null,
-      portisDappId ? { id: 'portis', conf: portisDappId } : null,
-    ].filter(p => p),
-  },
-  rinkeby: {
-    addresses: {
-      ensRegistry:
-        localEnsRegistryAddress || '0x98df287b6c145399aaa709692c8d308357bc085d',
-    },
-    nodes: {
-      defaultEth: 'wss://rinkeby.eth.aragon.network/ws',
-    },
-    settings: {
-      chainId: 4,
-      name: 'Rinkeby testnet',
-      shortName: 'Rinkeby',
-      type: 'rinkeby', // as returned by web3.eth.net.getNetworkType()
-      live: true,
-    },
-    // providers: ['injected', 'frame'],
-    providers: [
-      { id: 'provided' },
-      { id: 'frame' },
-      fortmaticApiKey ? { id: 'fortmatic', conf: fortmaticApiKey } : null,
-      portisDappId ? { id: 'portis', conf: portisDappId } : null,
-    ].filter(p => p),
-  },
-  ropsten: {
-    addresses: {
-      ensRegistry:
-        localEnsRegistryAddress || '0x6afe2cacee211ea9179992f89dc61ff25c61e923',
-    },
-    nodes: {
-      defaultEth: 'wss://ropsten.eth.aragon.network/ws',
-    },
-    settings: {
-      chainId: 3,
-      name: 'Ropsten testnet',
-      shortName: 'Ropsten',
-      type: 'ropsten', // as returned by web3.eth.net.getNetworkType()
-      live: true,
-    },
-    providers: [{ id: 'provided' }, { id: 'frame' }],
-  },
   local: {
     addresses: {
       ensRegistry: localEnsRegistryAddress,
@@ -91,42 +22,19 @@ export const networkConfigs = {
     },
     providers: [{ id: 'provided' }, { id: 'frame' }],
   },
-  // xDai is an experimental chain in the Aragon Client. It's possible
-  // and expected that a few things will break.
-  xdai: {
-    addresses: {
-      ensRegistry:
-        localEnsRegistryAddress || '0xaafca6b0c89521752e559650206d7c925fd0e530',
-    },
-    nodes: {
-      defaultEth: 'wss://xdai.poanetwork.dev/wss',
-    },
-    settings: {
-      chainId: 100,
-      name: 'xDai',
-      shortName: 'xdai',
-      type: 'private',
-      live: true,
-    },
-    providers: [
-      { id: 'provided' },
-      { id: 'frame' },
-      portisDappId ? { id: 'portis', conf: portisDappId } : null,
-    ].filter(p => p),
-  },
   cfx: {
     addresses: {
       ensRegistry:
         localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
     },
     nodes: {
-      defaultEth: 'wss://main.confluxrpc.org/ws/v2',
+      defaultEth: 'wss://main.confluxrpc.com/ws/v2',
     },
     settings: {
       chainId: 2,
       maxGap: 1000,
-      name: 'Conflux Testnet',
-      shortName: 'cfx-testnet',
+      name: 'Conflux',
+      shortName: 'cfx',
       type: 'private',
       indexServiceUrl: 'http://localhost:2000',
       live: true,
@@ -139,7 +47,7 @@ export const networkConfigs = {
         localEnsRegistryAddress || '0x87E87fA4b4402DfD641fd67dF7248C673Db31db1',
     },
     nodes: {
-      defaultEth: 'wss://test.confluxrpc.org/ws/v2',
+      defaultEth: 'wss://test.confluxrpc.com/ws/v2',
     },
     settings: {
       chainId: 1,
@@ -148,7 +56,7 @@ export const networkConfigs = {
       shortName: 'cfx-testnet',
       type: 'private',
       indexServiceUrl: 'http://localhost:2000',
-      live: true,
+      live: false,
     },
     providers: [{ id: 'provided' }],
   },
