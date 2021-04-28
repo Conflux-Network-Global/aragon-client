@@ -55,7 +55,7 @@ export const networkConfigs = {
       name: 'Conflux Testnet',
       shortName: 'cfx-testnet',
       type: 'private',
-      indexServiceUrl: 'http://aragontest-indexer.confluxnetwork.org',
+      indexServiceUrl: 'https://aragontest-indexer.confluxnetwork.org',
       live: false,
     },
     providers: [{ id: 'provided' }],
