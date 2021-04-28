@@ -17,7 +17,7 @@ import EmptyBlock from './EmptyBlock'
 
 const SCREENS = [
   { id: 'installed', label: 'Installed apps' },
- // { id: 'discover', label: 'Discover apps' },
+  // { id: 'discover', label: 'Discover apps' },
 ]
 
 function getLocation(localPath, extendedRepos) {
