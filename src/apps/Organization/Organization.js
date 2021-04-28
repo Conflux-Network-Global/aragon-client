@@ -240,7 +240,7 @@ const Organization = React.memo(function Organization({
               )}
             </ul>
           </Box>
-          {tenderlyImportUrl && (
+          {tenderlyImportUrl && true === false && (
             <Box heading="Import organization into Tenderly">
               <p
                 css={`
