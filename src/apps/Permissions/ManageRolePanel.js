@@ -17,6 +17,7 @@ import { isAddress, isEmptyAddress } from '../../web3-utils'
 import LocalLabelAppBadge from '../../components/LocalLabelAppBadge/LocalLabelAppBadge'
 import EntitySelector from './EntitySelector'
 import PermissionsIdentityBadge from './PermissionsIdentityBadge'
+import { network } from '../../environment'
 
 const CREATE_PERMISSION = Symbol('CREATE_PERMISSION')
 const VIEW_PERMISSION = Symbol('VIEW_PERMISSION')
@@ -252,7 +253,14 @@ class ManageRolePanel extends React.PureComponent {
       return 'No manager'
     }
     if (manager.type === 'app') {
-      return <LocalLabelAppBadge app={manager.app} apps={[]} noIdentifier />
+      return (
+        <LocalLabelAppBadge
+          app={manager.app}
+          chainId={network.chainId}
+          apps={[]}
+          noIdentifier
+        />
+      )
     }
     return <PermissionsIdentityBadge entity={manager.address} />
   }
@@ -288,7 +296,14 @@ class ManageRolePanel extends React.PureComponent {
           `}
         >
           <Field label="On app">
-            {app && <LocalLabelAppBadge app={app} apps={[]} noIdentifier />}
+            {app && (
+              <LocalLabelAppBadge
+                app={app}
+                chainId={network.chainId}
+                apps={[]}
+                noIdentifier
+              />
+            )}
           </Field>
 
           <Field label="Action">

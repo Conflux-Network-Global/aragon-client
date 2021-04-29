@@ -22,7 +22,11 @@ import { sanitizeNetworkType } from '../../network-config'
 import { AppType, DaoAddressType } from '../../prop-types'
 import { useRouting, ARAGONID_ENS_DOMAIN } from '../../routing'
 import airdrop, { testTokensEnabled } from '../../testnet/airdrop'
-import { toChecksumAddress } from '../../web3-utils'
+import {
+  formatAddress,
+  toChecksumAddress,
+  shortenAddress,
+} from '../../web3-utils'
 import { useWallet } from '../../wallet'
 
 const Organization = React.memo(function Organization({
@@ -34,7 +38,7 @@ const Organization = React.memo(function Organization({
   onShowOrgVersionDetails,
 }) {
   const theme = useTheme()
-  const { layoutName } = useLayout()
+  // const { layoutName } = useLayout()
   const wallet = useWallet()
   const { mode } = useRouting()
   const { orgAddress } = mode
@@ -107,7 +111,7 @@ const Organization = React.memo(function Organization({
   const enableTransactions =
     wallet.connected && wallet.networkType === network.type
   const isMainnet = network.type === 'main'
-  const shortAddresses = layoutName !== 'large'
+  // const shortAddresses = layoutName !== 'large'
 
   const organizationText = checksummedDaoAddr ? (
     <span>
@@ -168,8 +172,8 @@ const Organization = React.memo(function Organization({
               `}
             >
               <LocalIdentityBadge
-                entity={checksummedDaoAddr}
-                shorten={shortAddresses}
+                entity={formatAddress(checksummedDaoAddr)}
+                shorten={shortenAddress(formatAddress(checksummedDaoAddr))}
               />
             </div>
             <Info>
@@ -231,8 +235,8 @@ const Organization = React.memo(function Organization({
                       `}
                     >
                       <LocalIdentityBadge
-                        entity={proxyAddress}
-                        shorten={shortAddresses}
+                        entity={formatAddress(proxyAddress)}
+                        shorten={shortenAddress(formatAddress(proxyAddress))}
                       />
                     </div>
                   </li>

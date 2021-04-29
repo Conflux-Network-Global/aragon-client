@@ -18,6 +18,7 @@ import { usePermissions } from '../../contexts/PermissionsContext'
 import LocalLabelAppBadge from '../../components/LocalLabelAppBadge/LocalLabelAppBadge'
 import { getUnassignedEntity } from '../../permissions'
 import PermissionsIdentityBadge from './PermissionsIdentityBadge'
+import { network } from '../../environment'
 
 const PermissionsView = React.memo(function PermissionsView({
   heading,
@@ -87,7 +88,12 @@ function renderEntry({ entities, app, role, manager }, showApps) {
     >
       {role.name}
     </span>,
-    <LocalLabelAppBadge app={app} apps={[]} noIdentifier />,
+    <LocalLabelAppBadge
+      app={app}
+      chainId={network.chainId}
+      apps={[]}
+      noIdentifier
+    />,
     <EntryEntities entities={entities} />,
     <EntityBadge entity={manager} />,
   ]
@@ -196,6 +202,7 @@ function EntryActions({ entry, onAssignPermission, onManageRole }) {
     </ContextMenu>
   )
 }
+
 /* eslint-enable react/prop-types */
 
 /* eslint-disable react/prop-types */
@@ -233,6 +240,7 @@ function ChildEntity({ appAddress, entity, roleBytes }) {
     </div>
   )
 }
+
 /* eslint-enable react/prop-types */
 
 /* eslint-disable react/prop-types */
@@ -255,16 +263,25 @@ function EntryEntities({ entities }) {
     </span>
   )
 }
+
 /* eslint-enable react/prop-types */
 
 /* eslint-disable react/prop-types */
 function EntityBadge({ entity }) {
   if (entity.type === 'app') {
-    return <LocalLabelAppBadge app={entity.app} apps={[]} noIdentifier />
+    return (
+      <LocalLabelAppBadge
+        app={entity.app}
+        chainId={network.chainId}
+        apps={[]}
+        noIdentifier
+      />
+    )
   }
 
   return <PermissionsIdentityBadge entity={entity.address} />
 }
+
 /* eslint-enable react/prop-types */
 
 export default PermissionsView

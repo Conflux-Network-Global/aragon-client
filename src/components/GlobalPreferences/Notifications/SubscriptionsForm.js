@@ -18,6 +18,7 @@ import styled from 'styled-components'
 import { createSubscription } from './notification-service-api'
 import notificationImage from './notification.png'
 import LocalLabelAppBadge from '../../LocalLabelAppBadge/LocalLabelAppBadge'
+import { network } from '../../../environment'
 
 const getEventNamesFromAbi = memoize(abi =>
   abi.filter(item => item.type === 'event').map(item => item.name)
@@ -208,7 +209,15 @@ export default function SubscriptionsForm({
   }
 
   const appLabels = subscribableApps.map(app => {
-    return <LocalLabelAppBadge app={app} apps={apps} badgeOnly compact />
+    return (
+      <LocalLabelAppBadge
+        app={app}
+        chainId={network.chainId}
+        apps={apps}
+        badgeOnly
+        compact
+      />
+    )
   })
   const isSubscribeDisabled =
     selectedAppIdx === -1 || selectedEventIdx === -1 || isSubmitting

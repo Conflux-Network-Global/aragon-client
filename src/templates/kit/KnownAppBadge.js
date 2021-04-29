@@ -17,6 +17,7 @@ import iconSvgTokens from './icons/token-manager.svg'
 import iconSvgTokenRequest from './icons/token-request.svg'
 import iconSvgVault from './icons/vault.svg'
 import iconSvgVoting from './icons/voting.svg'
+import { network } from '../../environment'
 
 const KNOWN_ICONS = new Map([
   ['address-book.aragonpm.eth', iconSvgAddressBook],
@@ -38,8 +39,16 @@ const KNOWN_ICONS = new Map([
 ])
 
 function KnownAppBadge({ appName, compact, label }) {
-  return <AppBadge badgeOnly iconSrc={KNOWN_ICONS.get(appName)} label={label} />
+  return (
+    <AppBadge
+      badgeOnly
+      chainId={network.chainId}
+      iconSrc={KNOWN_ICONS.get(appName)}
+      label={label}
+    />
+  )
 }
+
 KnownAppBadge.propTypes = {
   appName: PropTypes.string.isRequired,
   compact: PropTypes.bool,

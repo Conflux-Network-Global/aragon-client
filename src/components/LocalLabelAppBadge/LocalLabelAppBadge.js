@@ -13,6 +13,7 @@ import {
   IdentityContext,
   identityEventTypes,
 } from '../IdentityManager/IdentityManager'
+import { network } from '../../environment'
 
 const KNOWN_ICONS = new Map([
   [
@@ -78,6 +79,7 @@ const LocalLabelAppBadge = React.memo(function LocalLabelAppBadge({
     >
       <AppBadge
         appAddress={proxyAddress}
+        chainid={network.chainId}
         label={label}
         iconSrc={iconSrc ? `${baseUrl}${iconSrc}` : KNOWN_ICONS.get(appId)}
         {...props}

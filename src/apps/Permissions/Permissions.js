@@ -10,6 +10,7 @@ import AppPermissions from './AppPermissions'
 import AssignPermissionPanel from './AssignPermissionPanel'
 import Home from './Home/Home'
 import ManageRolePanel from './ManageRolePanel'
+import { network } from '../../environment'
 
 const HOME_TABS = ['App permissions', 'System permissions']
 
@@ -167,7 +168,12 @@ function Permissions({
                 >
                   {`${location.app.name} permissions`}
                 </div>
-                <LocalLabelAppBadge app={location.app} apps={[]} noIdentifier />
+                <LocalLabelAppBadge
+                  app={location.app}
+                  chainId={network.chainId}
+                  apps={[]}
+                  noIdentifier
+                />
               </div>
             </Header.Title>
           ) : (
