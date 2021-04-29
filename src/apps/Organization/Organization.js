@@ -11,7 +11,7 @@ import {
   GU,
   textStyle,
   unselectable,
-  useLayout,
+  // useLayout,
   useTheme,
 } from '@conflux-/aragon-ui'
 import LocalIdentityBadge from '../../components/IdentityBadge/LocalIdentityBadge'
