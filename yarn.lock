@@ -988,10 +988,10 @@
     mkdirp "^0.5.1"
     truffle-flattener "^1.2.9"
 
-"@conflux-/aragon-ui@^1.5.5":
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-ui/-/aragon-ui-1.5.5.tgz#91ccf439b766a29e2813dc8ab4337ea9280b3d71"
-  integrity sha512-j+wth7RTtBQ73/213fIbqX39qQTr/HpfM0pSl1EFWaHtQMuVJQGGarvxY+QJBRSYKg4J6/MNH75GA/XqR6/qvQ==
+"@conflux-/aragon-ui@^1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-ui/-/aragon-ui-1.5.6.tgz#3cc6a20d5c43ff5789c40bea4eaf41add081a60e"
+  integrity sha512-kAcsssQcCoMP9KrbhA5A2NaKLqtFJDRu5h5PGbTceLZteWD3a40pwBCKAjHZCnF1QI+7WSQGJqYD5mpnxiOyhw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     airbnb-prop-types "^2.9.0"
