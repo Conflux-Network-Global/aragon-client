@@ -4,3 +4,4 @@ e2e/
 .github/
 build/
 .env
+public/
