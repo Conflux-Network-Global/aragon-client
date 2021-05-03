@@ -145,6 +145,10 @@ function preprocess(req) {
         req.params[0].to = format.address(req.params[0].to, network.chainId)
       }
 
+      if (req.params[0] && req.params[0].from) {
+        req.params[0].from = format.address(req.params[0].from, network.chainId)
+      }
+
       // console.trace(req)
       break
 

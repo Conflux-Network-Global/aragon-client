@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from '@conflux-/aragon-ui'
 import { EthereumAddressType } from '../../prop-types'
 import EtherscanLink from '../Etherscan/EtherscanLink'
+import { formatAddress } from '../../web3-utils'
 
 const AddressLink = ({ children, to }) =>
   to ? (
@@ -10,10 +11,10 @@ const AddressLink = ({ children, to }) =>
       {url =>
         url ? (
           <Link href={url} focusRingSpacing={[3, 2]}>
-            {children || to}
+            {children || formatAddress(to)}
           </Link>
         ) : (
-          to
+          formatAddress(to)
         )
       }
     </EtherscanLink>

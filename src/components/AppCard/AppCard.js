@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { Card, Tag, textStyle, unselectable, GU } from '@conflux-/aragon-ui'
 import { AppType } from '../../prop-types'
-import { shortenAddress } from '../../web3-utils'
+import { formatAddress, shortenAddress } from "../../web3-utils";
 import AppIcon from '../AppIcon/AppIcon'
 
 const AppCard = React.memo(function AppCard({ onOpen, app }) {
@@ -18,12 +18,12 @@ const AppCard = React.memo(function AppCard({ onOpen, app }) {
     onOpen(proxyAddress)
   }, [onOpen, proxyAddress])
 
-  const instanceTitle = `Address: ${proxyAddress}`
+  const instanceTitle = `Address: ${formatAddress(proxyAddress)}`
   const instanceLabel = isAragonOsInternalApp
     ? 'System App'
     : !hasWebApp
     ? 'Background App'
-    : identifier || shortenAddress(proxyAddress)
+    : identifier || shortenAddress(formatAddress(proxyAddress))
 
   return (
     <Card

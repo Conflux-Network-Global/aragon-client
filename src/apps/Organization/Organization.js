@@ -124,10 +124,12 @@ const Organization = React.memo(function Organization({
           .
         </span>
       ) : (
-        <span>
-          The current software version is 0.8 Camino. You can see{' '}
-          <Link onClick={onShowOrgVersionDetails}>what's new here</Link>.
-        </span>
+        false && (
+          <span>
+            The current software version is 0.8 Camino. You can see{' '}
+            <Link onClick={onShowOrgVersionDetails}>what's new here</Link>.
+          </span>
+        )
       )}
     </span>
   ) : (
