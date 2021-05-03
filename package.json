@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@aragon/templates-tokens": "^1.2.1",
-    "@conflux-/aragon-ui": "^1.5.6",
-    "@conflux-/aragon-wrapper": "^5.0.4",
+    "@conflux-/aragon-ui": "^1.5.10",
+    "@conflux-/aragon-wrapper": "^5.0.5",
     "@sentry/browser": "^5.17.0",
     "@ungap/event-target": "^0.1.0",
     "clipboard-polyfill": "^2.8.6",

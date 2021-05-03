@@ -2,13 +2,20 @@ import { format } from 'js-conflux-sdk'
 import { network } from './environment'
 import Web3 from 'web3'
 
-let logsProvider
+let logsProvider = null
 
 function getLogsProvider() {
   if (!logsProvider) {
     const options = {
       keepAlive: true,
+      withCredentials: false,
       timeout: 100000, // ms
+      headers: [
+        {
+          name: 'Access-Control-Allow-Origin',
+          value: '*',
+        },
+      ],
     }
 
     logsProvider = new Web3.providers.HttpProvider(
