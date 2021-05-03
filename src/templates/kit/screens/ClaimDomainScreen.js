@@ -75,7 +75,7 @@ function ClaimDomainScreen({
         Aragon uses the{' '}
         <Link href="https://ens.domains/">Ethereum Name Service (ENS)</Link> to
         assign names to organizations. The name you choose will be mapped to
-        your organization’s Ethereum address and cannot be changed after you
+        your organization’s Conflux address and cannot be changed after you
         launch your organization.
       </Info>
 

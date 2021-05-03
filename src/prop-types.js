@@ -54,7 +54,7 @@ const ethereumAddressValidator = (props, propName, componentName) => {
     }
 
     return new Error(
-      `Invalid prop ${propName} supplied to ${componentName}. The provided value is not a valid ethereum address.${nonAddress &&
+      `Invalid prop ${propName} supplied to ${componentName}. The provided value is not a valid conflux or ethereum address.${nonAddress &&
         ` You provided "${nonAddress}"`}`
     )
   }

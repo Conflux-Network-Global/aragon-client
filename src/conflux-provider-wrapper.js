@@ -237,6 +237,14 @@ function processTransaction(transactionData, epochNumber) {
   if (typeof transactionData === 'object' && transactionData !== null) {
     transactionData.input = transactionData.data
 
+    if (transactionData.to) {
+      transactionData.to = format.hexAddress(transactionData.to)
+    }
+
+    if (transactionData.from) {
+      transactionData.from = format.hexAddress(transactionData.from)
+    }
+
     if (epochNumber !== null) {
       transactionData.blockNumber = epochNumber
     }
