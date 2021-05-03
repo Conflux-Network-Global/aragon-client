@@ -120,6 +120,13 @@ function preprocess(req) {
   // console.log('preprocess begin', req)
 
   switch (req.method) {
+    case 'eth_getBalance':
+      req.params[0] = format.address(req.params[0], network.chainId)
+      if (req.params[1] === 'latest') {
+        req.params[1] = 'latest_state'
+      }
+      req.method = 'cfx_getBalance'
+      break
     case 'eth_sendTransaction':
       req.method = 'cfx_sendTransaction'
 
