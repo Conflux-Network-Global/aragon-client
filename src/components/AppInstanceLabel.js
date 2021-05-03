@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Tag, GU, useViewport } from '@conflux-/aragon-ui'
 import { AppType, EthereumAddressType } from '../prop-types'
-import { shortenAddress } from '../web3-utils'
+import { formatAddress, shortenAddress } from '../web3-utils'
 import AppIcon from './AppIcon/AppIcon'
 
 const AppInstanceLabel = React.memo(
@@ -49,8 +49,11 @@ const AppInstanceLabel = React.memo(
         </span>
         <Tag
           mode="identifier"
-          label={(app && app.identifier) || shortenAddress(proxyAddress)}
-          title={proxyAddress}
+          label={
+            (app && app.identifier) ||
+            shortenAddress(formatAddress(proxyAddress))
+          }
+          title={formatAddress(proxyAddress)}
           css={`
             margin-left: ${1 * GU}px;
           `}

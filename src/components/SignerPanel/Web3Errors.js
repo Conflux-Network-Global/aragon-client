@@ -49,9 +49,9 @@ export function NoWeb3Provider({ intent, onClose }) {
   const onElectron = isElectron()
   const neededText = onElectron
     ? 'You need to have Frame installed and enabled'
-    : 'You need to have an Ethereum wallet installed and enabled'
+    : 'You need to have Conflux portal installed and enabled'
 
-  const actionText = (
+  const actionText = ' ' || (
     <span>
       Please install and enable{' '}
       <Link

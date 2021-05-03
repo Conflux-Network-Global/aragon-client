@@ -453,7 +453,7 @@ function MemberField({
           adornmentPosition="end"
           adornmentSettings={{ width: 52, padding: 8 }}
           onChange={handleAccountChange}
-          placeholder="Ethereum address"
+          placeholder="Conflux address"
           value={account}
           wide
           css={`
