@@ -368,8 +368,16 @@ function wrapSendAsync(provider) {
           response.result.miner = format.hexAddress(response.result.miner)
         }
 
-        // console.log('sendAsync success', 'data:', data, 'response:', response)
-        return callback(err, response)
+        /*
+        console.log(
+          'sendAsync success',
+          'data:',
+          message,
+          'response:',
+          response
+        )
+        */
+        return callback(err || response.error, response)
       }
 
       return message.method === 'cfx_getLogs'
@@ -460,7 +468,7 @@ function wrapSend(provider) {
           response = postprocess(message, response)
 
           // console.log('Conflux Portal send final:', message, response)
-          return callback(err, response)
+          return callback(err || response.error, response)
         }
 
         // execute call
