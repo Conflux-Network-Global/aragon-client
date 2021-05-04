@@ -299,18 +299,17 @@ function useDeploymentState(
 
           if (!cancelled) {
             try {
-              console.log('transaction', transaction)
-
-              // todo: i think await is required
-              // await walletWeb3.eth.sendTransaction(transaction)
-              walletWeb3.eth.sendTransaction(transaction)
-
-              if (!cancelled) {
-                setTransactionProgress(({ signed, errored }) => ({
-                  signed: signed + 1,
-                  errored,
-                }))
-              }
+              await walletWeb3.eth.sendTransaction(
+                transaction,
+                (err, response) => {
+                  if (!err && !!response && !cancelled) {
+                    setTransactionProgress(({ signed, errored }) => ({
+                      signed: signed + 1,
+                      errored,
+                    }))
+                  }
+                }
+              )
             } catch (err) {
               log('Failed onboarding transaction', err)
               if (!cancelled) {
@@ -326,7 +325,7 @@ function useDeploymentState(
           }
         }, Promise.resolve())
     }
-    createTransactions()
+    void createTransactions()
 
     return () => {
       cancelled = true
