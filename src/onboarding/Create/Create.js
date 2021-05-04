@@ -301,8 +301,8 @@ function useDeploymentState(
             try {
               await walletWeb3.eth.sendTransaction(
                 transaction,
-                (err, response) => {
-                  if (!err && !!response && !cancelled) {
+                (err, txHash) => {
+                  if (!err && !!txHash && !cancelled) {
                     setTransactionProgress(({ signed, errored }) => ({
                       signed: signed + 1,
                       errored,
