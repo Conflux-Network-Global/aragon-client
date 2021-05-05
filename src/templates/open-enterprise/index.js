@@ -15,7 +15,7 @@ import icon from './icon.svg'
 const ONE_PERCENT = new BN(10).pow(new BN(16))
 
 function completeDomain(domain) {
-  return domain ? `${domain}.aragonid.eth` : ''
+  return domain ? `${domain}.aragonid.cfx` : ''
 }
 
 function adjustVotingSettings(support, quorum) {

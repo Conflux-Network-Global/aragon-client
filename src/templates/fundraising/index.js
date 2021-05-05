@@ -28,7 +28,7 @@ const oneBlock = BN(15)
 const one = BN(1)
 
 function completeDomain(domain) {
-  return domain ? `${domain}.aragonid.eth` : ''
+  return domain ? `${domain}.aragonid.cfx` : ''
 }
 
 function adjustVotingSettings(support, quorum) {
