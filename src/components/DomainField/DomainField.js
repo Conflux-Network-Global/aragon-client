@@ -144,7 +144,7 @@ DomainField.propTypes = {
 
 DomainField.defaultProps = {
   detectFullDomains: false,
-  domainEnd: '.aragonid.eth',
+  domainEnd: '.aragonid.cfx',
   label: 'Name of the organization',
   placeholder: 'Type an organization name',
   status: DOMAIN_CHECK,
