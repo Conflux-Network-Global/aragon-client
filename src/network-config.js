@@ -45,7 +45,7 @@ export const networkConfigs = {
     addresses: {
       ensRegistry:
         localEnsRegistryAddress ||
-        'cfxtest:acf47bez0kr58g05a71mhmktdnm3twvc3j6mwas2mr',
+        'cfxtest:acgykx8szfh9hzt93pgkcbpc47g290gkgy4by71jdg',
     },
     nodes: {
       defaultEth: 'wss://test.confluxrpc.com/ws/v2',
