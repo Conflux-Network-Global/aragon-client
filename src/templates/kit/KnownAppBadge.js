@@ -19,22 +19,22 @@ import iconSvgVault from './icons/vault.svg'
 import iconSvgVoting from './icons/voting.svg'
 
 const KNOWN_ICONS = new Map([
-  ['address-book.aragonpm.eth', iconSvgAddressBook],
-  ['agent.aragonpm.eth', iconSvgAgent],
-  ['allocations.aragonpm.eth', iconSvgAllocations],
-  ['aragon-fundraising.aragonpm.eth', iconSvgFundraising],
-  ['dandelion-voting.aragonpm.eth', iconSvgDandelionVoting],
-  ['dot-voting.aragonpm.eth', iconSvgDotVoting],
-  ['finance.aragonpm.eth', iconSvgFinance],
-  ['payroll.aragonpm.eth', iconSvgPayroll],
-  ['projects.aragonpm.eth', iconSvgProjects],
-  ['redemptions.aragonpm.eth', iconSvgRedemptions],
-  ['rewards.aragonpm.eth', iconSvgRewards],
-  ['time-lock.aragonpm.eth', iconSvgTimeLock],
-  ['token-manager.aragonpm.eth', iconSvgTokens],
-  ['token-request.aragonpm.eth', iconSvgTokenRequest],
-  ['vault.aragonpm.eth', iconSvgVault],
-  ['voting.aragonpm.eth', iconSvgVoting],
+  ['address-book.aragonpm.cfx', iconSvgAddressBook],
+  ['agent.aragonpm.cfx', iconSvgAgent],
+  ['allocations.aragonpm.cfx', iconSvgAllocations],
+  ['aragon-fundraising.aragonpm.cfx', iconSvgFundraising],
+  ['dandelion-voting.aragonpm.cfx', iconSvgDandelionVoting],
+  ['dot-voting.aragonpm.cfx', iconSvgDotVoting],
+  ['finance.aragonpm.cfx', iconSvgFinance],
+  ['payroll.aragonpm.cfx', iconSvgPayroll],
+  ['projects.aragonpm.cfx', iconSvgProjects],
+  ['redemptions.aragonpm.cfx', iconSvgRedemptions],
+  ['rewards.aragonpm.cfx', iconSvgRewards],
+  ['time-lock.aragonpm.cfx', iconSvgTimeLock],
+  ['token-manager.aragonpm.cfx', iconSvgTokens],
+  ['token-request.aragonpm.cfx', iconSvgTokenRequest],
+  ['vault.aragonpm.cfx', iconSvgVault],
+  ['voting.aragonpm.cfx', iconSvgVoting],
 ])
 
 function KnownAppBadge({ appName, compact, label }) {

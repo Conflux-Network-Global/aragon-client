@@ -1,6 +1,6 @@
 import { hash as namehash } from 'eth-ens-namehash'
 
-// These app IDs are generated from <name>.aragonpm.eth
+// These app IDs are generated from <name>.aragonpm.cfx
 export default {
   Agent: namehash('agent.aragonpm.cfx'),
   Finance: namehash('finance.aragonpm.cfx'),

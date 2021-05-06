@@ -35,7 +35,7 @@
   "dependencies": {
     "@aragon/templates-tokens": "^1.2.1",
     "@conflux-/aragon-ui": "^1.5.11",
-    "@conflux-/aragon-wrapper": "^5.0.6",
+    "@conflux-/aragon-wrapper": "^5.0.8",
     "@sentry/browser": "^5.17.0",
     "@ungap/event-target": "^0.1.0",
     "clipboard-polyfill": "^2.8.6",
@@ -71,7 +71,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
-    "@conflux-/aragon-os": "4.4.2",
+    "@conflux-/aragon-os": "4.4.4",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^25.1.0",
     "babel-plugin-styled-components": "^1.10.6",
