@@ -36,7 +36,7 @@ function adjustVotingSettings(support, quorum) {
 }
 
 export default {
-  id: 'company-template.aragonpm.eth',
+  id: 'company-template.aragonpm.cfx',
   name: 'Company',
   header,
   icon,
@@ -48,13 +48,13 @@ export default {
     'https://help.aragon.org/article/30-create-a-new-company-organization',
   sourceCodeUrl:
     'https://github.com/aragon/dao-templates/tree/templates-company-v1.0.0/templates/company',
-  registry: 'aragonpm.eth',
+  registry: 'aragonpm.cfx',
   apps: [
-    { appName: 'voting.aragonpm.eth', label: 'Voting' },
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens' },
-    { appName: 'finance.aragonpm.eth', label: 'Finance' },
+    { appName: 'voting.aragonpm.cfx', label: 'Voting' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens' },
+    { appName: 'finance.aragonpm.cfx', label: 'Finance' },
   ],
-  optionalApps: [{ appName: 'agent.aragonpm.eth', label: 'Agent' }],
+  optionalApps: [{ appName: 'agent.aragonpm.cfx', label: 'Agent' }],
   screens: [
     [
       data => completeDomain(data.domain) || 'Claim domain',
@@ -79,14 +79,14 @@ export default {
               },
               {
                 label: (
-                  <KnownAppBadge appName="voting.aragonpm.eth" label="Voting" />
+                  <KnownAppBadge appName="voting.aragonpm.cfx" label="Voting" />
                 ),
                 fields: VotingScreen.formatReviewFields(voting),
               },
               {
                 label: (
                   <KnownAppBadge
-                    appName="token-manager.aragonpm.eth"
+                    appName="token-manager.aragonpm.cfx"
                     label="Tokens"
                   />
                 ),
@@ -103,7 +103,7 @@ export default {
     const hasPayroll = false
 
     const { domain, optionalApps = [], tokens, voting } = data
-    const useAgentAsVault = optionalApps.includes('agent.aragonpm.eth')
+    const useAgentAsVault = optionalApps.includes('agent.aragonpm.cfx')
 
     const { tokenName, tokenSymbol, members } = tokens
     const baseStake = new BN(10).pow(new BN(18))

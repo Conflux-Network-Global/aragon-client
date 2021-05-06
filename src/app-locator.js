@@ -31,7 +31,7 @@ function getAppId(app) {
   }
 
   // ENS app ID
-  if (app.endsWith('.aragonpm.eth')) {
+  if (app.endsWith('.aragonpm.cfx')) {
     return namehash(app)
   }
 

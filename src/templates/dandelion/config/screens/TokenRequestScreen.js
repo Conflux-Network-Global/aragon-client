@@ -140,7 +140,7 @@ function TokenRequestScreen({
               `}
             >
               <KnownAppBadge
-                appName="token-request.aragonpm.eth"
+                appName="token-request.aragonpm.cfx"
                 label={appLabel}
               />
             </span>

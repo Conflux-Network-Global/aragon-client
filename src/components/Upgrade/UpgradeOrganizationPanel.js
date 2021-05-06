@@ -28,7 +28,7 @@ const SOURCE = [
   'github.com/aragon/aragon-apps',
   'https://github.com/aragon/aragon-apps',
 ]
-const REGISTRY = ['aragonpm.eth', 'https://etherscan.io/address/aragonpm.eth']
+const REGISTRY = ['aragonpm.cfx', 'https://etherscan.io/address/aragonpm.cfx']
 
 const UpgradeOrganizationPanel = React.memo(
   ({ repos = [], opened, onClose, daoAddress, wrapper }) => {

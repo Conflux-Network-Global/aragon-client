@@ -219,7 +219,7 @@ function Holders({
               `}
             >
               <KnownAppBadge
-                appName="token-manager.aragonpm.eth"
+                appName="token-manager.aragonpm.cfx"
                 label="Token: Token Holders"
               />
             </span>
@@ -306,7 +306,7 @@ function Holders({
               `}
             >
               <KnownAppBadge
-                appName="voting.aragonpm.eth"
+                appName="voting.aragonpm.cfx"
                 label="Voting: Token Holders"
               />
             </span>

@@ -45,7 +45,7 @@ const prepareAppsForFrontend = (apps, daoAddress, gateway) => {
     if (app.status) {
       tags.push(app.status)
     }
-    if (apmRegistry && apmRegistry !== 'aragonpm.eth') {
+    if (apmRegistry && apmRegistry !== 'aragonpm.cfx') {
       tags.push(`${apmRegistry} registry`)
     }
     if (!hasWebApp(app)) {

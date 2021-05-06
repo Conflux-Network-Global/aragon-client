@@ -43,7 +43,7 @@ describe('getPath()', () => {
       getPath(
         locator({
           name: 'org',
-          orgAddress: 'p.aragonid.eth',
+          orgAddress: 'p.aragonid.cfx',
           instanceId: ADDRESS,
         })
       )
@@ -115,7 +115,7 @@ describe('parsePath()', () => {
     expect(parsePath('/p')).toEqual(
       locator({
         name: 'org',
-        orgAddress: 'p.aragonid.eth',
+        orgAddress: 'p.aragonid.cfx',
         instanceId: 'home',
         instancePath: '/',
       })
@@ -126,7 +126,7 @@ describe('parsePath()', () => {
     expect(parsePath(`/p/${ADDRESS}`)).toEqual(
       locator({
         name: 'org',
-        orgAddress: 'p.aragonid.eth',
+        orgAddress: 'p.aragonid.cfx',
         instanceId: ADDRESS,
         instancePath: '/',
       })
@@ -137,7 +137,7 @@ describe('parsePath()', () => {
     expect(parsePath(`/p/${ADDRESS}/test`)).toEqual(
       locator({
         name: 'org',
-        orgAddress: 'p.aragonid.eth',
+        orgAddress: 'p.aragonid.cfx',
         instanceId: ADDRESS,
         instancePath: '/test',
       })
@@ -161,7 +161,7 @@ describe('parsePath()', () => {
       locator(
         {
           name: 'org',
-          orgAddress: 'p.aragonid.eth',
+          orgAddress: 'p.aragonid.cfx',
           instanceId: ADDRESS,
           instancePath: '/test',
         },
@@ -174,7 +174,7 @@ describe('parsePath()', () => {
     expect(parsePath(`/p/${ADDRESS}///`)).toEqual(
       locator({
         name: 'org',
-        orgAddress: 'p.aragonid.eth',
+        orgAddress: 'p.aragonid.cfx',
         instanceId: ADDRESS,
         instancePath: '///',
       })

@@ -139,7 +139,7 @@ function LockScreen({
               `}
             >
               <KnownAppBadge
-                appName="time-lock.aragonpm.eth"
+                appName="time-lock.aragonpm.cfx"
                 label={appLabel}
               />
             </span>

@@ -47,7 +47,7 @@ function adjustDotVotingSettings(dvSupport, dvQuorum) {
 }
 
 export default {
-  id: 'open-enterprise-template.aragonpm.eth',
+  id: 'open-enterprise-template.aragonpm.cfx',
   name: 'Open Enterprise',
   header,
   icon,
@@ -57,16 +57,16 @@ export default {
   `,
   userGuideUrl: 'https://autark.gitbook.io/open-enterprise/',
   sourceCodeUrl: 'https://github.com/AutarkLabs/open-enterprise',
-  registry: 'aragonpm.eth',
+  registry: 'aragonpm.cfx',
   apps: [
-    { appName: 'voting.aragonpm.eth', label: 'Voting' },
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens' },
-    { appName: 'finance.aragonpm.eth', label: 'Finance' },
-    { appName: 'address-book.aragonpm.eth', label: 'Address Book' },
-    { appName: 'allocations.aragonpm.eth', label: 'Allocations' },
-    { appName: 'dot-voting.aragonpm.eth', label: 'Dot Voting' },
-    { appName: 'projects.aragonpm.eth', label: 'Projects' },
-    { appName: 'rewards.aragonpm.eth', label: 'Rewards' },
+    { appName: 'voting.aragonpm.cfx', label: 'Voting' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens' },
+    { appName: 'finance.aragonpm.cfx', label: 'Finance' },
+    { appName: 'address-book.aragonpm.cfx', label: 'Address Book' },
+    { appName: 'allocations.aragonpm.cfx', label: 'Allocations' },
+    { appName: 'dot-voting.aragonpm.cfx', label: 'Dot Voting' },
+    { appName: 'projects.aragonpm.cfx', label: 'Projects' },
+    { appName: 'rewards.aragonpm.cfx', label: 'Rewards' },
   ],
   screens: [
     [
@@ -93,14 +93,14 @@ export default {
               },
               {
                 label: (
-                  <KnownAppBadge appName="voting.aragonpm.eth" label="Voting" />
+                  <KnownAppBadge appName="voting.aragonpm.cfx" label="Voting" />
                 ),
                 fields: VotingScreen.formatReviewFields(voting),
               },
               {
                 label: (
                   <KnownAppBadge
-                    appName="dot-voting.aragonpm.eth"
+                    appName="dot-voting.aragonpm.cfx"
                     label="Dot Voting"
                   />
                 ),
@@ -109,7 +109,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="token-manager.aragonpm.eth"
+                    appName="token-manager.aragonpm.cfx"
                     label="Tokens"
                   />
                 ),
