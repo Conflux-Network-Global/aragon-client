@@ -978,10 +978,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@conflux-/aragon-os@4.4.0", "@conflux-/aragon-os@^4.2.1":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.0.tgz#5a3df5076442d60b644e2a6036f52ead1a611c3c"
-  integrity sha512-jhIT5Q6ZsWJwz3EWrxkYQ8gPGqbWe81IOdiGfVkAkhhfsw3R4e/+c2m9sRizw0LpEWGGoTxszvDBCXB5wGn3bA==
+"@conflux-/aragon-os@4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.2.tgz#5725f47fc2bffa88716eab3fb93f0c401149a2d3"
+  integrity sha512-4mRpBKFhluwOE4ldZcWjlYIzIGpEqlG/Tlb3kCBS7Bnpo85GwFr7kguVF9ckyhSmGz9q4otuCNZb4Ny8+4FWFg==
+  dependencies:
+    "@aragon/truffle-config-v4" "^1.0.1"
+    homedir "^0.6.0"
+    mkdirp "^0.5.1"
+    truffle-flattener "^1.2.9"
+
+"@conflux-/aragon-os@^4.4.2":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.4.tgz#9cc1051e24f5dcfedd1a66063d99f5c3ff36f1e7"
+  integrity sha512-PPVPLsmop1xhDZ59ASdGnqtpfohGVwMrT2OtNCizCtGiLdMnW9/ESXpO3+v4bO/duqEXdCIH9lOpDwiAn0RYBw==
   dependencies:
     "@aragon/truffle-config-v4" "^1.0.1"
     homedir "^0.6.0"
@@ -1012,14 +1022,14 @@
     recursive-copy "^2.0.9"
     use-inside "^0.2.0"
 
-"@conflux-/aragon-wrapper@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.5.tgz#98999d0907f331e0878f2b5eaccf9cdc3afcc275"
-  integrity sha512-7ULNKU2V6+dPB0Ogtyyj6sh97/gI/8CV+j/nxJdmQ9e8FD/76kXH5S00PwwYyqYmMs9xyThQEdexIflkpdudAQ==
+"@conflux-/aragon-wrapper@^5.0.6":
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.6.tgz#67925ff5e1b1e59477b2c20095abfd0a129edc13"
+  integrity sha512-sChHn7q730coLU0E2QU04KECJIhA+z01ybouvGH9VSckalxYzuBrjY1kXay3pyZzmX6G/7ul9Y2BEFJAv5uRQA==
   dependencies:
     "@aragon/rpc-messenger" "^2.0.0"
     "@babel/runtime" "^7.1.2"
-    "@conflux-/aragon-os" "^4.2.1"
+    "@conflux-/aragon-os" "^4.4.2"
     axios "^0.19.0"
     dot-prop "^4.2.0"
     eth-ens-namehash "^2.0.8"
