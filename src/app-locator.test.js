@@ -109,6 +109,6 @@ test('ENS IDs', () => {
   }
 
   expect(
-    parseAppLocator('voting.aragonpm.eth,finance.aragonpm.eth:3333')
+    parseAppLocator('voting.aragonpm.cfx,finance.aragonpm.cfx:3333')
   ).toEqual(result)
 })
