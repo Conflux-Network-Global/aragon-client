@@ -67,6 +67,7 @@ class ActivityProviderBase extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { daoDomain, account } = this.props
+    this.refreshPendingActivities()
     if (daoDomain !== prevProps.daoDomain || account !== prevProps.account) {
       this.updateStoredList()
     }
