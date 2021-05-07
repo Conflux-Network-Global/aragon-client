@@ -1012,10 +1012,10 @@
     recursive-copy "^2.0.9"
     use-inside "^0.2.0"
 
-"@conflux-/aragon-wrapper@^5.0.8":
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.8.tgz#380665e2c9b4b697f9f8892dcaf2437991de2bc5"
-  integrity sha512-UVRNnOzDYLnrpePmW7JCc6prKNlIfyJrb624xRr9ZjYnsrO4c7s5xFlCqTS5j0xu0vd6WlLn0XWrEJvagDhHfg==
+"@conflux-/aragon-wrapper@^5.0.9":
+  version "5.0.9"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.9.tgz#11aa161a2e3377fad7e5a1a901f9d4c824bd2c81"
+  integrity sha512-YqgZKxdvH9gDMfRvTlSwLVDez5UBJXLwhc0J0XeeA3XsXuyFYcbtnrc9P5VMwSbS3zMe9dkyXnS0Y6cfZGxmAA==
   dependencies:
     "@aragon/rpc-messenger" "^2.0.0"
     "@babel/runtime" "^7.1.2"
