@@ -11102,7 +11102,7 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-spring@^7.2.10, react-spring@^7.2.11:
+react-spring@^7.2.11:
   version "7.2.11"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.11.tgz#90962121c925c8a3181801b926eaf94c9b5c942e"
   integrity sha512-VHoN34MTZFkvamy7Vlmcx2HR5WVSuaQQjFNlVRNyWNi+rcjYT8OcsggzeDltFycseBh8cZveYTc/iPCEe6O0Sw==
@@ -13163,10 +13163,10 @@ use-inside@^0.2.0:
   dependencies:
     prop-types "^15.7.2"
 
-use-wallet@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/use-wallet/-/use-wallet-0.7.1.tgz#aba6c4a0983ecb01da299a787d2faba636a80365"
-  integrity sha512-SQvfPmeoPhrHFEYNL5ciNWg8uLNdn2uawFJqTgS+UOzzbIGhQ4h56Rwk9I2YTx2eT/uE1hOuUPlYJ5uLD9joew==
+use-wallet@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/use-wallet/-/use-wallet-0.8.1.tgz#2532b02c9a44bdb65c4a5be4f653f0957954c820"
+  integrity sha512-V0Y6oMnLXWBhl8+DYdouf3VZtjKJppLEBRpdQP95bGQn0s70ODWJQmqYmB1E7zWy04YYPkBofLQbMVzPyArGAA==
   dependencies:
     "@aragon/provided-connector" "^6.0.7"
     "@web3-react/authereum-connector" "^6.1.1"

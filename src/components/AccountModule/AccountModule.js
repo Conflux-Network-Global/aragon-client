@@ -42,7 +42,7 @@ function AccountModule() {
   const handleActivate = useCallback(
     async providerId => {
       try {
-        await wallet.activate(providerId)
+        await wallet.connect(providerId)
       } catch (error) {
         console.error('Activation error:', error)
         setActivationError(error)
