@@ -90,7 +90,7 @@ const ActivityItem = ({ activity }) => {
             <div
               css={`
                 margin-left: ${1 * GU}px;
-                max-width: ${12.5 * GU}px
+                max-width: ${12.5 * GU}px;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
