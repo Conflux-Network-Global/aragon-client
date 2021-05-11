@@ -978,17 +978,17 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@conflux-/aragon-os@4.4.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.2.tgz#5725f47fc2bffa88716eab3fb93f0c401149a2d3"
-  integrity sha512-4mRpBKFhluwOE4ldZcWjlYIzIGpEqlG/Tlb3kCBS7Bnpo85GwFr7kguVF9ckyhSmGz9q4otuCNZb4Ny8+4FWFg==
+"@conflux-/aragon-os@4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.0.tgz#5a3df5076442d60b644e2a6036f52ead1a611c3c"
+  integrity sha512-jhIT5Q6ZsWJwz3EWrxkYQ8gPGqbWe81IOdiGfVkAkhhfsw3R4e/+c2m9sRizw0LpEWGGoTxszvDBCXB5wGn3bA==
   dependencies:
     "@aragon/truffle-config-v4" "^1.0.1"
     homedir "^0.6.0"
     mkdirp "^0.5.1"
     truffle-flattener "^1.2.9"
 
-"@conflux-/aragon-os@^4.4.2":
+"@conflux-/aragon-os@^4.2.1":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.4.tgz#9cc1051e24f5dcfedd1a66063d99f5c3ff36f1e7"
   integrity sha512-PPVPLsmop1xhDZ59ASdGnqtpfohGVwMrT2OtNCizCtGiLdMnW9/ESXpO3+v4bO/duqEXdCIH9lOpDwiAn0RYBw==
@@ -1022,14 +1022,14 @@
     recursive-copy "^2.0.9"
     use-inside "^0.2.0"
 
-"@conflux-/aragon-wrapper@^5.0.6":
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.6.tgz#67925ff5e1b1e59477b2c20095abfd0a129edc13"
-  integrity sha512-sChHn7q730coLU0E2QU04KECJIhA+z01ybouvGH9VSckalxYzuBrjY1kXay3pyZzmX6G/7ul9Y2BEFJAv5uRQA==
+"@conflux-/aragon-wrapper@^5.0.10":
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.10.tgz#0717fc980468f2f9614758785bd6e33774d89c9a"
+  integrity sha512-2Q2seuZzXjE5vNNiojpcjI96GfEdOyorCJuHbUBhZx7azbYVZ83Z9Hst+15O1qbTDI1ejWWlq4Alln6dYypcwA==
   dependencies:
     "@aragon/rpc-messenger" "^2.0.0"
     "@babel/runtime" "^7.1.2"
-    "@conflux-/aragon-os" "^4.4.2"
+    "@conflux-/aragon-os" "^4.2.1"
     axios "^0.19.0"
     dot-prop "^4.2.0"
     eth-ens-namehash "^2.0.8"
@@ -13096,10 +13096,10 @@ use-inside@^0.2.0:
   dependencies:
     prop-types "^15.7.2"
 
-use-wallet@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/use-wallet/-/use-wallet-0.7.1.tgz#aba6c4a0983ecb01da299a787d2faba636a80365"
-  integrity sha512-SQvfPmeoPhrHFEYNL5ciNWg8uLNdn2uawFJqTgS+UOzzbIGhQ4h56Rwk9I2YTx2eT/uE1hOuUPlYJ5uLD9joew==
+use-wallet@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/use-wallet/-/use-wallet-0.8.1.tgz#2532b02c9a44bdb65c4a5be4f653f0957954c820"
+  integrity sha512-V0Y6oMnLXWBhl8+DYdouf3VZtjKJppLEBRpdQP95bGQn0s70ODWJQmqYmB1E7zWy04YYPkBofLQbMVzPyArGAA==
   dependencies:
     "@aragon/provided-connector" "^6.0.7"
     "@web3-react/authereum-connector" "^6.1.1"
