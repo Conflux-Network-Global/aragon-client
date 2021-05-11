@@ -66,7 +66,7 @@ function AccountModuleConnectedScreen({
   )
 
   const handleDisconnect = useCallback(() => {
-    wallet.deactivate()
+    wallet.reset()
   }, [wallet])
 
   const Icon = connectionColor !== theme.positive ? IconCross : IconCheck
@@ -117,7 +117,6 @@ function AccountModuleConnectedScreen({
               align-items: center;
               justify-self: flex-end;
               padding: ${0.5 * GU}px;
-
               &:active {
                 background: ${theme.surfacePressed};
               }
