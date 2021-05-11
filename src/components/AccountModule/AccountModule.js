@@ -36,7 +36,7 @@ function AccountModule() {
   const toggle = useCallback(() => setOpened(opened => !opened), [])
 
   const handleCancelConnection = useCallback(() => {
-    wallet.deactivate()
+    wallet.reset()
   }, [wallet])
 
   const handleActivate = useCallback(
