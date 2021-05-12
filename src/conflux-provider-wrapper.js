@@ -369,7 +369,7 @@ function wrapSendAsync(provider) {
             message,
             response
           )
-          return callback(err || response.error)
+          return callback(err || (response && response.error))
         }
 
         if (message.method === 'eth_getBlockByNumber') {
@@ -385,7 +385,7 @@ function wrapSendAsync(provider) {
           response
         )
         */
-        return callback(err || response.error, response)
+        return callback(err || (response && response.error), response)
       }
 
       return message.method === 'cfx_getLogs'
@@ -428,7 +428,7 @@ function wrapSend(provider) {
                 message,
                 response
               )
-              return reject(err || response.error)
+              return reject(err || (response && response.error))
             }
             return resolve(postprocess(message, response))
           }
@@ -469,14 +469,14 @@ function wrapSend(provider) {
               response
             )
             // console.trace()
-            return callback(err || response.error)
+            return callback(err || (response && response.error))
           }
 
           // process response
           response = postprocess(message, response)
 
           // console.log('Conflux Portal send final:', message, response)
-          return callback(err || response.error, response)
+          return callback(err || (response && response.error), response)
         }
 
         // execute call
