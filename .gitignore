@@ -5,6 +5,7 @@
 .env*
 !.env.enc
 !.env.sample
+!.env.production
 
 # dependencies
 node_modules/
