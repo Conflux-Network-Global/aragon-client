@@ -12,6 +12,7 @@ const SELECTED_CURRENCY = 'SELECTED_CURRENCY'
 const SENTRY_DSN = 'SENTRY_DSN'
 const PORTIS_DAPP_ID = 'PORTIS_DAPP_ID'
 const FORTMATIC_API_KEY = 'FORTMATIC_API_KEY'
+const INDEXING_SERVICE = 'INDEXING_SERVICE'
 
 // Parcel requires env vars to be declared statically.
 const CONFIGURATION_VARS = [
@@ -60,6 +61,7 @@ const CONFIGURATION_VARS = [
   [LOCAL_CHAIN_ID, process.env.LOCAL_CHAIN_ID],
   [FORTMATIC_API_KEY, process.env.ARAGON_FORTMATIC_API_KEY],
   [PORTIS_DAPP_ID, process.env.ARAGON_PORTIS_DAPP_ID],
+  [INDEXING_SERVICE, process.env.INDEXING_SERVICE],
 ].reduce(
   (acc, [option, envValue, envValueCompat]) => ({
     ...acc,
@@ -125,6 +127,17 @@ export function getEthSubscriptionEventDelay() {
 
 export function getIpfsGateway() {
   return getLocalSetting(IPFS_GATEWAY) || 'https://ipfs.eth.aragon.network/ipfs'
+}
+
+export function getIndexingService() {
+  return (
+    getLocalSetting(INDEXING_SERVICE) ||
+    'https://aragontest-indexer.confluxnetwork.org'
+  )
+}
+
+export function setIndexingService(url) {
+  return setLocalSetting(INDEXING_SERVICE, url)
 }
 
 export function setIpfsGateway(gateway) {

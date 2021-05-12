@@ -1,4 +1,8 @@
-import { getLocalChainId, getEnsRegistryAddress } from './local-settings'
+import {
+  getLocalChainId,
+  getEnsRegistryAddress,
+  getIndexingService,
+} from './local-settings'
 
 const localEnsRegistryAddress = getEnsRegistryAddress()
 
@@ -55,7 +59,7 @@ export const networkConfigs = {
       name: 'Conflux Testnet',
       shortName: 'cfx-testnet',
       type: 'private',
-      indexServiceUrl: 'https://aragontest-indexer.confluxnetwork.org',
+      indexServiceUrl: getIndexingService(),
       live: false,
     },
     providers: [{ id: 'provided' }],
