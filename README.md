@@ -162,3 +162,17 @@ Amongst other dependencies, the Aragon client is built upon these packages that 
 - [use-viewport](https://github.com/aragon/use-viewport): React utility providing the current window size and convenient functions for responsive apps
 - [use-wallet](https://github.com/aragon/use-wallet): React utility aiming to make the integration between your dapp and your users' web3 wallets as straightforward as possible
 - [web3-react](https://github.com/NoahZinsmeister/web3-react): a simple, maximally extensible React framework for supporting arbitrary web3 wallets
+
+## Building and Running
+
+### Config
+
+The configuration for app urls can be changed in the [.env.production](./.env.production) file
+
+### Build 
+
+`docker build -t conflux-aragon-client .`
+
+### Run
+
+`docker run -it -p 5001:80 conflux-aragon-client`
