@@ -19,7 +19,7 @@ function ValidateWalletWeb3({
     return <NoWeb3Provider intent={intent} onClose={onClose} />
   }
 
-  if (!wallet.connected) {
+  if (wallet.status !== 'connected') {
     return (
       <AccountLocked
         intent={intent}

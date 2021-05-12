@@ -16,8 +16,7 @@ function WalletContextProvider({ children }) {
     account,
     balance,
     ethereum,
-    activated,
-    activating,
+    connector,
     ...walletBaseRest
   } = useWalletBase()
 
@@ -61,12 +60,12 @@ function WalletContextProvider({ children }) {
       balance: new BN(filterBalanceValue(balance)),
       ethereum,
       networkType,
-      providerInfo: getProviderFromUseWalletId(activated),
+      providerInfo: getProviderFromUseWalletId(connector),
       web3: walletWeb3,
       ...walletBaseRest,
     }),
     [
-      activated,
+      connector,
       account,
       balance,
       ethereum,

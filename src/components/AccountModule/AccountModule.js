@@ -24,7 +24,7 @@ const SCREENS = [
 
 function AccountModule() {
   const wallet = useWallet()
-  const { account, activating, providerInfo } = wallet
+  const { account, connector, providerInfo } = wallet
   const [opened, setOpened] = useState(false)
   const [activatingDelayed, setActivatingDelayed] = useState(false)
   const [activationError, setActivationError] = useState(null)
@@ -71,8 +71,8 @@ function AccountModule() {
       setActivatingDelayed(null)
     }
 
-    if (activating) {
-      setActivatingDelayed(activating)
+    if (connector) {
+      setActivatingDelayed(connector)
       return
     }
 
@@ -81,7 +81,7 @@ function AccountModule() {
     }, 400)
 
     return () => clearTimeout(timer)
-  }, [activating, activationError])
+  }, [connector, activationError])
 
   const previousScreenIndex = useRef(-1)
 
@@ -142,7 +142,9 @@ function AccountModule() {
       <AccountModulePopover
         direction={direction}
         heading={screen.title}
-        keys={({ screenId }) => screenId + activating + activationError.name}
+        keys={({ screenId }) =>
+          screenId + providerInfo.id + activationError.name
+        }
         onClose={handlePopoverClose}
         onOpen={open}
         opener={buttonRef.current}
@@ -154,26 +156,19 @@ function AccountModule() {
           providerInfo,
           screenId,
         }}
-        screenKey={({
-          account,
-          activating,
-          activationError,
-          providerInfo,
-          screenId,
-        }) =>
+        screenKey={({ account, activationError, providerInfo, screenId }) =>
           (activationError ? activationError.name : '') +
           account +
-          activating +
           providerInfo.id +
           screenId
         }
         visible={opened}
       >
-        {({ account, screenId, activating, activationError, providerInfo }) => {
+        {({ account, screenId, connector, activationError, providerInfo }) => {
           if (screenId === 'connecting') {
             return (
               <ConnectingScreen
-                providerId={activating}
+                providerId={connector}
                 onCancel={handleCancelConnection}
               />
             )
