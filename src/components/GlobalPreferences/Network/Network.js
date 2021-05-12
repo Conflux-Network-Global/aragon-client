@@ -21,7 +21,7 @@ import {
 } from '../../../local-settings'
 import keycodes from '../../../keycodes'
 import { sanitizeNetworkType } from '../../../network-config'
-import { checkValidEthNode } from '../../../web3-utils'
+// import { checkValidEthNode } from '../../../web3-utils'
 
 function Network({ wrapper }) {
   const {
@@ -141,7 +141,7 @@ Network.propTypes = {
 }
 
 const useNetwork = wrapper => {
-  const [networkError, setNetworkError] = useState(null)
+  const [networkError] = useState(null)
   const [ethNode, setEthNodeValue] = useState(defaultEthNode)
   const [ipfsGateway, setIpfsGatewayValue] = useState(ipfsDefaultConf.gateway)
   const [indexingService, setIndexingServiceValue] = useState(
@@ -149,13 +149,15 @@ const useNetwork = wrapper => {
   )
 
   const handleNetworkChange = useCallback(async () => {
-    setNetworkError(null)
-    try {
-      await checkValidEthNode(ethNode, network.type)
-    } catch (err) {
-      setNetworkError(err)
-      return
-    }
+    /* checkValidateEthNode is using net_version that is not implemented in cfx 
+    reference@src/conflux-provider-wrapper.js #447 */
+
+    // try {
+    //   await checkValidEthNode(ethNode, network.type)
+    // } catch (err) {
+    //   setNetworkError(err)
+    //   return
+    // }
 
     setDefaultEthNode(ethNode)
     setIpfsGateway(ipfsGateway)
