@@ -121,6 +121,7 @@ function Network({ wrapper }) {
           css={`
             margin-bottom: ${2 * GU}px;
           `}
+          disabled={!wrapper}
           onClick={handleClearCache}
           wide={compact}
         >
