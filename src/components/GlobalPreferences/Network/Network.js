@@ -73,7 +73,7 @@ function Network({ wrapper }) {
                 if (networkError instanceof NoConnection) {
                   return 'Could not connect to node'
                 }
-                return 'URI does not seem to be a ETH node'
+                return 'URI does not seem to be a Conflux node'
               })()}
             </span>
           )}
