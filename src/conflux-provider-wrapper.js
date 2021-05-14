@@ -478,6 +478,7 @@ function wrapSend(provider) {
           response = postprocess(message, response)
 
           // console.log('Conflux Portal send final:', message, response)
+          if (!response && !err) return
           return callback(err || (response && response.error), response)
         }
 
