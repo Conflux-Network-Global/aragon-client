@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   Button,
@@ -142,9 +142,9 @@ function BoxProgress({
       >
         <h1
           css={`
-              ${TITLE_ONBOARDING}
-              margin-bottom: ${2 * GU}px;
-            `}
+            ${TITLE_ONBOARDING}
+            margin-bottom: ${2 * GU}px;
+          `}
         >
           Organizations
           <br />
@@ -213,6 +213,14 @@ function BoxReady({ onOpenOrg, opacity, boxTransform }) {
   const { below } = useViewport()
   const fullWidth = below('large')
   const small = below('medium')
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setActive(true), 30 * 1000)
+    return () => {
+      clearTimeout(t)
+    }
+  }, [])
 
   return (
     <BoxBase opacity={opacity} boxTransform={boxTransform}>
@@ -242,7 +250,11 @@ function BoxReady({ onOpenOrg, opacity, boxTransform }) {
             <strong>All done!</strong>
           </p>
           <p css="font-weight: 400">Your organization is ready</p>
-          <Button label="Get started" mode="strong" onClick={onOpenOrg} />
+          {active ? (
+            <Button label="Get started" mode="strong" onClick={onOpenOrg} />
+          ) : (
+            <span>in 30 seconds ...</span>
+          )}
         </div>
       </div>
     </BoxBase>
