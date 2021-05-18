@@ -140,7 +140,7 @@ function RedemptionsScreen({
               `}
             >
               <KnownAppBadge
-                appName="redemptions.aragonpm.eth"
+                appName="redemptions.aragonpm.cfx"
                 label={appLabel}
               />
             </span>

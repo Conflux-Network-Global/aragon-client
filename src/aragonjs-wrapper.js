@@ -25,6 +25,7 @@ import {
 } from './web3-utils'
 import SandboxedWorker from './worker/SandboxedWorker'
 import WorkerSubscriptionPool from './worker/WorkerSubscriptionPool'
+import { format } from 'js-conflux-sdk'
 
 const POLL_DELAY_CONNECTIVITY = 2000
 
@@ -45,7 +46,7 @@ const prepareAppsForFrontend = (apps, daoAddress, gateway) => {
     if (app.status) {
       tags.push(app.status)
     }
-    if (apmRegistry && apmRegistry !== 'aragonpm.eth') {
+    if (apmRegistry && apmRegistry !== 'aragonpm.cfx') {
       tags.push(`${apmRegistry} registry`)
     }
     if (!hasWebApp(app)) {
@@ -102,7 +103,7 @@ export const resolveEnsDomain = async domain => {
   try {
     return await ensResolve(domain, {
       provider: web3Providers.default,
-      registryAddress: contractAddresses.ensRegistry,
+      registryAddress: format.hexAddress(contractAddresses.ensRegistry),
     })
   } catch (err) {
     if (err.message === 'ENS name not defined.') {
@@ -275,7 +276,7 @@ const initWrapper = async (
     defaultGasPriceFn: () =>
       getGasPrice({ mainnet: { disableEstimate: true } }),
     apm: {
-      ensRegistryAddress: contractAddresses.ensRegistry,
+      ensRegistryAddress: format.hexAddress(contractAddresses.ensRegistry),
       ipfs: ipfsConf,
     },
     cache: {

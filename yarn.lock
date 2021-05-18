@@ -978,10 +978,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@conflux-/aragon-os@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.0.tgz#5a3df5076442d60b644e2a6036f52ead1a611c3c"
-  integrity sha512-jhIT5Q6ZsWJwz3EWrxkYQ8gPGqbWe81IOdiGfVkAkhhfsw3R4e/+c2m9sRizw0LpEWGGoTxszvDBCXB5wGn3bA==
+"@conflux-/aragon-os@4.4.4":
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.4.tgz#9cc1051e24f5dcfedd1a66063d99f5c3ff36f1e7"
+  integrity sha512-PPVPLsmop1xhDZ59ASdGnqtpfohGVwMrT2OtNCizCtGiLdMnW9/ESXpO3+v4bO/duqEXdCIH9lOpDwiAn0RYBw==
   dependencies:
     "@aragon/truffle-config-v4" "^1.0.1"
     homedir "^0.6.0"
@@ -989,9 +989,9 @@
     truffle-flattener "^1.2.9"
 
 "@conflux-/aragon-os@^4.2.1":
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.4.tgz#9cc1051e24f5dcfedd1a66063d99f5c3ff36f1e7"
-  integrity sha512-PPVPLsmop1xhDZ59ASdGnqtpfohGVwMrT2OtNCizCtGiLdMnW9/ESXpO3+v4bO/duqEXdCIH9lOpDwiAn0RYBw==
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@conflux-/aragon-os/-/aragon-os-4.4.0.tgz#5a3df5076442d60b644e2a6036f52ead1a611c3c"
+  integrity sha512-jhIT5Q6ZsWJwz3EWrxkYQ8gPGqbWe81IOdiGfVkAkhhfsw3R4e/+c2m9sRizw0LpEWGGoTxszvDBCXB5wGn3bA==
   dependencies:
     "@aragon/truffle-config-v4" "^1.0.1"
     homedir "^0.6.0"
@@ -1022,7 +1022,7 @@
     recursive-copy "^2.0.9"
     use-inside "^0.2.0"
 
-"@conflux-/aragon-wrapper@^5.0.10":
+"@conflux-/aragon-wrapper@^5.0.9":
   version "5.0.10"
   resolved "https://registry.yarnpkg.com/@conflux-/aragon-wrapper/-/aragon-wrapper-5.0.10.tgz#0717fc980468f2f9614758785bd6e33774d89c9a"
   integrity sha512-2Q2seuZzXjE5vNNiojpcjI96GfEdOyorCJuHbUBhZx7azbYVZ83Z9Hst+15O1qbTDI1ejWWlq4Alln6dYypcwA==

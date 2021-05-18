@@ -33,6 +33,7 @@ export function prepareTransactionCreatorFromAbi(abi, toAddress) {
       )
     }
 
+    console.error(paramsList, toAddress, abi, methodName, method)
     return {
       data: method(...paramsList).encodeABI(),
       to: toAddress,

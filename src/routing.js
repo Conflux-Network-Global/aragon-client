@@ -13,7 +13,7 @@ import { staticApps } from './static-apps'
 import { isAddress, isValidEnsName } from './web3-utils'
 import { addStartingSlash } from './utils'
 
-export const ARAGONID_ENS_DOMAIN = 'aragonid.eth'
+export const ARAGONID_ENS_DOMAIN = 'aragonid.cfx'
 
 // The locator represents the current route.
 // It contains a mode object, which represents one of the app modes.
@@ -77,7 +77,7 @@ export function parsePath(pathname, search = '') {
   const validAddress = isAddress(orgAddress)
   const validDomain = isValidEnsName(orgAddress)
 
-  // Assume .aragonid.eth if not given a valid address or a valid ENS domain
+  // Assume .aragonid.cfx if not given a valid address or a valid ENS domain
   if (!validAddress && !validDomain) {
     orgAddress += `.${ARAGONID_ENS_DOMAIN}`
   }
@@ -128,7 +128,7 @@ export function getPath({ mode, preferences } = {}) {
       return fallbackPath
     }
 
-    // Only keep the full address if it ends in aragonid.eth
+    // Only keep the full address if it ends in aragonid.cfx
     if (orgAddress.endsWith(ARAGONID_ENS_DOMAIN)) {
       orgAddress = orgAddress.substr(
         0,
@@ -261,7 +261,7 @@ export function RoutingProvider({ children }) {
 
     const locator = parsePath(pathname, search)
 
-    // Replace URL with non-aragonid.eth version
+    // Replace URL with non-aragonid.cfx version
     if (
       locator.orgAddress &&
       locator.orgAddress.endsWith(ARAGONID_ENS_DOMAIN)

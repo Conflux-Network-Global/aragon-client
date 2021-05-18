@@ -14,7 +14,7 @@ import header from './header.svg'
 import icon from './icon.svg'
 
 function completeDomain(domain) {
-  return domain ? `${domain}.aragonid.eth` : ''
+  return domain ? `${domain}.aragonid.cfx` : ''
 }
 
 function adjustVotingSettings(support, quorum) {
@@ -36,7 +36,7 @@ function adjustVotingSettings(support, quorum) {
 }
 
 export default {
-  id: 'reputation-template.aragonpm.eth',
+  id: 'reputation-template.aragonpm.cfx',
   name: 'Reputation',
   header,
   icon,
@@ -48,13 +48,13 @@ export default {
     'https://help.aragon.org/article/32-create-a-new-reputation-organization',
   sourceCodeUrl:
     'https://github.com/aragon/dao-templates/tree/templates-reputation-v1.0.0/templates/reputation',
-  registry: 'aragonpm.eth',
+  registry: 'aragonpm.cfx',
   apps: [
-    { appName: 'voting.aragonpm.eth', label: 'Voting' },
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens' },
-    { appName: 'finance.aragonpm.eth', label: 'Finance' },
+    { appName: 'voting.aragonpm.cfx', label: 'Voting' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens' },
+    { appName: 'finance.aragonpm.cfx', label: 'Finance' },
   ],
-  optionalApps: [{ appName: 'agent.aragonpm.eth', label: 'Agent' }],
+  optionalApps: [{ appName: 'agent.aragonpm.cfx', label: 'Agent' }],
   screens: [
     [
       data => completeDomain(data.domain) || 'Claim domain',
@@ -79,14 +79,14 @@ export default {
               },
               {
                 label: (
-                  <KnownAppBadge appName="voting.aragonpm.eth" label="Voting" />
+                  <KnownAppBadge appName="voting.aragonpm.cfx" label="Voting" />
                 ),
                 fields: VotingScreen.formatReviewFields(voting),
               },
               {
                 label: (
                   <KnownAppBadge
-                    appName="token-manager.aragonpm.eth"
+                    appName="token-manager.aragonpm.cfx"
                     label="Tokens"
                   />
                 ),
@@ -103,7 +103,7 @@ export default {
     const hasPayroll = false
 
     const { domain, optionalApps = [], tokens, voting } = data
-    const useAgentAsVault = optionalApps.includes('agent.aragonpm.eth')
+    const useAgentAsVault = optionalApps.includes('agent.aragonpm.cfx')
 
     const { tokenName, tokenSymbol, members } = tokens
     const baseStake = new BN(10).pow(new BN(18))

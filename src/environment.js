@@ -9,6 +9,7 @@ import {
 } from './local-settings'
 import { getNetworkConfig } from './network-config'
 import { Wrapper } from './conflux-provider-wrapper'
+import { format } from 'js-conflux-sdk'
 
 const appsOrder = ['TokenManager', 'Voting', 'Finance', 'Agent']
 
@@ -77,7 +78,7 @@ export const network = networkConfig.settings
 export const providers = networkConfig.providers
 
 export const contractAddresses = {
-  ensRegistry: networkConfig.addresses.ensRegistry,
+  ensRegistry: format.hexAddress(networkConfig.addresses.ensRegistry),
 }
 if (process.env.NODE_ENV !== 'production') {
   if (Object.values(contractAddresses).some(address => !address)) {

@@ -21,7 +21,7 @@ import icon from './icon.svg'
 const onePercent = new BN(10).pow(new BN(16))
 
 function completeDomain(domain) {
-  return domain ? `${domain}.aragonid.eth` : ''
+  return domain ? `${domain}.aragonid.cfx` : ''
 }
 
 function adjustVotingSettings(support, quorum) {
@@ -43,7 +43,7 @@ function adjustVotingSettings(support, quorum) {
 }
 
 export default {
-  id: 'dandelion-org-template.aragonpm.eth',
+  id: 'dandelion-org-template.aragonpm.cfx',
   name: 'Dandelion',
   new: true,
   header,
@@ -53,19 +53,19 @@ export default {
   `,
   userGuideUrl: 'https://1hive.org/dandelion',
   sourceCodeUrl: 'https://github.com/1hive/dandelion-org',
-  registry: 'aragonpm.eth',
+  registry: 'aragonpm.cfx',
   apps: [
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens' },
-    { appName: 'finance.aragonpm.eth', label: 'Finance' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens' },
+    { appName: 'finance.aragonpm.cfx', label: 'Finance' },
     {
-      appName: 'dandelion-voting.aragonpm.eth',
+      appName: 'dandelion-voting.aragonpm.cfx',
       label: 'Voting',
     },
-    { appName: 'time-lock.aragonpm.eth', label: 'Time Lock' },
-    { appName: 'redemptions.aragonpm.eth', label: 'Redemptions' },
-    { appName: 'token-request.aragonpm.eth', label: 'Token Request' },
+    { appName: 'time-lock.aragonpm.cfx', label: 'Time Lock' },
+    { appName: 'redemptions.aragonpm.cfx', label: 'Redemptions' },
+    { appName: 'token-request.aragonpm.cfx', label: 'Token Request' },
   ],
-  optionalApps: [{ appName: 'agent.aragonpm.eth', label: 'Agent' }],
+  optionalApps: [{ appName: 'agent.aragonpm.cfx', label: 'Agent' }],
   screens: [
     [
       data => completeDomain(data.domain) || 'Claim domain',
@@ -105,7 +105,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="dandelion-voting.aragonpm.eth"
+                    appName="dandelion-voting.aragonpm.cfx"
                     label="Voting"
                   />
                 ),
@@ -114,7 +114,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="token-manager.aragonpm.eth"
+                    appName="token-manager.aragonpm.cfx"
                     label="Tokens"
                   />
                 ),
@@ -123,7 +123,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="time-lock.aragonpm.eth"
+                    appName="time-lock.aragonpm.cfx"
                     label="Time lock"
                   />
                 ),
@@ -132,7 +132,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="redemptions.aragonpm.eth"
+                    appName="redemptions.aragonpm.cfx"
                     label="Redemptions"
                   />
                 ),
@@ -141,7 +141,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="token-request.aragonpm.eth"
+                    appName="token-request.aragonpm.cfx"
                     label="Token Request"
                   />
                 ),
@@ -164,7 +164,7 @@ export default {
       redemptions,
       tokenRequest,
     } = data
-    const useAgentAsVault = optionalApps.includes('agent.aragonpm.eth')
+    const useAgentAsVault = optionalApps.includes('agent.aragonpm.cfx')
 
     // Tokens app
     const { tokenName, tokenSymbol, members } = tokens

@@ -157,7 +157,7 @@ function VotingScreen({
                 margin: 0 ${1.5 * GU}px;
               `}
             >
-              <KnownAppBadge appName="voting.aragonpm.eth" label={appLabel} />
+              <KnownAppBadge appName="voting.aragonpm.cfx" label={appLabel} />
             </span>
             settings below.
           </span>

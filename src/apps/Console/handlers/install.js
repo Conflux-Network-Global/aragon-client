@@ -5,7 +5,7 @@ import { parseInitParams, parsePermissions } from '../console-utils'
 // Maximum time (in milliseconds) to wait for a response
 // from the aragon.js apm repo content fetcher
 const REPO_FETCH_TIMEOUT = 3000
-const APP_POSTFIX = '.aragonpm.eth'
+const APP_POSTFIX = '.aragonpm.cfx'
 
 export default async function installHandler(params, { apps, wrapper }) {
   // Get & properly parse arguments

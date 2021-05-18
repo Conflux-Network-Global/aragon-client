@@ -281,35 +281,38 @@ function useDeploymentState(
           // Wait for the previous promise; if component has unmounted, don't progress any further
           await deployPromise
 
-          transaction = {
+          console.error('before', transaction.to)
+
+          let newTx = {
             ...transaction,
             to: format.hexAddress(transaction.to),
           }
 
           if (account) {
-            transaction.from = format.hexAddress(account)
+            newTx.from = format.hexAddress(account)
           }
 
+          console.error('after', newTx.to)
+
           try {
-            transaction = await applyEstimateGas(transaction)
+            newTx = await applyEstimateGas(newTx)
           } catch (err) {
             log('err in apply estimategas', err)
-            throw err
+            // throw err
           }
+
+          console.error('gas met di zooi', newTx.to)
 
           if (!cancelled) {
             try {
-              await walletWeb3.eth.sendTransaction(
-                transaction,
-                (err, response) => {
-                  if (!err && !!response && !cancelled) {
-                    setTransactionProgress(({ signed, errored }) => ({
-                      signed: signed + 1,
-                      errored,
-                    }))
-                  }
+              await walletWeb3.eth.sendTransaction(newTx, (err, txHash) => {
+                if (!err && !!txHash && !cancelled) {
+                  setTransactionProgress(({ signed, errored }) => ({
+                    signed: signed + 1,
+                    errored,
+                  }))
                 }
-              )
+              })
             } catch (err) {
               log('Failed onboarding transaction', err)
               if (!cancelled) {
@@ -418,8 +421,11 @@ const Create = React.memo(function Create({
     templateAddress,
   } = useTemplateRepoInformation(template && template.repoAddress)
 
+  console.error('fa', template && template.repoAddress, templateAddress)
+
   const applyEstimateGas = useCallback(
     async transaction => {
+      console.error('dd', transaction)
       const estimatedGas = await web3.eth.estimateGas(transaction)
       const recommendedLimit = await getRecommendedGasLimit(
         web3,
@@ -427,6 +433,9 @@ const Create = React.memo(function Create({
         { gasFuzzFactor: 1.1 }
       )
       const recommendedPrice = await getGasPrice()
+      console.error('dde', transaction.to)
+      console.error('dd33', format.hexAddress(transaction.to))
+
       return {
         ...transaction,
         to: format.hexAddress(transaction.to),

@@ -7,7 +7,7 @@ const DOMAIN_ERROR = Symbol('DOMAIN_ERROR')
 const DOMAIN_NONE = Symbol('DOMAIN_NONE')
 
 function completeDomain(domain) {
-  return domain.endsWith('.eth') ? domain : `${domain}.aragonid.eth`
+  return domain.endsWith('.cfx') ? domain : `${domain}.aragonid.cfx`
 }
 
 function useCheckDomain(domain, invertCheck = false) {

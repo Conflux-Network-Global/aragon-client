@@ -309,7 +309,7 @@ function Council({
               `}
             >
               <KnownAppBadge
-                appName="token-manager.aragonpm.eth"
+                appName="token-manager.aragonpm.cfx"
                 label="Tokens: Council"
               />
             </span>
@@ -434,7 +434,7 @@ function Council({
               `}
             >
               <KnownAppBadge
-                appName="voting.aragonpm.eth"
+                appName="voting.aragonpm.cfx"
                 label="Voting: Council"
               />
             </span>

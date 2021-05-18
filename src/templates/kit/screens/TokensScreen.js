@@ -235,7 +235,7 @@ function Tokens({
                 `}
               >
                 <KnownAppBadge
-                  appName="token-manager.aragonpm.eth"
+                  appName="token-manager.aragonpm.cfx"
                   label={appLabel}
                 />
               </span>

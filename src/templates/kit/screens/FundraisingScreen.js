@@ -229,7 +229,7 @@ function FundraisingScreen({
               `}
             >
               <KnownAppBadge
-                appName="aragon-fundraising.aragonpm.eth"
+                appName="aragon-fundraising.aragonpm.cfx"
                 label="Fundraising"
               />
             </span>

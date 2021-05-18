@@ -28,7 +28,7 @@ const oneBlock = BN(15)
 const one = BN(1)
 
 function completeDomain(domain) {
-  return domain ? `${domain}.aragonid.eth` : ''
+  return domain ? `${domain}.aragonid.cfx` : ''
 }
 
 function adjustVotingSettings(support, quorum) {
@@ -144,7 +144,7 @@ function extractCollateralizationSettings(fundraising) {
 }
 
 export default {
-  id: 'fundraising-multisig-template.aragonpm.eth',
+  id: 'fundraising-multisig-template.aragonpm.cfx',
   name: 'Fundraising',
   beta: true,
   header,
@@ -155,18 +155,18 @@ export default {
   `,
   userGuideUrl: 'https://fundraising.aragon.black/',
   sourceCodeUrl: 'https://github.com/AragonBlack/fundraising',
-  registry: 'aragonpm.eth',
+  registry: 'aragonpm.cfx',
   apps: [
     {
-      appName: 'aragon-fundraising.aragonpm.eth',
+      appName: 'aragon-fundraising.aragonpm.cfx',
       label: 'Fundraising',
     },
-    { appName: 'agent.aragonpm.eth', label: 'Agent: Reserve Pool' },
-    { appName: 'voting.aragonpm.eth', label: 'Voting: Council' },
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens: Council' },
-    { appName: 'voting.aragonpm.eth', label: 'Voting: Token Holder' },
-    { appName: 'token-manager.aragonpm.eth', label: 'Tokens: Token Holder' },
-    { appName: 'finance.aragonpm.eth', label: 'Finance' },
+    { appName: 'agent.aragonpm.cfx', label: 'Agent: Reserve Pool' },
+    { appName: 'voting.aragonpm.cfx', label: 'Voting: Council' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens: Council' },
+    { appName: 'voting.aragonpm.cfx', label: 'Voting: Token Holder' },
+    { appName: 'token-manager.aragonpm.cfx', label: 'Tokens: Token Holder' },
+    { appName: 'finance.aragonpm.cfx', label: 'Finance' },
   ],
   optionalApps: [],
   screens: [
@@ -226,7 +226,7 @@ export default {
               {
                 label: (
                   <KnownAppBadge
-                    appName="aragon-fundraising.aragonpm.eth"
+                    appName="aragon-fundraising.aragonpm.cfx"
                     label="Fundraising"
                   />
                 ),

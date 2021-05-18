@@ -1,12 +1,12 @@
 import { hash as namehash } from 'eth-ens-namehash'
 
-// These app IDs are generated from <name>.aragonpm.eth
+// These app IDs are generated from <name>.aragonpm.cfx
 export default {
-  Agent: namehash('agent.aragonpm.eth'),
-  Finance: namehash('finance.aragonpm.eth'),
-  Fundraising: namehash('aragon-fundraising.aragonpm.eth'),
-  Survey: namehash('survey.aragonpm.eth'),
-  TokenManager: namehash('token-manager.aragonpm.eth'),
-  Vault: namehash('vault.aragonpm.eth'),
-  Voting: namehash('voting.aragonpm.eth'),
+  Agent: namehash('agent.aragonpm.cfx'),
+  Finance: namehash('finance.aragonpm.cfx'),
+  Fundraising: namehash('aragon-fundraising.aragonpm.cfx'),
+  Survey: namehash('survey.aragonpm.cfx'),
+  TokenManager: namehash('token-manager.aragonpm.cfx'),
+  Vault: namehash('vault.aragonpm.cfx'),
+  Voting: namehash('voting.aragonpm.cfx'),
 }
